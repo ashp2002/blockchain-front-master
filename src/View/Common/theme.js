@@ -98,7 +98,7 @@ const theme = createTheme({
     },
     button: {
       fontFamily: "Spoqa Han Sans Neo Light",
-      fontSize: "20px",
+      fontSize: "18px",
       letterSpacing: "-1pt",
       color: "#707070",
     },
