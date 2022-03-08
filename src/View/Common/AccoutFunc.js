@@ -20,7 +20,7 @@ export const FuncLogin = (dispatch, userID, userPW) => {
         sStorage.setItem("session_id", res.session_id);
         dispatch(loginSuccess(res));
       } else {
-        alert("아이디 암호를 다시확인하세요");
+        alert("아이디 암호를 다시확인하세요.");
         dispatch(loginFailed());
       }
     })
