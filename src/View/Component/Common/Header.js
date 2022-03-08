@@ -32,7 +32,7 @@ const Header = (props) => {
 
   return (
     <React.Fragment>
-      <AppBar sx={{ position: "fixed", backgroundColor: "white" }}>
+      <AppBar sx={{ position: "fixed", backgroundColor: "white", boxShadow: "0" }}>
         <Container sx={{ maxWidth: "lg" }}>
           <Toolbar
             sx={{

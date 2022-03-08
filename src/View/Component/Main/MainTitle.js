@@ -29,10 +29,10 @@ const MainTitle = (props) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
   return (
-    <Box>
+    <Box py={10}>
       <Box>
         <Typography
-          align="left"
+          align="center"
           variant={props.size}
           color="inherit"
           className={classes.title}
@@ -42,7 +42,7 @@ const MainTitle = (props) => {
       </Box>
       <Box>
         <Typography
-          align="left"
+          align="center"
           variant={props.size}
           color="inherit"
           className={classes.title}
@@ -52,7 +52,7 @@ const MainTitle = (props) => {
       </Box>
       <Box>
         <Typography
-          align="left"
+          align="center"
           variant="body1"
           color="inherit"
           className={classes.subtitle}
@@ -60,7 +60,7 @@ const MainTitle = (props) => {
           {props.description}
         </Typography>
         <Typography
-          align="left"
+          align="center"
           variant="body1"
           color="inherit"
           className={classes.subtitle}
