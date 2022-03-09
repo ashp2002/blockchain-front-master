@@ -3,6 +3,7 @@ import MainContents from "../../Component/Main/MainContents";
 import { Box, Container } from "@mui/material";
 import { useTheme, makeStyles } from "@mui/styles";
 import MainTitle from "../../Component/Main/MainTitle";
+import MainDecsButton from "../../Component/Main/MainDecsButton";
 import LoginTest from "../../Component/Main/LoginTest";
 import mainDecs_img from "../../../Images/mainDecs_img.png"
 
@@ -21,23 +22,24 @@ const MainDecs = () => {
   return (
     <Box
       className={classes.container}
-      mt={7}
       width="100%"
       height={["370px", "470px", "500px"]}
       bgcolor="RGB(246,248,247)"
     >
       <Container>
         <MainTitle
-          title="대한민국 똑똑한"
-          subtitle="선거문화를 만듭니다."
-          description="중앙선거관리위원회 출신"
-          description2="대한민국 최고의 선거전문가들의 똑똑한 선거 시스템"
-          size="h1"
+          title="BlockChain Data Security Solution"ㅓ
+          subtitle="블록체인 데이터 보안 솔루션"
+          description="블록체인은 불변성을 보장합니다."
+          description2="귀사의 데이터베이스에 블록체인 솔루션을 적용하면"
+          description3="누구도 조작이 불가능한 데이터베이스가 됩니다!"
+          size="h2"
         />
         {/* 
         <MainContents />
         <LoginTest />
         */}
+        <MainDecsButton />
       </Container>
     </Box>
   );

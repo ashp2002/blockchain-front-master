@@ -10,7 +10,6 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   title: {
-    color: "black",
     [theme.breakpoints.down("xs")]: {
       fontSize: "25px",
     },
@@ -28,44 +27,57 @@ const MainTitle = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
+  const {
+    title, 
+    subtitle, 
+    description, 
+    description2, 
+    description3, 
+    size, 
+    decssize, 
+    align 
+  } = props
   return (
-    <Box py={10}>
+    <Box pt={11}>
       <Box>
         <Typography
-          align="center"
-          variant={props.size}
-          color="inherit"
+          align={align === "left" ? "left" : "center"}
+          variant={size}
           className={classes.title}
         >
-          {props.title}
+          {title}
         </Typography>
       </Box>
       <Box>
         <Typography
-          align="center"
-          variant={props.size}
-          color="inherit"
+          align={align === "left" ? "left" : "center"}
+          variant={size}
           className={classes.title}
         >
-          {props.subtitle}
+          {subtitle}
         </Typography>
       </Box>
-      <Box>
+      <Box mt={5}>
         <Typography
-          align="center"
-          variant="body1"
-          color="inherit"
+          align={align === "left" ? "left" : "center"}
+          variant={decssize}
           className={classes.subtitle}
         >
-          {props.description}
+          {description}
         </Typography>
         <Typography
-          align="center"
-          variant="body1"
-          color="inherit"
+          align={align === "left" ? "left" : "center"}
+          variant={decssize}
           className={classes.subtitle}
         >
-          {props.description2}
+          {description2}
+        </Typography>
+        <Typography
+          align={align === "left" ? "left" : "center"}
+          variant={decssize}
+          className={classes.subtitle}
+        >
+          {description3}
         </Typography>
       </Box>
     </Box>
