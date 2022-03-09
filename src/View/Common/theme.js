@@ -87,7 +87,7 @@ const theme = createTheme({
       fontSize: "20px",
       fontWeight: "800",
       letterSpacing: "-0.5pt",
-      color: "#848484",
+      color: "#0F0F0F",
     },
     body2: {
       fontFamily: "Spoqa Han Sans Neo Bold",
