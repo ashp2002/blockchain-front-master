@@ -2,7 +2,7 @@ import React from "react";
 import MainContents from "../../Component/Main/MainContents";
 import { Box, Container } from "@mui/material";
 import { useTheme, makeStyles } from "@mui/styles";
-import MainTitle from "../../Component/Main/MainTitle";
+import MainTitle from "../../Component/Common/MainTitle";
 import MainDecsButton from "../../Component/Main/MainDecsButton";
 import LoginTest from "../../Component/Main/LoginTest";
 import mainDecs_img from "../../../Images/mainDecs_img.png"

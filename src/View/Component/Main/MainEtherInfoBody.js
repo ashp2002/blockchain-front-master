@@ -7,7 +7,7 @@ import {
   Button,
   useMediaQuery,
 } from "@mui/material";
-import MainBodyText from "./MainBodyText"
+import MainBodyText from "../Common/MainBodyText"
 
 const useStyles = makeStyles((theme) => ({
   

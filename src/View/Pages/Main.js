@@ -4,6 +4,8 @@ import MainAgent from "../Container/MainContainer/MainAgent";
 import MainDBImmutability from "../Container/MainContainer/MainDBImmutability";
 import MainEtherInfo from "../Container/MainContainer/MainEtherInfo";
 import MainAgentMonitor from "../Container/MainContainer/MainAgentMonitor";
+import MainServerSolution from "../Container/MainContainer/MainServerSolution";
+import MainTransection from "../Container/MainContainer/MainTransection";
 import { Box } from "@mui/material";
 const Main = () => {
   return (
@@ -13,6 +15,8 @@ const Main = () => {
       <MainDBImmutability />
       <MainEtherInfo />
       <MainAgentMonitor />
+      <MainServerSolution />
+      <MainTransection />
     </Box>
   );
 };

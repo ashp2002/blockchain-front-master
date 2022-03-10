@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const MainAgentContent = (props) => {
+const MainTransectionInput = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
@@ -35,48 +35,22 @@ const MainAgentContent = (props) => {
         display="flex"
         flexBasis="50%"
         justifyContent="center"
-        mt={location === "Img_left" ? "" : [5, 5, 0]}
+        border={1}
+        p={2}
       >
-      {location === "Img_left" ?
-          <img
-            className={classes.container}
-            src={image}
-          ></img> : 
-        <Box px={4}>
-          <MainTitle
-            title={title}
-            description={decs}
-            size="h3"
-            decssize="h5"
-            align="left"
-          />
-        </Box>
-      }
+        <MainTitle title="파일 해시 값 생성하기" size="h3"/>
       </Box>
       <Box
         display="flex"
         flexBasis="50%"
         justifyContent="center"
-        mt={location === "Img_left" ? [5, 5, 0] : ""}
+        border={1}
+        p={2}
       >
-        {location === "Img_left" ?
-          <Box px={4}>
-            <MainTitle
-              title={title}
-              description={decs}
-              size="h3"
-              decssize="h5"
-              align="left"
-            />
-          </Box> : 
-          <img
-            className={classes.container}
-            src={image}
-          ></img> 
-        }
+        <MainTitle title="이더리움 해시값 조회하기" size="h3"/>
       </Box>
     </Box>
   );
 };
 
-export default MainAgentContent;
+export default MainTransectionInput;
