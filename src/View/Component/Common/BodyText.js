@@ -17,13 +17,13 @@ const MainBodyText = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
-  const { text, size, color } = props;
+  const { text, size, color, location } = props;
 
   return (
     <Box>
       <Typography
         mt={2}
-        align="left"
+        align={location === "center" ? "center" : "left"}
         variant="h5"
         color={color}
       >

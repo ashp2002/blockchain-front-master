@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MainTitle = (props) => {
+const TitleText = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
@@ -35,10 +35,10 @@ const MainTitle = (props) => {
     description3, 
     size, 
     decssize, 
-    align 
+    align,
   } = props
   return (
-    <Box pt={11}>
+    <Box>
       <Box>
         <Typography
           align={align === "left" ? "left" : "center"}
@@ -84,4 +84,4 @@ const MainTitle = (props) => {
   );
 };
 
-export default MainTitle;
+export default TitleText;

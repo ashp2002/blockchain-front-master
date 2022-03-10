@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { useTheme, makeStyles } from "@mui/styles";
 import MainDBImmutabilityCard from "../../Component/Main/MainDBImmutabilityCard"
-import MainTitle from "../../Component/Common/MainTitle"
+import TitleText from "../../Component/Common/TitleText"
 import mainDBImmutability_Img1 from "../../../Images/mainDBImmutability_Img1.png"
 import mainDBImmutability_Img2 from "../../../Images/mainDBImmutability_Img2.png"
 import mainDBImmutability_Img3 from "../../../Images/mainDBImmutability_Img3.png"
@@ -31,7 +31,7 @@ const MainDBImmutability = () => {
           pb={10}
           //flexDirection={isMobile || isTablet ? "column" : "row"}
         >
-          <MainTitle
+          <TitleText
             title="누구도 조작할 수 없는 불변의 데이터베이스"
             subtitle="블록체인 에이젼트로 가능합니다."
             description="블록체인에 기록한 Database는 어느 누구도, 어떠한 방법으로도 위/변조가 불가능합니다."

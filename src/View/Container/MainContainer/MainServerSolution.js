@@ -7,7 +7,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { useTheme, makeStyles } from "@mui/styles";
-import MainTitle from "../../Component/Common/MainTitle";
+import TitleText from "../../Component/Common/TitleText";
 import MainServerSolutionCard from "../../Component/Main/MainServerSolutionCard";
 import MainServerSolution_Img1 from "../../../Images/MainServerSolution_Img1.png"
 import MainServerSolution_Img2 from "../../../Images/MainServerSolution_Img1.png"
@@ -29,7 +29,7 @@ const MainServerSolution = () => {
         pt={5}
         pb={10}
       >
-        <MainTitle
+        <TitleText
           title="서버 렉, 클라우드 인드턴스, 소프트웨어"
           subtitle="설치 방식의 솔루션 제공"
           size="h3"

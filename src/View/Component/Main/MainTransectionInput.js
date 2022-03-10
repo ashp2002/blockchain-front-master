@@ -7,14 +7,14 @@ import {
   Button,
   useMediaQuery,
 } from "@mui/material";
-import MainTitle from "../Common/MainTitle";
+import TitleText from "../Common/TitleText";
+import SimpleTextField from "../Common/SimpleTextField";
+import ColorButton from "../Common/ColorButton";
+import TransectionTemp1 from "../../../Images/TransectionTemp1.png"
+import TransectionTemp2 from "../../../Images/TransectionTemp2.png"
 
 const useStyles = makeStyles((theme) => ({
-  container: {
-    width: "616px",
-    height: "420px",
-    objectFit: "cover",
-  }
+ 
 }));
 
 const MainTransectionInput = (props) => {
@@ -30,24 +30,46 @@ const MainTransectionInput = (props) => {
       //flexDirection={isMobile || isTablet ? "column" : "row"}
       //mt={[5, 6, 8]}
       //mb={[5, 6, 8]}
+      border={1}
+      px={4}
+      py={14}
     >
       <Box
-        display="flex"
         flexBasis="50%"
         justifyContent="center"
-        border={1}
-        p={2}
+        borderRight={1}
+        px={8}
       >
-        <MainTitle title="파일 해시 값 생성하기" size="h3"/>
+        <TitleText title="파일 해시 값 생성하기" size="h3"/>
+        <Box display="flex" justifyContent="center">
+          <img
+            src={TransectionTemp1}
+          ></img>
+        </Box>
+        <Box mt={6} mb={4}>
+          <SimpleTextField />
+        </Box>
+        <Box mb={3}>
+          <ColorButton color="secondary"> 복사하기 </ ColorButton>
+        </Box>
       </Box>
       <Box
-        display="flex"
         flexBasis="50%"
         justifyContent="center"
-        border={1}
-        p={2}
+        px={8}
       >
-        <MainTitle title="이더리움 해시값 조회하기" size="h3"/>
+        <TitleText title="이더리움 해시값 조회하기" size="h3"/>
+        <Box>
+          <SimpleTextField />
+        </Box>
+        <Box mt={4} mb={6}>
+          <ColorButton color="secondary"> 복사하기 </ ColorButton>
+        </Box>
+        <Box display="flex" justifyContent="center">
+          <img
+            src={TransectionTemp2}
+          ></img>
+        </Box>
       </Box>
     </Box>
   );

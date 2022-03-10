@@ -7,7 +7,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { useTheme, makeStyles } from "@mui/styles";
-import MainTitle from "../../Component/Common/MainTitle";
+import TitleText from "../../Component/Common/TitleText";
 import MainTransectionInput from "../../Component/Main/MainTransectionInput";
 
 const useStyles = makeStyles((theme) => ({
@@ -26,7 +26,7 @@ const MainTransection = () => {
         pt={5}
         pb={10}
       >
-        <MainTitle
+        <TitleText
           title="트랙잭션 생성 및 조회"
           size="h3"
         />

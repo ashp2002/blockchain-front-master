@@ -7,7 +7,7 @@ import {
   Button,
   useMediaQuery,
 } from "@mui/material";
-import MainTitle from "../Common/MainTitle";
+import TitleText from "../Common/TitleText";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -43,7 +43,7 @@ const MainAgentContent = (props) => {
             src={image}
           ></img> : 
         <Box px={4}>
-          <MainTitle
+          <TitleText
             title={title}
             description={decs}
             size="h3"
@@ -61,7 +61,7 @@ const MainAgentContent = (props) => {
       >
         {location === "Img_left" ?
           <Box px={4}>
-            <MainTitle
+            <TitleText
               title={title}
               description={decs}
               size="h3"

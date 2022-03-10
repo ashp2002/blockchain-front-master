@@ -6,6 +6,7 @@ import MainEtherInfo from "../Container/MainContainer/MainEtherInfo";
 import MainAgentMonitor from "../Container/MainContainer/MainAgentMonitor";
 import MainServerSolution from "../Container/MainContainer/MainServerSolution";
 import MainTransection from "../Container/MainContainer/MainTransection";
+import MainPartners from "../Container/MainContainer/MainPartners";
 import { Box } from "@mui/material";
 const Main = () => {
   return (
@@ -17,6 +18,7 @@ const Main = () => {
       <MainAgentMonitor />
       <MainServerSolution />
       <MainTransection />
+      <MainPartners />
     </Box>
   );
 };
