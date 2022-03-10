@@ -10,7 +10,11 @@ import {
 import MainTitle from "./MainTitle";
 
 const useStyles = makeStyles((theme) => ({
-  
+  container: {
+    width: "616px",
+    height: "420px",
+    objectFit: "cover",
+  }
 }));
 
 const MainAgentContent = (props) => {
@@ -34,11 +38,10 @@ const MainAgentContent = (props) => {
         mt={location === "Img_left" ? "" : [5, 5, 0]}
       >
       {location === "Img_left" ?
-        <Box>
           <img
+            className={classes.container}
             src={image}
-          ></img>
-        </Box> : 
+          ></img> : 
         <Box px={4}>
           <MainTitle
             title={title}
@@ -67,6 +70,7 @@ const MainAgentContent = (props) => {
             />
           </Box> : 
           <img
+            className={classes.container}
             src={image}
           ></img> 
         }

@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { useTheme, makeStyles } from "@mui/styles";
 import MainAgentMonitorTitle from "../../Component/Main/MainAgentMonitorTitle"
-import mainEtherInfo from "../../../Images/mainEtherInfo_Img.png"
+import mainMonitor_img from "../../../Images/mainMonitor_img.png"
 
 const useStyles = makeStyles((theme) => ({
 
@@ -21,19 +21,21 @@ const MainAgentMonitor = () => {
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <Container>
-      <Box   
-        pt={5}
-        pb={10}
-      >
-        <MainAgentMonitorTitle />
-        <Box mt={5} display="flex" justifyContent="center">
-          <img
-              src={mainEtherInfo}
-          ></img> 
-        </Box>
-      </Box>  
-    </Container>
+    <Box width="100%" bgcolor="#F4F4F4">
+      <Container>
+        <Box   
+          pt={5}
+          pb={10}
+        >
+          <MainAgentMonitorTitle />
+          <Box mt={5} display="flex" justifyContent="center">
+            <img
+                src={mainMonitor_img}
+            ></img> 
+          </Box>
+        </Box>  
+      </Container>
+    </Box>
   );
 };
 export default MainAgentMonitor;

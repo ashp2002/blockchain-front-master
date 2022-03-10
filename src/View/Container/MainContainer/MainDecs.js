@@ -10,7 +10,7 @@ import mainDecs_img from "../../../Images/mainDecs_img.png"
 const useStyles = makeStyles((theme) => ({
   container: {
     backgroundImage: `url(${mainDecs_img})`,
-    backgroundSize: "auto 100%",
+    backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center bottom, right bottom",
   },

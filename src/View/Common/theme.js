@@ -1,5 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 import { red } from "@mui/material/colors";
+import "../../App.css";
 
 // Create a theme instance.
 const theme = createTheme({
@@ -16,29 +17,26 @@ const theme = createTheme({
   },
 
   typography: {
-    fontFamily: "Spoqa Han Sans Neo Light",
+    fontFamily: "Spoqa Han Sans Neo Regular",
     fontWeight: "500",
     fontSize: "16px",
     color: "#707070",
     
     h1: { //page title(고객센터,서비스)
-      fontFamily: "Spoqa Han Sans Neo Regular",
-      fontWeight: "800",
+      fontFamily: "Spoqa Han Sans Neo Bold",
       fontSize: "50px",
       letterSpacing: "-1pt",
       color: "#0F0F0F",
     },
     h2: { //Bottom mainTitle, Table title
-      fontFamily: "Spoqa Han Sans Neo Regular",
+      fontFamily: "Spoqa Han Sans Neo Bold",
       fontSize: "40px",
-      fontWeight: "800",
       letterSpacing: "-1pt",
       color: "#0F0F0F",
     },
     h3: { //Contents title, body
-      fontFamily: "Spoqa Han Sans Neo Regular",
+      fontFamily: "Spoqa Han Sans Neo Bold",
       fontSize: "35px",
-      fontWeight: "800",
       letterSpacing: "-0.03em",
       letterSpacing: "-1pt",
       color: "#0F0F0F",
@@ -68,7 +66,7 @@ const theme = createTheme({
       color: "#0F0F0F",
     },
     subtitle1: {
-      fontFamily: "Spoqa Han Sans Neo Light",
+      fontFamily: "Spoqa Han Sans Neo Regular",
       fontSize: "16px",
       fontWeight: "500",
       //fontSize: '1.15em',
@@ -76,21 +74,21 @@ const theme = createTheme({
       color: "#707070",
     },
     subtitle2: {
-      fontFamily: "Spoqa Han Sans Neo Light",
+      fontFamily: "Spoqa Han Sans Neo Medium",
       fontSize: "16px",
       fontWeight: "800",
       letterSpacing: "-0.5pt",
       color: "#707070",
     },
     body1: {
-      fontFamily: "Spoqa Han Sans Neo Regular",
+      fontFamily: "Spoqa Han Sans Neo Bold",
       fontSize: "20px",
       fontWeight: "800",
       letterSpacing: "-0.5pt",
       color: "#0F0F0F",
     },
     body2: {
-      fontFamily: "Spoqa Han Sans Neo Bold",
+      fontFamily: "Spoqa Han Sans Neo Medium",
       fontSize: "20px",
       fontWeight: "800",
       //letterSpacing: "-0.5pt",

@@ -24,6 +24,7 @@ const MainDBImmutability = () => {
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
+    <Box width="100%" bgcolor="#F4F4F4">
       <Container>
         <Box
           pt={5}
@@ -46,6 +47,7 @@ const MainDBImmutability = () => {
           </Box>
         </Box>
       </Container>
+    </Box>
   );
 };
 export default MainDBImmutability;
