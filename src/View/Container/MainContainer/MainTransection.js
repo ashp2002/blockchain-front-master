@@ -21,18 +21,22 @@ const MainTransection = () => {
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <Container>
-      <Box   
-        pt={5}
-        pb={10}
-      >
-        <TitleText
-          title="트랙잭션 생성 및 조회"
-          size="h3"
-        />
-        <MainTransectionInput />
-      </Box>  
-    </Container>
+    <Box width="100%" bgcolor="#F4F4F4">
+      <Container>
+        <Box   
+          pt={15}
+          pb={15}
+        >
+          <TitleText
+            title="트랜잭션 생성 및 조회"
+            size="h3"
+          />
+          <Box>
+            <MainTransectionInput />
+          </Box> 
+        </Box>  
+      </Container>
+    </Box>
   );
 };
 export default MainTransection;

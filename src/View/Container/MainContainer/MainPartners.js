@@ -29,8 +29,8 @@ const MainPartners = () => {
   return (
     <Container>
       <Box   
-        pt={5}
-        pb={10}
+        pt={15}
+        pb={15}
       >
         <TitleText
           title="협 력 업 체"

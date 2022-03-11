@@ -5,8 +5,8 @@ import { Route } from "react-router";
 import { Box } from "@mui/material";
 
 import Main from "./Pages/Main";
-import Header from "./Component/Common/Header";
-import Bottom from "./Component/Common/Bottom";
+import Header from "./Container/Header";
+import Bottom from "./Container/Bottom";
 
 const MainRoute = () => {
   const { login, setLogin } = useContext(AppContext);

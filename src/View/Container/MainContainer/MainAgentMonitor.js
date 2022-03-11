@@ -24,11 +24,11 @@ const MainAgentMonitor = () => {
     <Box width="100%" bgcolor="#F4F4F4">
       <Container>
         <Box   
-          pt={5}
-          pb={10}
+          pt={15}
+          pb={15}
         >
           <MainAgentMonitorTitle />
-          <Box mt={5} display="flex" justifyContent="center">
+          <Box mt={6} display="flex" justifyContent="center">
             <img
                 src={mainMonitor_img}
             ></img> 

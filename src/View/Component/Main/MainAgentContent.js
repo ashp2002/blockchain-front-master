@@ -42,7 +42,7 @@ const MainAgentContent = (props) => {
             className={classes.container}
             src={image}
           ></img> : 
-        <Box px={4}>
+        <Box px={4} pt={10}>
           <TitleText
             title={title}
             description={decs}
@@ -60,7 +60,7 @@ const MainAgentContent = (props) => {
         mt={location === "Img_left" ? [5, 5, 0] : ""}
       >
         {location === "Img_left" ?
-          <Box px={4}>
+          <Box px={4} pt={10}>
             <TitleText
               title={title}
               description={decs}

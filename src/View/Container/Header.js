@@ -6,8 +6,8 @@ import PropTypes from "prop-types";
 import { useTheme, makeStyles } from "@mui/styles";
 import { useSelector, useDispatch } from "react-redux";
 import MenuIcon from "@mui/icons-material/Menu";
-import Logo from "../../../Images/logo.png";
-//import Logo from "../../../Images/Common/Logo";
+import Logo from "../../Images/common/logo.png"
+
 
 const useStyles = makeStyles((theme) => ({
   hoverButton: {

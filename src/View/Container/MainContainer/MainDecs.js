@@ -25,10 +25,11 @@ const MainDecs = () => {
       width="100%"
       height={["370px", "470px", "500px"]}
       bgcolor="RGB(246,248,247)"
+      pt={10}
     >
       <Container>
         <TitleText
-          title="BlockChain Data Security Solution"ㅓ
+          title="BlockChain Data Security Solution"
           subtitle="블록체인 데이터 보안 솔루션"
           description="블록체인은 불변성을 보장합니다."
           description2="귀사의 데이터베이스에 블록체인 솔루션을 적용하면"

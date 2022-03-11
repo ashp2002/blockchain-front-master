@@ -24,8 +24,8 @@ const MainEtherInfo = () => {
   return (
     <Container>
       <Box   
-        pt={5}
-        pb={10}
+        pt={15}
+        pb={15}
       >
         <MainEtherInfoTitle />
         <MainEtherInfoBody />

@@ -30,7 +30,9 @@ const MainTransectionInput = (props) => {
       //flexDirection={isMobile || isTablet ? "column" : "row"}
       //mt={[5, 6, 8]}
       //mb={[5, 6, 8]}
-      border={1}
+      border={2}
+      borderColor="#707070"
+      borderRadius={15}
       px={4}
       py={14}
     >
@@ -39,6 +41,7 @@ const MainTransectionInput = (props) => {
         justifyContent="center"
         borderRight={1}
         px={8}
+        py={3}
       >
         <TitleText title="파일 해시 값 생성하기" size="h3"/>
         <Box display="flex" justifyContent="center">
@@ -57,6 +60,7 @@ const MainTransectionInput = (props) => {
         flexBasis="50%"
         justifyContent="center"
         px={8}
+        py={3}
       >
         <TitleText title="이더리움 해시값 조회하기" size="h3"/>
         <Box>

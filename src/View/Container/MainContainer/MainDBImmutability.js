@@ -27,8 +27,8 @@ const MainDBImmutability = () => {
     <Box width="100%" bgcolor="#F4F4F4">
       <Container>
         <Box
-          pt={5}
-          pb={10}
+          pt={15}
+          pb={15}
           //flexDirection={isMobile || isTablet ? "column" : "row"}
         >
           <TitleText

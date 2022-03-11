@@ -31,7 +31,7 @@ const MainDBImmutabilityCard = (props) => {
       flexDirection="column" 
       justifyContent="space-between"
       borderRadius={1}
-      borderColor="#707070"
+      borderColor="#A8A8A8"
       >
       <Box display="flex" justifyContent="center" className={classes.boximage}>
         <img

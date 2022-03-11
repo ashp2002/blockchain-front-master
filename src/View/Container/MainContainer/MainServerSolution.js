@@ -26,15 +26,15 @@ const MainServerSolution = () => {
   return (
     <Container>
       <Box   
-        pt={5}
-        pb={10}
+        pt={15}
+        pb={15}
       >
         <TitleText
           title="서버 렉, 클라우드 인드턴스, 소프트웨어"
           subtitle="설치 방식의 솔루션 제공"
           size="h3"
         />
-        <Box mt={5} display="flex" justifyContent="space-between">
+        <Box mt={9} display="flex" justifyContent="space-between">
           <MainServerSolutionCard 
             image={MainServerSolution_Img1} 
             title="렉 설치 방식"

@@ -29,7 +29,7 @@ const MainEtherInfoTitle = (props) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
   return (
-    <Box pt={11}>
+    <Box>
       <Box display="flex" justifyContent="center">
         <BodyText text="DSOP BlockChain Agent" color="#0F0F0F" location="center"></ BodyText>
         <BodyText text="는 3단계에 걸친 모니터링 기능을 통해 Agent의 높은 가용성을 보장합니다." location="center"></ BodyText>
