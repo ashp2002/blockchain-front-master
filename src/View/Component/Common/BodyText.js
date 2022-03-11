@@ -17,12 +17,12 @@ const MainBodyText = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
-  const { text, size, color, location } = props;
+  const { text, size, color, location, marginTop } = props;
 
   return (
     <Box>
       <Typography
-        mt={2}
+        mt={marginTop === "false" ? "5px" : "16px" }
         align={location === "center" ? "center" : "left"}
         variant="h5"
         color={color}

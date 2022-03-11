@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MenuSection = [
-  { title: "서비스소개 +", url: "/" },
+  { title: "서비스소개 +", url: "/Service" },
   { title: "적용사례 +", url: "/" },
   { title: "고객지원 +", url: "/" },
   { title: "로그인 +", url: "/" },
