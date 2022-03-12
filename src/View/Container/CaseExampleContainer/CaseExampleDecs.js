@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ServiceDecs = () => {
+const MainDecs = () => {
   const classes = useStyles();
 
   return (
@@ -25,11 +25,11 @@ const ServiceDecs = () => {
     >
       <Container>
         <TitleText
-          title="서비스 소개"
+          title="적용사례"
           size="h1"
         />
       </Container>
     </Box>
   );
 };
-export default ServiceDecs;
+export default MainDecs;

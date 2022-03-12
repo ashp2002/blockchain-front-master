@@ -14,12 +14,15 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "20px",
     fontWeight: 800,
   },
+  Button: {
+    marginLeft: "20px",
+  },
 }));
 
 const MenuSection = [
   { title: "서비스소개 +", url: "/Service" },
-  { title: "적용사례 +", url: "/" },
-  { title: "고객지원 +", url: "/" },
+  { title: "적용사례 +", url: "/CaseExample" },
+  { title: "고객지원 +", url: "/Customer" },
   { title: "로그인 +", url: "/" },
 ];
 
@@ -29,6 +32,7 @@ const Header = (props) => {
   const userName = useSelector((state) => state.AccountRedux.userName);
   const location = useLocation();
   console.log("Header", userName);
+  console.log("Header", location.pathname);
 
   return (
     <React.Fragment>
@@ -55,7 +59,7 @@ const Header = (props) => {
                   className={
                     section.url === location.pathname
                       ? classes.hoverButton
-                      : ""
+                      : classes.Button
                   }
                 >
                   {section.title}
