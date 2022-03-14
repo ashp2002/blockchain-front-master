@@ -43,7 +43,7 @@ const BottomInput = (props) => {
         </Box>
       </Box>
       <Box mt={2}>
-        <SimpleTextArea />
+        <SimpleTextArea rows="10"/>
       </Box>
     </Box>
   );

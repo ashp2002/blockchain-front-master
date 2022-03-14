@@ -45,11 +45,11 @@ const MainDecs = () => {
           <LoginTest />
           */}
           <Box mt={5} display="flex" justifyContent="center">
-            <Box width="30%" mr={10}>
-            <ColorButton>문의하기</ ColorButton>
+            <Box width="20%" mr={10}>
+            <ColorButton color="border">문의하기</ ColorButton>
             </Box>
-            <Box width="30%">
-            <ColorButton>솔루션보기</ ColorButton>
+            <Box width="20%">
+            <ColorButton color="border">솔루션보기</ ColorButton>
             </Box>
           </Box>
         </Container>

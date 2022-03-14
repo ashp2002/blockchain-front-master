@@ -16,13 +16,16 @@ const ColorButton = styled(({ link, color, ...other }) => (
       ? props.theme.palette.third.main
       : props.color === "outer"
       ? props.theme.palette.background.default
+      : props.color === "border"
+      ? "#00ff0000"
       : props.theme.palette.primary.main,
   boxShadow: "none",
   borderRadius: 1,
   width: "100%",
-  border: props.color === "outer" ? "solid" : null,
-  borderWidth: props.color === "outer" ? "1px" : 0,
-  borderColor: props.color === "outer" ? props.theme.palette.border.dark : null,
+  border: props.color === "outer" ? "solid" : props.color === "border" ? "solid"  : null,
+  borderWidth: props.color === "outer" ? "1px" : props.color === "border" ? "2px" : 0,
+  borderColor: props.color === "outer" ? props.theme.palette.border.dark
+    : props.color === "border" ? props.theme.palette.secondary.main : null,
   color: props.color === "outer" ? props.theme.palette.text.primary : "white",
   height: 50,
   fontFamily: "Spoqa Han Sans Neo Bold",

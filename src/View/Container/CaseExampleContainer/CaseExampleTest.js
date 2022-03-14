@@ -18,10 +18,12 @@ const CaseExampleTest = () => {
 
   return (
     <Container>
-      <TitleText
-        title="적용사례본문 테스트"
-        size="h2"
-      />
+      <Box my={10}>
+        <TitleText
+          title="준비중...."
+          size="h2"
+        />
+      </Box>
     </Container>
   );
 };

@@ -26,7 +26,7 @@ const DarkTheme = createTheme({
       fontFamily: "Spoqa Han Sans Neo Bold",
       fontSize: "50px",
       letterSpacing: "-1pt",
-      color: "#0F0F0F",
+      color: "#ffffff",
     },
     h2: { //Bottom mainTitle, Table title
       fontFamily: "Spoqa Han Sans Neo Bold",

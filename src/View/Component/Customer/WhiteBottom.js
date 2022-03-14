@@ -10,17 +10,15 @@ import {
   Button,
   useMediaQuery,
 } from "@mui/material";
-import DarkTheme from "../Common/DarkTheme";
-import TitleText from "../Component/Common/TitleText";
-import BodyText from "../Component/Common/BodyText";
-import ColorButton from "../Component/Common/ColorButton";
-import CompanyInfo from "../Component/Bottom/CompanyInfo";
-import BottomInput from "../Component/Bottom/BottomInput";
+import TitleText from "../../Component/Common/TitleText"
+import ColorButton from "../../Component/Common/ColorButton";
+import CompanyInfo from "../../Component/Bottom/CompanyInfo";
+import BottomInput from "../../Component/Bottom/BottomInput";
 const useStyles = makeStyles((theme) => ({
  
 }));
 
-export default function Footer(props) {
+export default function WhiteBottom(props) {
   const theme = useTheme();
   const classes = useStyles();
   const history = useHistory();
@@ -28,14 +26,11 @@ export default function Footer(props) {
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
 
-  console.log(location.pathname);
   return (
     <>
-      <ThemeProvider theme={DarkTheme}>
       <Box sx={{
         width: "100%",
-        backgroundColor: theme.palette.secondary.main,
-        display: location.pathname === "/Customer" ? "none" : "",
+        backgroundColor: "white",
       }}>
         <Container maxWidth="lg">
           <Box py={8}>
@@ -59,18 +54,6 @@ export default function Footer(props) {
           </Box>
         </Container>
       </Box>
-      <Box sx={{
-        width: "100%",
-        backgroundColor: theme.palette.secondary.main,
-      }}>
-        <Container maxWidth="lg">
-          <Box py={4} px={8} display="flex" justifyContent="space-between">
-            <BodyText text="개인정보 보호정책" />
-            <BodyText text="Copyright D-SOP soft Inc. All rights reserved." />
-          </Box>
-        </Container>
-      </Box>
-      </ThemeProvider>
     </>
   );
 }
