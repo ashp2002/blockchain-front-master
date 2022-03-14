@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useTheme, makeStyles } from "@mui/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import { Link as RouterLink, useHistory } from "react-router-dom";
 import {
   Link,
@@ -9,6 +10,7 @@ import {
   Button,
   useMediaQuery,
 } from "@mui/material";
+import DarkTheme from "../Common/DarkTheme";
 import TitleText from "../Component/Common/TitleText";
 import BodyText from "../Component/Common/BodyText";
 import ColorButton from "../Component/Common/ColorButton";
@@ -27,6 +29,7 @@ export default function Footer(props) {
 
   return (
     <>
+      <ThemeProvider theme={DarkTheme}>
       <Box sx={{
         width: "100%",
         backgroundColor: theme.palette.secondary.main,
@@ -57,6 +60,7 @@ export default function Footer(props) {
           </Box>
         </Container>
       </Box>
+      </ThemeProvider>
     </>
   );
 }

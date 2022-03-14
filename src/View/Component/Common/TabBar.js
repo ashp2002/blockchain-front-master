@@ -1,7 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Box, Container, Tabs, Tab } from "@mui/material";
 import { useTheme, makeStyles } from "@mui/styles";
-import { fontWeight } from "@mui/system";
+import { ThemeProvider } from "@mui/material/styles";
+import DarkTheme from "../../Common/DarkTheme";
 
 export const useStyles = makeStyles((theme) => ({
  
@@ -18,6 +19,7 @@ const TabBar = (props) => {
 
   return (
     <>
+    <ThemeProvider theme={DarkTheme}>
       <Box sx={{
         backgroundColor: theme.palette.secondary.main
       }}>
@@ -44,6 +46,7 @@ const TabBar = (props) => {
           </Tabs>
         </Container>
       </Box>
+    </ThemeProvider>
     </>
   );
 }
