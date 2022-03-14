@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center bottom, right bottom",
+    backgroundColor: "black",
   },
 }));
 
@@ -20,7 +21,7 @@ const MainDecs = () => {
     <Box
       className={classes.container}
       width="100%"
-      height={["200px", "250px", "300px"]}
+      height={["200px", "250px", "400px"]}
       bgcolor="RGB(246,248,247)"
     >
       <Container>
