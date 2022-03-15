@@ -32,7 +32,7 @@ const Service = (props) => {
     <Box sx={{ mt: 14 }}>
       <ServiceDecs />
       <TabBar handleChange={handleChange} items={tabContainText} value={value}/>
-      <Box display="flex" flexDirection="column" alignItems="center">
+      <Box display="flex" flexDirection="column" alignItems="center" width="100%">
         {value === 0 && <ServiceVote />}
         {value === 1 && <ServiceDocument />}
         {value === 2 && <ServicePayment />}

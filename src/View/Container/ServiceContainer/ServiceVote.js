@@ -1,8 +1,12 @@
 import React from "react";
 import { Box, Container } from "@mui/material";
 import { useTheme, makeStyles } from "@mui/styles";
-import TitleText from "../../Component/Common/TitleText";
-
+import ServiceVoteTitle from "../../Component/Service/ServiceVoteTitle";
+import ServiceVoteInfo from "../../Component/Service/ServiceVoteInfo";
+import ServiceVoteAgent from "../../Component/Service/ServiceVoteAgent";
+import ServiceVoteTrust from "../../Component/Service/ServiceVoteTrust";
+import ServiceEther_Img from"../../../Images/ServiceEther_Img.png"
+import ServiceVote_Img from"../../../Images/ServiceVote_Img.png"
 const useStyles = makeStyles((theme) => ({
 }));
 
@@ -10,16 +14,26 @@ const ServiceVote = () => {
   const classes = useStyles();
 
   return (
-    <Box>
       <Container>
         <Box>
-          <TitleText
-            title="투표기록조작감지"
-            size="h1"
-          />
+          <ServiceVoteTitle />
+        </Box>
+        <Box my={10}>
+          <ServiceVoteInfo />
+        </Box>
+        <Box display="flex" justifyContent="center">
+          <img src={ServiceEther_Img} />
+        </Box>
+        <Box my={10}>
+          <ServiceVoteAgent />
+        </Box>
+        <Box display="flex" justifyContent="center">
+          <img src={ServiceVote_Img} />
+        </Box>
+        <Box my={10}>
+          <ServiceVoteTrust />
         </Box>
       </Container>
-    </Box>
   );
 };
 export default ServiceVote;

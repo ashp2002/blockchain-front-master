@@ -20,10 +20,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MenuSection = [
+  { title: "HOME +", url: "/" },
   { title: "서비스소개 +", url: "/Service" },
   { title: "적용사례 +", url: "/CaseExample" },
   { title: "고객지원 +", url: "/Customer" },
-  { title: "로그인 +", url: "/" },
+  { title: "로그인 +", url: "/Login" },
 ];
 
 const Header = (props) => {
