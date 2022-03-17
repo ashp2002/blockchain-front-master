@@ -1,81 +1,21 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useTheme, makeStyles } from "@mui/styles";
 import qs from "qs";
-import TitleText from "../../Component/Common/TitleText";
 import { useHistory } from "react-router-dom";
 import {
-  Table,
-  TableBody, //테이블 데이터 내용
-  TableCell,
-  TableContainer,
-  TableFooter,
-  TableHead, //테이블상단 필드 제목들
-  TablePagination,
-  TableRow,
-  Paper,
   Button,
   Container,
   Box,
   Typography,
   Divider,
   useMediaQuery,
-  Pagination,
 } from "@mui/material"; //테이블에 필요한 컴포넌트
+import TableSupports from "../../Component/Customer/TableSupports"
+import CompanyInfo from "../../Component/Bottom/CompanyInfo";
+import TitleText from "../../Component/Common/TitleText";
 
 export const useStyles = makeStyles((theme) => ({
-  container: {
-    Height: "100%",
-    color: "black",
-    marginTop: "100px",
-    marginBottom: "10%",
-  },
-  table: {
-    [theme.breakpoints.down("460")]: {
-      width: "100%",
-    },
-  },
-  tableBorder: {
-    borderTop: "1px solid #707070",
-    borderBottom: "1px solid #707070",
-  },
-  tablebody: {
-    fontSize: "1.17vw",
-    color: "black",
-    [theme.breakpoints.down("900")]: {
-      fontSize: "12px",
-    },
-    [theme.breakpoints.up("lg")]: {
-      fontSize: "15px",
-    },
-  },
-  icon: {
-    paddingTop: "5px",
-  },
-  private_cell: {
-    [theme.breakpoints.down("900")]: {
-      display: "none",
-    },
-  },
-  history: {
-    "&:hover": {
-      cursor: "pointer",
-    },
-  },
-  date_cell: {
-    [theme.breakpoints.down("760")]: {
-      display: "none",
-    },
-  },
-  no_cell: {
-    [theme.breakpoints.down("600")]: {
-      display: "none",
-    },
-  },
-  comment_cell: {
-    [theme.breakpoints.down("600")]: {
-      display: "none",
-    },
-  },
+  
 }));
 
 const CustomerSupports = () => {
@@ -86,16 +26,39 @@ const CustomerSupports = () => {
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [flag, setFlag] = useState(false);
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
   const [addDialog, setaddDialog] = useState(false);
   const [addDialogN, setaddDialogN] = useState(false);
-  const [datas, setdatas] = useState(null);
-  const [error, setError] = useState(null);
-  let users = null;
+
   const query = qs.parse(location.search, {
     ignoreQueryPrefix: true,
   });
+
+  const tableHead = [
+    { title: "NO.", width: "200", align: "center", font: "subtitle1" },
+    { title: "제목", align: "center", font: "subtitle1" },
+    { title: "글쓴이", width: "120", align: "left", font: "subtitle1" },
+    { title: "작성날짜", width: "150", align: "center", font: "subtitle1" },
+    { title: "조회수", width: "100", align: "center", font: "subtitle1" },
+  ];
+
+  let tableItem = [
+    { id: "1" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "1", status: "완료", isprivate: false, views: "100"},
+    { id: "2" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "2", status: "완료", isprivate: false, views: "100"},
+    { id: "3" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "3", status: "완료", isprivate: false, views: "10"},
+    { id: "4" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "4", status: "완료", isprivate: false, views: "5"},
+    { id: "5" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "5", status: "완료", isprivate: false, views: "100"},
+    { id: "6" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "6", status: "완료", isprivate: false, views: "100"},
+    { id: "7" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "7", status: "완료", isprivate: false, views: "10"},
+    { id: "8" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "8", status: "완료", isprivate: false, views: "5"},
+    { id: "9" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "9", status: "완료", isprivate: false, views: "100"},
+    { id: "10" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "10", status: "완료", isprivate: false, views: "100"},
+    { id: "11" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "11", status: "완료", isprivate: false, views: "10"},
+    { id: "12" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "12", status: "완료", isprivate: false, views: "5"},
+    { id: "13" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "13", status: "완료", isprivate: false, views: "100"},
+    { id: "14" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "14", status: "완료", isprivate: false, views: "100"},
+    { id: "15" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "15", status: "완료", isprivate: false, views: "10"},
+    { id: "16" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "16", status: "완료", isprivate: false, views: "5"},
+  ];
 
   useEffect(() => {
     /*
@@ -113,229 +76,20 @@ const CustomerSupports = () => {
       });*/
   }, []);
 
-  if (error) return <div>에러가 발생했습니다</div>;
-  if (datas) {
-    //console.log(datas.length);
-    users = datas.map((data) => ({
-      id: data.rn,
-      name: data.name,
-      title: data.title,
-      regdate: data.regdate,
-      idx: data.idx,
-      status: data.status,
-      isprivate: data.isprivate,
-      views: data.views,
-    }));
-  }
-  const parse = (regdate) => {
-    let yyyy = regdate.substr(0, 4);
-    let mm = regdate.substr(4, 2);
-    let dd = regdate.substr(6, 2);
-
-    const arr = [yyyy, "/", mm, "/", dd];
-
-    return arr.join(" ");
-  };
-
-  const handleClickOpen = (props) => {
-    /*
-    {
-      login ? history.push(`/AddTableQ`) : history.push(`/AddTableQN`);
-    }*/
-  };
-
-  const handleChangePage = (event, newPage) => {
-    setPage(--newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
-
   return (
-      <Container maxWidth="lg" className={classes.container}>
-        <Box mt={10} m="auto" width="95%" className={classes.table}>
-          <TableContainer className={classes.tableBorder}>
-            <Table size="small">
-              <TableHead>
-                <TableRow height="60">
-                  <TableCell width="50" className={classes.no_cell}>
-                    <Typography
-                      variant="subtitle1"
-                      className={classes.tablebody}
-                    >
-                      No
-                    </Typography>
-                  </TableCell>
-                  <TableCell align="center">
-                    <Typography
-                      variant="subtitle1"
-                      className={classes.tablebody}
-                    >
-                      제목
-                    </Typography>
-                  </TableCell>
-                  <TableCell
-                    width="50"
-                    align="left"
-                    className={classes.private_cell}
-                  >
-                    <Typography
-                      variant="subtitle1"
-                      className={classes.tablebody}
-                    ></Typography>
-                  </TableCell>
-                  <TableCell width="120" align="left">
-                    <Typography
-                      variant="subtitle1"
-                      className={classes.tablebody}
-                    >
-                      글쓴이
-                    </Typography>
-                  </TableCell>
-                  <TableCell
-                    width="150"
-                    align="center"
-                    className={classes.date_cell}
-                  >
-                    <Typography
-                      variant="subtitle1"
-                      className={classes.tablebody}
-                    >
-                      작성날짜
-                    </Typography>
-                  </TableCell>
-                  <TableCell
-                    width="100"
-                    align="center"
-                    className={classes.comment_cell}
-                  >
-                    <Typography
-                      variant="subtitle1"
-                      className={classes.tablebody}
-                    >
-                      조회수
-                    </Typography>
-                  </TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody className={classes.test}>
-                {datas &&
-                  users
-                    .slice(page * rowsPerPage, (page + 1) * rowsPerPage) //전체데이터에서 slice를통해 10개만 추출
-                    .map(
-                      (
-                        {
-                          id,
-                          name,
-                          title,
-                          regdate,
-                          idx,
-                          status,
-                          views,
-                          isprivate,
-                        },
-                        i
-                      ) => (
-                        <TableRow
-                          hover
-                          onClick={() => {
-                            isprivate
-                              ? props.history.push(`/TableItemPass?idx=${idx}`)
-                              : props.history.push(`/TableItem?idx=${idx}`);
-                          }}
-                          key={id}
-                          height="60"
-                        >
-                          <TableCell
-                            component="th"
-                            scope="row"
-                            className={classes.no_cell}
-                          >
-                            <Typography
-                              variant="body2"
-                              className={classes.tablebody}
-                            >
-                              {page * rowsPerPage + i + 1}
-                            </Typography>
-                          </TableCell>
-                          <TableCell align="left">
-                            <Typography
-                              variant="body2"
-                              className={classes.tablebody}
-                            >
-                              {title}
-                            </Typography>
-                          </TableCell>
-                          <TableCell
-                            align="left"
-                            className={classes.private_cell}
-                          >
-                            {isprivate ? (
-                              <HttpsIcon
-                                className={classes.icon}
-                                color="primary"
-                                fontSize="small"
-                              />
-                            ) : (
-                              ""
-                            )}
-                          </TableCell>
-                          <TableCell align="left">
-                            <Typography
-                              variant="body2"
-                              className={classes.tablebody}
-                            >
-                              {name}
-                            </Typography>
-                          </TableCell>
-                          <TableCell
-                            align="center"
-                            className={classes.date_cell}
-                          >
-                            <Typography
-                              variant="body2"
-                              className={classes.tablebody}
-                            >
-                              {parse(regdate)}
-                            </Typography>
-                          </TableCell>
-                          <TableCell
-                            align="center"
-                            className={classes.comment_cell}
-                          >
-                            <Typography
-                              variant="body2"
-                              className={classes.tablebody}
-                            >
-                              {views}
-                            </Typography>
-                          </TableCell>
-                        </TableRow>
-                      )
-                    )}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Box>
-        <Box mt={8} display="flex" justifyContent="center">
-          <Pagination
-            count={datas === null ? 0 : parseInt(users.length / 10) + 1}
-            page={page + 1}
-            onChange={handleChangePage}
-            color="primary"
-            showFirstButton
-            showLastButton
+      <Container maxWidth="lg">
+        <Box mt={10}>
+          <TitleText
+            title="기 술 지 원"
+            size="h2"
           />
         </Box>
-        {!datas && (
-          <Box mb={20} p={10}>
-            <Typography align="center" color="textSecondary">
-              로딩중
-            </Typography>
-          </Box>
-        )}
+        <Box my={10} width="80%" m="auto">
+          <TableSupports tableHead={tableHead} tableItem={tableItem}/>
+        </Box>
+        <Box mb={10}>
+          <CompanyInfo />
+        </Box>
       </Container>
   );
 };
