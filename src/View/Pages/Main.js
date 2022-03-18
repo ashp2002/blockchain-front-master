@@ -7,13 +7,12 @@ import MainAgentMonitor from "../Container/MainContainer/MainAgentMonitor";
 import MainServerSolution from "../Container/MainContainer/MainServerSolution";
 import MainTransection from "../Container/MainContainer/MainTransection";
 import MainPartners from "../Container/MainContainer/MainPartners";
-import LoginTest from "../Component/Main/LoginTest";
 import { Box } from "@mui/material";
+
 const Main = () => {
   return (
     <Box sx={{ mt: 14 }}>
       <MainDecs />
-      <LoginTest />
       <MainAgent />
       <MainDBImmutability />
       <MainEtherInfo />

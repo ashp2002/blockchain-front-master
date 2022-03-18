@@ -1,13 +1,10 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Box, AppBar, Toolbar, Container, Link, Button } from "@mui/material/";
-
 import { Link as RouterLink, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useTheme, makeStyles } from "@mui/styles";
 import { useSelector, useDispatch } from "react-redux";
-import MenuIcon from "@mui/icons-material/Menu";
 import Logo from "../../Images/common/logo.png"
-
 
 const useStyles = makeStyles((theme) => ({
   hoverButton: {
@@ -20,11 +17,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MenuSection = [
-  { title: "HOME +", url: "/" },
-  { title: "서비스소개 +", url: "/Service" },
-  { title: "적용사례 +", url: "/CaseExample" },
-  { title: "고객지원 +", url: "/Customer" },
-  { title: "로그인 +", url: "/Login" },
+  { title: "HOME", url: "/" },
+  { title: "서비스소개", url: "/Service" },
+  { title: "적용사례", url: "/CaseExample" },
+  { title: "고객지원", url: "/Customer" },
 ];
 
 const Header = (props) => {
@@ -32,6 +28,7 @@ const Header = (props) => {
   const loginState = useSelector((state) => state.AccountRedux.loginState);
   const userName = useSelector((state) => state.AccountRedux.userName);
   const location = useLocation();
+  const dispatch = useDispatch();
   console.log("Header", userName);
   console.log("Header", location.pathname);
 
@@ -65,13 +62,15 @@ const Header = (props) => {
                 >
                   {section.title}
               </Button>
-            ))}  
+            ))}
+              <Button
+                component={RouterLink}
+                to="/User"
+                className={classes.Button} 
+                >
+                  {loginState ? "로그아웃" : "로그인"}
+              </Button>
             </Box>
-            {/* 아직 미사용
-            <Box sx={{ bgcolor: loginState ? "red" : "green" }}>
-              {loginState ? userName + " 로그인됨" : "로그인 안됨"}
-            </Box>
-            */}
           </Toolbar>
         </Container>
       </AppBar>

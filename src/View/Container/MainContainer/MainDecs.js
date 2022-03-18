@@ -4,7 +4,6 @@ import { Box, Container } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import { useTheme, makeStyles } from "@mui/styles";
 import TitleText from "../../Component/Common/TitleText";
-import LoginTest from "../../Component/Main/LoginTest";
 import mainDecs_img from "../../../Images/mainDecs_img.png"
 import DarkTheme from "../../Common/DarkTheme";
 import ColorButton from "../../Component/Common/ColorButton";

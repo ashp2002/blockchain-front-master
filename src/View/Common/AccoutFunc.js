@@ -50,3 +50,29 @@ export const FuncLogout = (dispatch) => {
       dispatch(logoutFailed());
     });
 };
+/*  계정생성
+export const Test = (dispatch) => {
+  APIRequest("/user/addUser", {
+    userid: "ashp2002",
+    pass: "dkstjdgh",
+    name: "안성호",
+    phone: "01031399986",
+    addr: "강서구",
+    email: "ashp",
+    birth: "1983",
+    company: "디솝",
+    })
+    .then((res) => {
+      console.log(res);
+      if (res.resultcode === 1) {
+        alert("가입완료");
+      } else {
+        alert("로그아웃 실패");
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      alert("로그아웃 실패");
+    });
+};
+*/
