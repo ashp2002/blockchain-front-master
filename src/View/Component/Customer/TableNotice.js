@@ -153,7 +153,7 @@ const TableNotice = (props) => {
                       <TableCell
                         component="th"
                         scope="row"
-                        width="200"
+                        width="100"
                         align="center"
                         className={classes.no_cell}
                       >

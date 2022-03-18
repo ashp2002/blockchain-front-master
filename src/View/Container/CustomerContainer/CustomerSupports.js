@@ -34,7 +34,7 @@ const CustomerSupports = () => {
   });
 
   const tableHead = [
-    { title: "NO.", width: "200", align: "center", font: "subtitle1" },
+    { title: "NO.", width: "100", align: "center", font: "subtitle1" },
     { title: "제목", align: "center", font: "subtitle1" },
     { title: "글쓴이", width: "120", align: "left", font: "subtitle1" },
     { title: "작성날짜", width: "150", align: "center", font: "subtitle1" },

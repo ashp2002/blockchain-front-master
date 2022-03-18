@@ -171,6 +171,8 @@ const TableSupports = (props) => {
                       <TableCell
                         component="th"
                         scope="row"
+                        width="100"
+                        align="center"
                         className={classes.no_cell}
                       >
                         <Typography
