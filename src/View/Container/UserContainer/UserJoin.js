@@ -1,0 +1,208 @@
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Link as RouterLink, useLocation, useHistory } from "react-router-dom";
+import {
+  Box, 
+  TextField, 
+  Typography, 
+  Button,
+  Container
+  } from "@mui/material";
+import { FuncLogin, FuncLogout, FuncJoin, FuncIdCheck } from "../../Common/AccoutFunc";
+import SimpleTextField from "../../Component/Common/SimpleTextField";
+import TitleText from "../../Component/Common/TitleText";
+import ColorButton from "../../Component/Common/ColorButton";
+import { verifyEmail, verifyPW, verifyID } from "../../Common/CommonFuncs";
+
+const UserJoin = (props) => {
+
+  const dispatch = useDispatch();
+  const loginState = useSelector((state) => state.AccountRedux.loginState);
+  const fetchingState = useSelector((state) => state.AccountRedux._Fetching);
+  const history = useHistory();
+  const [txtName, setTxtName] = React.useState("");
+  const [txtTel, setTxtTel] = React.useState("");
+  const [txtEmail, setTxtEmail] = React.useState("");
+  const [txtCompany, setTxtCompany] = React.useState("");
+  const [txtJoinID, setTxtJoinID] = React.useState("");
+  const [txtJoinPW, setTxtJoinPW] = React.useState("");
+  const [txtJoinPW2, setTxtJoinPW2] = React.useState("");
+  const [PWCheckResult, setPWCheckResult] = React.useState(false);
+
+  
+  const handleJoin = () => {
+    if (!verifyID(txtJoinID)) {
+      alert("아이디를 6자 이상 영어 소문자 또는 숫자로 입력해주세요");
+      return;
+    }
+    if (!verifyPW(txtJoinPW)) {
+      alert(
+        "암호는 8자이상 영문 대문자,소문자,숫자,특수문자를 모두 포함해야합니다."
+      );
+      return;
+    }
+
+    if (!PWCheckResult) {
+      alert("비밀번호가 다릅니다. 비밀번호를 확인해주세요.");
+      return;
+    }
+
+    if (txtName.length < 2) {
+      alert("이름을 입력해주세요");
+      return;
+    }
+    if (!verifyEmail(txtEmail)) {
+      alert("이메일을 정확히 입력해주세요");
+      return;
+    }
+
+    FuncJoin(
+      dispatch,
+      txtJoinID, // 아이디
+      txtJoinPW, // 암호
+      txtName, //이름
+      txtTel, //전번
+      txtEmail, //이메일
+      txtCompany, // 생년월일
+    );
+  };
+  
+  const handlePageFlag = () => {
+    props.handlePageFlag(0);
+  };
+
+  const handleIdcheck = async() => {
+    FuncIdCheck(txtJoinID)
+    let result = await FuncJoin();
+    console.log(result)
+    if(result === "true"){history.goBack()} 
+  };
+
+  return (
+    <Container>
+      <Box 
+        width="50%" 
+        mx="auto" 
+        my={20} 
+        border={1}
+        borderRadius={10} 
+        px={5} 
+        py={4}>
+        <Box>
+          <TitleText 
+            title="회 원 가 입"
+            size="h2"/>
+        </Box>
+        <Box display="flex">
+          <Box my={2} display="flex" flexDirection="column" flexBasis="70%">
+            <Box>사용자 ID</Box>
+            <SimpleTextField
+              value={txtJoinID || ""}
+              onChange={({ target: { value } }) => {
+                setTxtJoinID(value);
+              }}
+              autoFocus
+              radius={5}
+              placeholder="영문소문자, 숫자 조합"
+            />
+          </Box>
+          <Box display="flex" flexDirection="column" flexBasis="5%"></Box>
+          <Box my={2} pt={3} display="flex" flexDirection="column" flexBasis="25%">
+            <ColorButton onClick={handleIdcheck} color="secondary" height="small" radius="true">
+                조 회
+            </ColorButton>
+          </Box>
+        </Box>
+        <Box display="flex">
+          <Box mt={2} display="flex" flexDirection="column" flexBasis="45%">
+            <Box>비밀번호</Box>
+            <SimpleTextField
+              radius={5}
+              type="password"
+              placeholder="비밀번호"
+              value={txtJoinPW || ""}
+              onChange={({ target: { value } }) => setTxtJoinPW(value)}
+            />
+          </Box>
+          <Box display="flex" flexDirection="column" flexBasis="10%"></Box>
+          <Box mt={2} display="flex" flexDirection="column" flexBasis="45%">
+            <Box>비밀번호 확인</Box>
+            <SimpleTextField
+              radius={5}
+              type="password"
+              placeholder="비밀번호 확인"
+              value={txtJoinPW2 || ""}
+              onChange={({ target: { value } }) => {
+                setTxtJoinPW2(value);
+                if (txtJoinPW == value) { setPWCheckResult(true); }
+                else { setPWCheckResult(false); }
+              }}
+            />
+            {txtJoinPW2 != "" ? (
+              PWCheckResult ? null : (
+                <Box color="red">
+                  비밀번호가 일치하지 않습니다.
+                </Box>
+              )
+            ) : null}
+          </Box>
+        </Box>
+        <Box color="red"> 영문소문자, 숫자,특수문자 조합 8자~ 15자 </Box>
+        <Box my={2}>
+          <Box>이름</Box>
+          <SimpleTextField
+            radius={5}
+            fullWidth
+            value={txtName || ""}
+            onChange={({ target: { value } }) => setTxtName(value)}
+          />
+        </Box>
+        {/*<BirthTextSet txtBirth={txtBirth} setTxtBirth={setTxtBirth} />*/}
+        <Box my={2}>
+          <Box>회사명</Box>
+          <SimpleTextField
+            radius={5}
+            maxlength={12}
+            placeholder="회사명을 입력해주세요"
+            value={txtCompany || ""}
+            onChange={({ target: { value } }) => setTxtCompany(value)}
+          />
+        </Box>
+        <Box my={2}>
+          <Box>휴대전화</Box>
+          <SimpleTextField
+            radius={5}
+            maxlength={12}
+            placeholder="(예시) 01012345678"
+            value={txtTel || ""}
+            onChange={({ target: { value } }) => setTxtTel(value)}
+          />
+        </Box>
+        <Box my={2}>
+          <Box>이메일</Box>
+          <SimpleTextField
+            radius={5}
+            type="email"
+            value={txtEmail || ""}
+            onChange={({ target: { value } }) => setTxtEmail(value)}
+          />
+        </Box>
+        <Box mt={2} mb={4} display="flex" justifyContent="center">
+          회원가입 시 개인정보 처리방침과 이용약관을 확인하였으며,동의합니다.
+        </Box>
+        <Box>
+          <ColorButton color="secondary" onClick={handleJoin}>
+            회원가입하기
+          </ColorButton>
+        </Box>
+        <Box my={2}>
+          <ColorButton onClick={handlePageFlag} color="secondary">
+              돌아가기
+          </ColorButton>
+        </Box>
+      </Box>  
+    </Container>
+  );
+};
+
+export default UserJoin;

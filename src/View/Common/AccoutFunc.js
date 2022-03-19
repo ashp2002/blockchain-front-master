@@ -10,6 +10,7 @@ import {
 } from "../modules/AccountRedux";
 import { useSelector, useDispatch } from "react-redux";
 import { asyncAPI, APIRequest } from "./Common";
+import { useHistory } from "react-router-dom";
 
 export const FuncLogin = (dispatch, userID, userPW) => {
   dispatch(loginFetch());
@@ -39,6 +40,8 @@ export const FuncLogout = (dispatch) => {
       console.log(res);
       if (res.resultcode === 1) {
         dispatch(logoutSuccess());
+        sStorage.setItem("session_id", "");
+        sStorage.setItem("user_id", "");
       } else {
         alert("로그아웃 실패");
         dispatch(logoutFailed());
@@ -50,17 +53,25 @@ export const FuncLogout = (dispatch) => {
       dispatch(logoutFailed());
     });
 };
-/*  계정생성
-export const Test = (dispatch) => {
+
+export const FuncJoin = (
+  dispatch,
+  txtJoinID, // 아이디
+  txtJoinPW, // 암호
+  txtName, //이름
+  txtTel, //전번
+  txtEmail, //이메일
+  txtCompany, // 생년월일
+  ) => {
+
+    /*
   APIRequest("/user/addUser", {
-    userid: "ashp2002",
-    pass: "dkstjdgh",
-    name: "안성호",
-    phone: "01031399986",
-    addr: "강서구",
-    email: "ashp",
-    birth: "1983",
-    company: "디솝",
+    userid: txtJoinID,
+    pass: txtJoinPW,
+    name: txtName,
+    phone: txtTel,
+    email: txtEmail,
+    company: txtCompany,
     })
     .then((res) => {
       console.log(res);
@@ -73,6 +84,23 @@ export const Test = (dispatch) => {
     .catch((error) => {
       console.log(error);
       alert("로그아웃 실패");
+    });*/
+    return "true";
+};
+
+export const FuncIdCheck = (dispatch, userID) => {
+  APIRequest("/user/useridCheck", { userid: userID })
+    .then((res) => {
+      console.log(res);
+      if (res.resultcode === 1) {
+        alert("사용가능한 아이뒤입니다.")
+        return res.resultcode;
+      } else {
+        alert("중복아이디 입니다.");
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      alert("아이디체크실패");
     });
 };
-*/

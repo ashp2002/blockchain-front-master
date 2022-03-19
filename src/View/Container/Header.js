@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { useTheme, makeStyles } from "@mui/styles";
 import { useSelector, useDispatch } from "react-redux";
 import Logo from "../../Images/common/logo.png"
+import { FuncLogin, FuncLogout, Test } from "../Common/AccoutFunc";
 
 const useStyles = makeStyles((theme) => ({
   hoverButton: {
@@ -31,6 +32,8 @@ const Header = (props) => {
   const dispatch = useDispatch();
   console.log("Header", userName);
   console.log("Header", location.pathname);
+  console.log("session_id", sStorage.getItem("session_id"));
+ 
 
   return (
     <React.Fragment>
@@ -63,13 +66,22 @@ const Header = (props) => {
                   {section.title}
               </Button>
             ))}
+            {loginState ?
+              <Button
+                onClick={() => FuncLogout(dispatch)}
+                className={classes.Button} 
+                >
+                  로그아웃
+              </Button>
+              :
               <Button
                 component={RouterLink}
                 to="/User"
-                className={classes.Button} 
+                className={classes.Button}
                 >
-                  {loginState ? "로그아웃" : "로그인"}
+                  로그인
               </Button>
+            }
             </Box>
           </Toolbar>
         </Container>
