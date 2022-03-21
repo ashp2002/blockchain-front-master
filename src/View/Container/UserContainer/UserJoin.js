@@ -8,11 +8,11 @@ import {
   Button,
   Container
   } from "@mui/material";
-import { FuncLogin, FuncLogout, FuncJoin, FuncIdCheck } from "../../Common/AccoutFunc";
+import { FuncJoin, FuncIdCheck, FuncJoinResultCheck } from "../../Common/AccoutFunc";
 import SimpleTextField from "../../Component/Common/SimpleTextField";
 import TitleText from "../../Component/Common/TitleText";
 import ColorButton from "../../Component/Common/ColorButton";
-import { verifyEmail, verifyPW, verifyID } from "../../Common/CommonFuncs";
+
 
 const UserJoin = (props) => {
 
@@ -29,34 +29,17 @@ const UserJoin = (props) => {
   const [txtJoinPW2, setTxtJoinPW2] = React.useState("");
   const [PWCheckResult, setPWCheckResult] = React.useState(false);
 
-  
   const handleJoin = () => {
-    if (!verifyID(txtJoinID)) {
-      alert("아이디를 6자 이상 영어 소문자 또는 숫자로 입력해주세요");
-      return;
-    }
-    if (!verifyPW(txtJoinPW)) {
-      alert(
-        "암호는 8자이상 영문 대문자,소문자,숫자,특수문자를 모두 포함해야합니다."
-      );
-      return;
-    }
+    let Checkresult = FuncJoinResultCheck(
+      txtJoinID, 
+      txtJoinPW, 
+      PWCheckResult, 
+      txtName, 
+      txtEmail
+    );
+    if(Checkresult === "fail"){return;}
 
-    if (!PWCheckResult) {
-      alert("비밀번호가 다릅니다. 비밀번호를 확인해주세요.");
-      return;
-    }
-
-    if (txtName.length < 2) {
-      alert("이름을 입력해주세요");
-      return;
-    }
-    if (!verifyEmail(txtEmail)) {
-      alert("이메일을 정확히 입력해주세요");
-      return;
-    }
-
-    FuncJoin(
+    let Joinresult = FuncJoin(
       dispatch,
       txtJoinID, // 아이디
       txtJoinPW, // 암호
@@ -65,6 +48,7 @@ const UserJoin = (props) => {
       txtEmail, //이메일
       txtCompany, // 생년월일
     );
+    if(Joinresult === "true"){history.goBack()}
   };
   
   const handlePageFlag = () => {
@@ -73,9 +57,6 @@ const UserJoin = (props) => {
 
   const handleIdcheck = async() => {
     FuncIdCheck(txtJoinID)
-    let result = await FuncJoin();
-    console.log(result)
-    if(result === "true"){history.goBack()} 
   };
 
   return (

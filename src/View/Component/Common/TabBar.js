@@ -25,6 +25,7 @@ const TabBar = (props) => {
       }}>
         <Container sx={{ maxWidth: "lg" }}>
           <Tabs
+            color="white"
             value={props.value}
             variant="fullWidth"
             onChange={handleChange}
@@ -37,6 +38,8 @@ const TabBar = (props) => {
               style={{
                 display: "flex",
                 //flexBasis: "200px",
+                fontFamily: "Spoqa Han Sans Neo Medium",
+                color: "white",
                 fontSize: "20px",
                 fontWeight: "800px"
               }}

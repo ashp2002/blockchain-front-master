@@ -64,11 +64,11 @@ const UserLogin = (props) => {
           */}
           <Box mt={8}>
             <ColorButton 
-              onClick={() => {
-                FuncLogin(dispatch, txtID, txtPW);
+              onClick={async () => {
+                let loginResult = await FuncLogin(dispatch, txtID, txtPW);
+                console.log("로그인결과!!!",loginResult);
+                //if(loginResult === 1){history.goBack()}
               }}
-              component={RouterLink}
-              to="/" 
               color="secondary">
               로그인 
             </ ColorButton>

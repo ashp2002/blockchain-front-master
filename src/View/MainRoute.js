@@ -4,6 +4,7 @@ import { Route } from "react-router";
 
 import { Box } from "@mui/material";
 
+import ScrollToTop from "./Common/ScrollToTop";
 import Main from "./Pages/Main";
 import Service from "./Pages/Service";
 import CaseExample from "./Pages/CaseExample";
@@ -19,11 +20,13 @@ const MainRoute = () => {
   return (
     <Box>
       <Header />
-      <Route path={["/", "/Main"]} component={Main} exact={true} />
-      <Route path={["/Service"]} component={Service} />
-      <Route path={["/CaseExample"]} component={CaseExample} />
-      <Route path={["/Customer"]} component={Customer} />
-      <Route path={["/User"]} component={User} />
+      <ScrollToTop>
+        <Route path={["/", "/Main"]} component={Main} exact={true} />
+        <Route path={["/Service"]} component={Service} />
+        <Route path={["/CaseExample"]} component={CaseExample} />
+        <Route path={["/Customer"]} component={Customer} />
+        <Route path={["/User"]} component={User} />
+      </ScrollToTop>
       <Bottom />
     </Box>
   );
