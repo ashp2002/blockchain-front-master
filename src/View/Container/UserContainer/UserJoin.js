@@ -29,7 +29,7 @@ const UserJoin = (props) => {
   const [txtJoinPW2, setTxtJoinPW2] = React.useState("");
   const [PWCheckResult, setPWCheckResult] = React.useState(false);
 
-  const handleJoin = () => {
+  const handleJoin = async () => {
     let Checkresult = FuncJoinResultCheck(
       txtJoinID, 
       txtJoinPW, 
@@ -39,7 +39,7 @@ const UserJoin = (props) => {
     );
     if(Checkresult === "fail"){return;}
 
-    let Joinresult = FuncJoin(
+    let Joinresult = await FuncJoin(
       dispatch,
       txtJoinID, // 아이디
       txtJoinPW, // 암호

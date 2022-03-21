@@ -26,6 +26,11 @@ const UserLogin = (props) => {
     props.handlePageFlag(1);
   };
 
+  const handleLogin = async () => {
+    let result = await FuncLogin(dispatch, txtID, txtPW);
+    if(result == 1){history.goBack();}
+  };
+
   return (
     <Container>
       <Box 
@@ -64,11 +69,12 @@ const UserLogin = (props) => {
           */}
           <Box mt={8}>
             <ColorButton 
-              onClick={async () => {
+              onClick={handleLogin
+                /*async () => {
                 let loginResult = await FuncLogin(dispatch, txtID, txtPW);
                 console.log("로그인결과!!!",loginResult);
                 //if(loginResult === 1){history.goBack()}
-              }}
+              }*/ }
               color="secondary">
               로그인 
             </ ColorButton>

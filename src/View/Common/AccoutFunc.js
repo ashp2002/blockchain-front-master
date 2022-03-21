@@ -13,18 +13,19 @@ import { asyncAPI, APIRequest } from "./Common";
 import { useHistory } from "react-router-dom";
 import { verifyEmail, verifyPW, verifyID } from "./CommonFuncs";
 
-export const FuncLogin = (dispatch, userID, userPW) => {
+export const FuncLogin = async (dispatch, userID, userPW) => {
   dispatch(loginFetch());
-  APIRequest("login", { userid: userID, pass: userPW })
+  let temp = 5;
+  await APIRequest("login", { userid: userID, pass: userPW })
     .then((res) => {
-      console.log(res);
       if (res.resultcode === 1) {
+        temp = 1;
         sStorage.setItem("session_id", res.session_id);
         dispatch(loginSuccess(res));
-        return res.resultcode;
       } else {
         alert("아이디 암호를 다시확인하세요.");
         dispatch(loginFailed());
+        temp = 0;
       }
     })
     .catch((error) => {
@@ -32,12 +33,13 @@ export const FuncLogin = (dispatch, userID, userPW) => {
       alert("로그인 처리중 오류가 발생하였습니다.");
       dispatch(loginError());
     });
+  return temp;
 };
 
-export const FuncLogout = (dispatch) => {
+export const FuncLogout = async (dispatch) => {
   dispatch(logoutFetch());
   const session_id = sStorage.getItem("session_id");
-  APIRequest("logout", { session_id: session_id })
+  await APIRequest("logout", { session_id: session_id })
     .then((res) => {
       console.log(res);
       if (res.resultcode === 1) {
@@ -56,7 +58,7 @@ export const FuncLogout = (dispatch) => {
     });
 };
 
-export const FuncJoin = (
+export const FuncJoin = async (
   dispatch,
   txtJoinID, // 아이디
   txtJoinPW, // 암호
@@ -65,7 +67,7 @@ export const FuncJoin = (
   txtEmail, //이메일
   txtCompany, // 생년월일
   ) => {
-    APIRequest("/user/addUser", {
+    await APIRequest("/user/addUser", {
       userid: txtJoinID,
       pass: txtJoinPW,
       name: txtName,
@@ -89,8 +91,8 @@ export const FuncJoin = (
       return "true";
 };
 
-export const FuncIdCheck = (dispatch, userID) => {
-  APIRequest("/user/useridCheck", { userid: userID })
+export const FuncIdCheck = async (dispatch, userID) => {
+  await APIRequest("/user/useridCheck", { userid: userID })
     .then((res) => {
       console.log(res);
       if (res.resultcode === 1) {
