@@ -161,9 +161,7 @@ const TableSupports = (props) => {
                     <TableRow
                       hover
                       onClick={() => {
-                        isprivate
-                          ? props.history.push(`/TableItemPass?idx=${idx}`)
-                          : props.history.push(`/TableItem?idx=${idx}`);
+                        props.handleItemPageOpen(1, idx);
                       }}
                       key={id}
                       height="60"
@@ -206,7 +204,7 @@ const TableSupports = (props) => {
                           variant="body2"
                           className={classes.tablebody}
                         >
-                          {regdate}
+                          {parse(regdate)}
                         </Typography>
                       </TableCell>
                       <TableCell

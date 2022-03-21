@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useTheme, makeStyles } from "@mui/styles";
+import { useSelector, useDispatch } from "react-redux";
 import qs from "qs";
 import { useHistory } from "react-router-dom";
 import {
@@ -82,6 +83,7 @@ const TableNotice = (props) => {
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
   const [flag, setFlag] = useState(false);
   const [page, setPage] = useState(0);
+  const Items = useSelector((state) => state.TableRedux.Items);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [addDialog, setaddDialog] = useState(false);
   const [addDialogN, setaddDialogN] = useState(false);
@@ -93,7 +95,7 @@ const TableNotice = (props) => {
   const { tableItem } = props;
 
   useEffect(() => {
-  
+    console.log(Items)
   }, []);
 
   const parse = (regdate) => {

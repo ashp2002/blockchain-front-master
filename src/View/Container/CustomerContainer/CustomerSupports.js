@@ -1,7 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useTheme, makeStyles } from "@mui/styles";
 import qs from "qs";
-import { useHistory } from "react-router-dom";
+import { Link as RouterLink, useLocation, useHistory } from "react-router-dom";
 import {
   Button,
   Container,
@@ -10,7 +11,9 @@ import {
   Divider,
   useMediaQuery,
 } from "@mui/material"; //테이블에 필요한 컴포넌트
+import { ListGetFunc, ItemGetFunc } from "../../Common/TableFunc";
 import TableSupports from "../../Component/Customer/TableSupports"
+import TableItemSupports from "../../Component/Customer/TableItemSupports"
 import CompanyInfo from "../../Component/Bottom/CompanyInfo";
 import TitleText from "../../Component/Common/TitleText";
 
@@ -22,16 +25,29 @@ const CustomerSupports = () => {
   const theme = useTheme();
   const classes = useStyles();
   const history = useHistory();
+  const dispatch = useDispatch();
+  const Items = useSelector((state) => state.TableRedux.Items);
+  const ItemInfo = useSelector((state) => state.TableRedux.ItemInfo);
+  const [flagPage, setFlagPage] = useState(0);
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
-
-  const [flag, setFlag] = useState(false);
-  const [addDialog, setaddDialog] = useState(false);
-  const [addDialogN, setaddDialogN] = useState(false);
-
   const query = qs.parse(location.search, {
     ignoreQueryPrefix: true,
   });
+
+  useEffect(() => {
+    ListGetFunc(dispatch)
+  }, [dispatch]);
+
+  const handleItemPageOpen = (flag, idx) => {
+    setFlagPage(flag);
+    ItemGetFunc(dispatch, idx)
+  };
+
+  const handleItemPageClose = (data) => {
+    setFlagPage(data);
+    console.log(flagPage);
+  };
 
   const tableHead = [
     { title: "NO.", width: "100", align: "center", font: "subtitle1" },
@@ -40,41 +56,6 @@ const CustomerSupports = () => {
     { title: "작성날짜", width: "150", align: "center", font: "subtitle1" },
     { title: "조회수", width: "100", align: "center", font: "subtitle1" },
   ];
-
-  let tableItem = [
-    { id: "1" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "1", status: "완료", isprivate: false, views: "100"},
-    { id: "2" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "2", status: "완료", isprivate: false, views: "100"},
-    { id: "3" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "3", status: "완료", isprivate: false, views: "10"},
-    { id: "4" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "4", status: "완료", isprivate: false, views: "5"},
-    { id: "5" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "5", status: "완료", isprivate: false, views: "100"},
-    { id: "6" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "6", status: "완료", isprivate: false, views: "100"},
-    { id: "7" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "7", status: "완료", isprivate: false, views: "10"},
-    { id: "8" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "8", status: "완료", isprivate: false, views: "5"},
-    { id: "9" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "9", status: "완료", isprivate: false, views: "100"},
-    { id: "10" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "10", status: "완료", isprivate: false, views: "100"},
-    { id: "11" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "11", status: "완료", isprivate: false, views: "10"},
-    { id: "12" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "12", status: "완료", isprivate: false, views: "5"},
-    { id: "13" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "13", status: "완료", isprivate: false, views: "100"},
-    { id: "14" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "14", status: "완료", isprivate: false, views: "100"},
-    { id: "15" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "15", status: "완료", isprivate: false, views: "10"},
-    { id: "16" , name: "안성호", title: "문의제목", regdate: "2022/04/16", idx: "16", status: "완료", isprivate: false, views: "5"},
-  ];
-
-  useEffect(() => {
-    /*
-    if (userData) {
-      checkToken(setLogin, setUserData);
-    }
-    APIRequest("getQnaList")
-      .then((receivedData) => {
-        setdatas(receivedData);
-        //console.log(receivedData);
-      })
-      .catch((err) => {
-        alert("에러" + err);
-        //console.log(err);
-      });*/
-  }, []);
 
   return (
       <Container maxWidth="lg">
@@ -85,7 +66,9 @@ const CustomerSupports = () => {
           />
         </Box>
         <Box my={10} width="80%" m="auto">
-          <TableSupports tableHead={tableHead} tableItem={tableItem}/>
+          {flagPage == 0 ?
+          <TableSupports tableHead={tableHead} tableItem={Items} handleItemPageOpen={handleItemPageOpen} />
+          : <TableItemSupports Item={ItemInfo} handleItemPageClose={handleItemPageClose} />}
         </Box>
         <Box mb={10}>
           <CompanyInfo />
