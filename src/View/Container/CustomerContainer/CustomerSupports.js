@@ -9,6 +9,7 @@ import {
   Box,
   Typography,
   Divider,
+  Pagination,
   useMediaQuery,
 } from "@mui/material"; //테이블에 필요한 컴포넌트
 import { ListGetFunc, ItemGetFunc } from "../../Common/TableFunc";
@@ -16,6 +17,7 @@ import TableSupports from "../../Component/Customer/TableSupports"
 import TableItemSupports from "../../Component/Customer/TableItemSupports"
 import CompanyInfo from "../../Component/Bottom/CompanyInfo";
 import TitleText from "../../Component/Common/TitleText";
+import TableButton from "../../Component/Common/TableButton";
 
 export const useStyles = makeStyles((theme) => ({
   
@@ -29,6 +31,7 @@ const CustomerSupports = () => {
   const Items = useSelector((state) => state.TableRedux.Items);
   const ItemInfo = useSelector((state) => state.TableRedux.ItemInfo);
   const [flagPage, setFlagPage] = useState(0);
+  const [page, setPage] = useState(0);
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
   const query = qs.parse(location.search, {
@@ -49,6 +52,10 @@ const CustomerSupports = () => {
     console.log(flagPage);
   };
 
+  const handleChangePage = (event, newPage) => {
+    setPage(--newPage);
+  };
+
   const tableHead = [
     { title: "NO.", width: "100", align: "center", font: "subtitle1" },
     { title: "제목", align: "center", font: "subtitle1" },
@@ -67,10 +74,32 @@ const CustomerSupports = () => {
         </Box>
         <Box my={10} width="80%" m="auto">
           {flagPage == 0 ?
-          <TableSupports tableHead={tableHead} tableItem={Items} handleItemPageOpen={handleItemPageOpen} />
+          <Box>
+            <TableSupports 
+              tableHead={tableHead} 
+              tableItem={Items} 
+              handleItemPageOpen={handleItemPageOpen}
+              page={page} 
+            />
+            <Box display="flex" justifyContent="end" mr={2} mt={1}>
+              <TableButton>
+                글 쓰 기
+              </TableButton>
+            </Box>
+            <Box mt={2} display="flex" justifyContent="center">
+              <Pagination
+                count={Items === null ? 0 : parseInt(Items.length / 10) + 1}
+                page={page + 1}
+                onChange={handleChangePage}
+                color="primary"
+                showFirstButton
+                showLastButton
+              />
+            </Box>
+          </Box>
           : <TableItemSupports Item={ItemInfo} handleItemPageClose={handleItemPageClose} />}
-        </Box>
-        <Box mb={10}>
+        </Box> 
+        <Box my={5}>
           <CompanyInfo />
         </Box>
       </Container>

@@ -224,16 +224,6 @@ const TableSupports = (props) => {
           </TableBody>
         </Table>
       </TableContainer>
-    <Box mt={8} display="flex" justifyContent="center">
-      <Pagination
-        count={tableItem === null ? 0 : parseInt(tableItem.length / 10) + 1}
-        page={page + 1}
-        onChange={handleChangePage}
-        color="primary"
-        showFirstButton
-        showLastButton
-      />
-    </Box>
   </>
   );
 };

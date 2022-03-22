@@ -80,16 +80,9 @@ const TableItemSupports = (props) => {
   return (
     <Container maxWidth="lg">
         <Box width="95%" m="auto">
-          {Item ? (
-            <Typography variant="subtitle1" className={classes.name}>
+          <Typography variant="subtitle1" className={classes.name}>
               {`작성자 : ${Item.name}`}
-            </Typography>
-          ) : (
-            <Typography variant="subtitle1" className={classes.name}>
-              {`작성자 :`}
-            </Typography>
-          )}
-          {Item ? (
+          </Typography>
             <Box mt={2} mb={2}>
               <TextField
                 className={classes.contents}
@@ -107,24 +100,6 @@ const TableItemSupports = (props) => {
                 }}
               />
             </Box>
-          ) : (
-            <Box mt={2} mb={2}>
-              <TextField
-                className={classes.contents}
-                id="outlined-multiline-static"
-                //label="내 용"
-                multiline
-                rows={10}
-                variant="outlined"
-                InputProps={{
-                  readOnly: true,
-                  classes: {
-                    input: classes.resize,
-                  },
-                }}
-              />
-            </Box>
-          )}
           <Divider />
           <Box className={classes.button}>
             <Button 
