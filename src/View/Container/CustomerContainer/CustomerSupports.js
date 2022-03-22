@@ -12,12 +12,14 @@ import {
   Pagination,
   useMediaQuery,
 } from "@mui/material"; //테이블에 필요한 컴포넌트
+import { loadItemClear } from "../../modules/TableRedux";
 import { ListGetFunc, ItemGetFunc } from "../../Common/TableFunc";
 import TableSupports from "../../Component/Customer/TableSupports"
 import TableItemSupports from "../../Component/Customer/TableItemSupports"
 import CompanyInfo from "../../Component/Bottom/CompanyInfo";
 import TitleText from "../../Component/Common/TitleText";
 import TableButton from "../../Component/Common/TableButton";
+import DeletePassDialog from "../../Component/Common/DeletePassDialog"
 
 export const useStyles = makeStyles((theme) => ({
   
@@ -28,15 +30,13 @@ const CustomerSupports = () => {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
+  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
   const Items = useSelector((state) => state.TableRedux.Items);
   const ItemInfo = useSelector((state) => state.TableRedux.ItemInfo);
   const [flagPage, setFlagPage] = useState(0);
   const [page, setPage] = useState(0);
-  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
-  const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
-  const query = qs.parse(location.search, {
-    ignoreQueryPrefix: true,
-  });
+  const [showDialog, setShowModal] = useState(false);
 
   useEffect(() => {
     ListGetFunc(dispatch)
@@ -45,10 +45,12 @@ const CustomerSupports = () => {
   const handleItemPageOpen = (flag, idx) => {
     setFlagPage(flag);
     ItemGetFunc(dispatch, idx)
+    console.log("페이지");
   };
 
   const handleItemPageClose = (data) => {
     setFlagPage(data);
+    dispatch(loadItemClear());
     console.log(flagPage);
   };
 
@@ -82,7 +84,9 @@ const CustomerSupports = () => {
               page={page} 
             />
             <Box display="flex" justifyContent="end" mr={2} mt={1}>
-              <TableButton>
+              <TableButton 
+                onClick={()=>{ setShowModal(true); }}
+              >
                 글 쓰 기
               </TableButton>
             </Box>
@@ -102,6 +106,10 @@ const CustomerSupports = () => {
         <Box my={5}>
           <CompanyInfo />
         </Box>
+        <DeletePassDialog
+          showDialog={showDialog}
+          setShowModal={setShowModal}
+        />
       </Container>
   );
 };

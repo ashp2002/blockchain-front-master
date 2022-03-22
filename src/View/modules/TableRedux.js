@@ -7,6 +7,7 @@ const LIST_LOAD_FAILED = "table/list/failed";
 const ITEM_LOAD_SUCCESS = "table/item/success";
 const ITEM_LOAD_FETCH = "table/item/fetch";
 const ITEM_LOAD_FAILED = "table/item/failed";
+const ITEM_LOAD_CLEAR = "table/item/clear";
 
 ////////////////// Load Table ////////////////////
 export const loadSuccess = (result) => ({
@@ -31,11 +32,14 @@ export const loadItemFetch = () => ({
 export const loadItemFailed = () => ({
   type: ITEM_LOAD_FAILED,
 });
+export const loadItemClear = () => ({
+  type: ITEM_LOAD_CLEAR,
+});
 
 const initialState = {
-   Items: [],
+  Items: [],
   _Fetching: true,
-   ItemInfo: [],
+  ItemInfo: [],
 };
 
 const TableRedux = (state = initialState, action) => {
@@ -47,13 +51,12 @@ const TableRedux = (state = initialState, action) => {
         ...state,
         _Fetching: true,
       };
-
     case LIST_LOAD_SUCCESS:
       console.log(" Loading Success", action, state);
 
       return {
         ...state,
-         Items: action.result,
+        Items: action.result,
         _Fetching: false,
       };
     case LIST_LOAD_FAILED:
@@ -68,7 +71,13 @@ const TableRedux = (state = initialState, action) => {
         ...state,
         _Fetching: true,
       };
-
+    case ITEM_LOAD_CLEAR:
+      console.log(" Item Clear.. ", action, state);
+      return {
+        ...state,
+        ItemInfo: "",
+        _Fetching: true,
+      };
     case ITEM_LOAD_SUCCESS:
       console.log(" Loading Success", action, state);
       return {
