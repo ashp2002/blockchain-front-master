@@ -11,8 +11,9 @@ import {
   Button,
   Box,
   } from '@mui/material';
-import SimpleTextField from "../../Component/Common/SimpleTextField";
-import SimpleTextArea from "../../Component/Common/SimpleTextArea";
+import SimpleTextField from "../Common/SimpleTextField";
+import SimpleTextArea from "../Common/SimpleTextArea";
+import { SupportAdd } from "../../Common/TableDialogFunc";
 
 export const useStyles = makeStyles((theme) => ({
   label: {
@@ -27,23 +28,36 @@ export const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const DeletePassDialog = (props) => {
+const TableDialog = (props) => {
   const classes = useStyles();
-  const { showDialog, setShowModal, setIdx } = props;
-  const [txtPass, setTxtPass] = useState("");
-  const [datas, setdatas] = useState(null);
+  const { showDialog, setShowModal, handleClick } = props;
+  const [datas, setdatas] = useState({
+    id: "",
+    TxtPass: "",
+    TxtName: "",
+    TxtTitle: "",
+    TxtContent: "",
+    TxtPhone: "",
+    idx: "",
+  });
   let history = useHistory();
+
+  const contentPage = (data) => {
+    switch (data) {
+      case "SupportAdd":
+        return <SupportAdd setData={setdatas} data={datas}/>;
+      case "SupportDel":
+        return //<SupportDel />;
+    }
+  };
 
   useEffect(() => {
   
   }, []);
 
-  const delPassClick = () => {
-    
-  };
-
-  const handleClose = () => {
+  const handleClickClose = () => {
     setShowModal(false);
+    setdatas("");
   };
 
   return (
@@ -51,28 +65,20 @@ const DeletePassDialog = (props) => {
       <Dialog
         className={classes.container}
         open={showDialog}
-        onClose={handleClose}
+        onClose={handleClickClose}
         aria-labelledby="form-dialog-title"
         fullWidth={true}
         maxWidth="xs"
       >
         <DialogTitle id="form-dialog-title">게시글 등록</DialogTitle>
           <DialogContent>
-            <Box mt={2}>
-              <SimpleTextField
-                radius={5}
-                type="password"
-                placeholder="비밀번호"
-                value={txtPass || ""}
-                onChange={({ target: { value } }) => setTxtPass(value)}
-              />
-            </Box>
+            <Box>{contentPage("SupportAdd")}</Box>
           </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleClickClose} color="primary">
             취소
           </Button>
-          <Button onClick={delPassClick} color="primary">
+          <Button onClick={()=>{ handleClick(datas) }} color="primary">
             확인
           </Button>
         </DialogActions>
@@ -80,4 +86,4 @@ const DeletePassDialog = (props) => {
     </div>
   );
 };
-export default DeletePassDialog;
+export default TableDialog;

@@ -13,13 +13,13 @@ import {
   useMediaQuery,
 } from "@mui/material"; //테이블에 필요한 컴포넌트
 import { loadItemClear } from "../../modules/TableRedux";
-import { ListGetFunc, ItemGetFunc } from "../../Common/TableFunc";
+import { ListGetFunc_support, ItemGetFunc_support, ItemInputFunc_support } from "../../Common/TableFunc";
 import TableSupports from "../../Component/Customer/TableSupports"
 import TableItemSupports from "../../Component/Customer/TableItemSupports"
 import CompanyInfo from "../../Component/Bottom/CompanyInfo";
 import TitleText from "../../Component/Common/TitleText";
 import TableButton from "../../Component/Common/TableButton";
-import DeletePassDialog from "../../Component/Common/DeletePassDialog"
+import TableDialog from "../../Component/Customer/TableDialog"
 
 export const useStyles = makeStyles((theme) => ({
   
@@ -39,12 +39,12 @@ const CustomerSupports = () => {
   const [showDialog, setShowModal] = useState(false);
 
   useEffect(() => {
-    ListGetFunc(dispatch)
+    ListGetFunc_support(dispatch)
   }, [dispatch]);
 
   const handleItemPageOpen = (flag, idx) => {
     setFlagPage(flag);
-    ItemGetFunc(dispatch, idx)
+    ItemGetFunc_support(dispatch, idx)
     console.log("페이지");
   };
 
@@ -54,6 +54,11 @@ const CustomerSupports = () => {
     console.log(flagPage);
   };
 
+  const handleClickAddItem = (data) => {
+    ItemInputFunc_support(dispatch, data);
+    console.log("밖에", data);
+  };
+  
   const handleChangePage = (event, newPage) => {
     setPage(--newPage);
   };
@@ -106,9 +111,10 @@ const CustomerSupports = () => {
         <Box my={5}>
           <CompanyInfo />
         </Box>
-        <DeletePassDialog
+        <TableDialog
           showDialog={showDialog}
           setShowModal={setShowModal}
+          handleClick={handleClickAddItem}
         />
       </Container>
   );

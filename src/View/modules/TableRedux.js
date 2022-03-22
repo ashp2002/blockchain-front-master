@@ -4,12 +4,16 @@ import { asyncAPI, APIRequest } from "../Common/Common";
 const LIST_LOAD_SUCCESS = "table/list/success";
 const LIST_LOAD_FETCH = "table/list/fetch";
 const LIST_LOAD_FAILED = "table/list/failed";
-const ITEM_LOAD_SUCCESS = "table/item/success";
-const ITEM_LOAD_FETCH = "table/item/fetch";
-const ITEM_LOAD_FAILED = "table/item/failed";
-const ITEM_LOAD_CLEAR = "table/item/clear";
 
-////////////////// Load Table ////////////////////
+const ITEM_LOAD_SUCCESS = "table/itemload/success";
+const ITEM_LOAD_FETCH = "table/itemload/fetch";
+const ITEM_LOAD_FAILED = "table/itemload/failed";
+const ITEM_LOAD_CLEAR = "table/itemload/clear";
+
+const ITEM_INPUT_SUCCESS = "table/iteminput/success";
+const ITEM_INPUT_FETCH = "table/iteminput/fetch";
+const ITEM_INPUT_FAILED = "table/iteminput/failed";
+////////////////// Load List ////////////////////
 export const loadSuccess = (result) => ({
   type: LIST_LOAD_SUCCESS,
   result,
@@ -21,7 +25,7 @@ export const loadFailed = () => ({
   type: LIST_LOAD_FAILED,
 });
 
-////////////////// Load Table ////////////////////
+////////////////// Load ItemInfo ////////////////////
 export const loadItemSuccess = (result) => ({
   type: ITEM_LOAD_SUCCESS,
   result,
@@ -34,6 +38,17 @@ export const loadItemFailed = () => ({
 });
 export const loadItemClear = () => ({
   type: ITEM_LOAD_CLEAR,
+});
+
+////////////////// Input Item ////////////////////
+export const inputItemSuccess = () => ({
+  type: ITEM_INPUT_SUCCESS,
+});
+export const inputItemFetch = () => ({
+  type: ITEM_INPUT_FETCH,
+});
+export const inputItemFailed = () => ({
+  type: ITEM_INPUT_FAILED,
 });
 
 const initialState = {
@@ -65,6 +80,7 @@ const TableRedux = (state = initialState, action) => {
         ...state,
         _Fetching: false,
       };
+
     case ITEM_LOAD_FETCH:
       console.log(" Item Loading.. ", action, state);
       return {
@@ -92,6 +108,24 @@ const TableRedux = (state = initialState, action) => {
         _Fetching: false,
       };
 
+    case ITEM_INPUT_FETCH:
+      console.log(" Input Loading.. ", action, state);
+      return {
+        ...state,
+        _Fetching: true,
+      };
+    case ITEM_INPUT_FAILED:
+      console.log(" Input Fail", action, state);
+      return {
+        ...state,
+        _Fetching: false,
+      };
+    case ITEM_INPUT_SUCCESS:
+      console.log(" Input Success", action, state);
+      return {
+        ...state,
+        _Fetching: false,
+      };
     default:
       return state;
   }

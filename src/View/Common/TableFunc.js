@@ -4,12 +4,18 @@ import {
   loadFetch,
   loadFailed,
   loadItemSuccess,
+  loadItemFetch,
+  loadItemFailed,
+  loadItemClear,
+  inputItemSuccess,
+  inputItemFetch,
+  inputItemFailed,
 } from "../modules/TableRedux";
 import { useSelector, useDispatch } from "react-redux";
 import { asyncAPI, APIRequest } from "./Common";
 import { useHistory } from "react-router-dom";
 
-export const ListGetFunc = async (dispatch) => {
+export const ListGetFunc_support = async (dispatch) => {
   dispatch(loadFetch());
   await APIRequest("/getQnaList")
     .then((res) => {
@@ -23,8 +29,8 @@ export const ListGetFunc = async (dispatch) => {
     });
 };
 
-export const ItemGetFunc = async (dispatch, itemIdx) => {
-  dispatch(loadFetch());
+export const ItemGetFunc_support = async (dispatch, itemIdx) => {
+  dispatch(loadItemFetch());
   await APIRequest("getQnaInfo",{idx: itemIdx})
     .then((res) => {
       console.log("아이템 들어옴", res)
@@ -32,7 +38,28 @@ export const ItemGetFunc = async (dispatch, itemIdx) => {
     })
     .catch((error) => {
       console.log(error);
-      alert("로그아웃 실패");
-      dispatch(loadFailed());
+      alert("가져오기실패");
+      dispatch(loadItemFailed());
     });
 };
+
+export const ItemInputFunc_support = async (dispatch, data) => {
+  dispatch(inputItemFetch());
+  await APIRequest("/addQuestionN",
+    {
+      title: data.TxtTitle,
+      contents: data.TxtContent,
+      name: data.TxtName,
+      phone: data.TxtPhone,
+    })
+    .then((res) => {
+      console.log("등록성공", res)
+      dispatch(inputItemSuccess());
+    })
+    .catch((error) => {
+      console.log(error);
+      alert("등록실패");
+      dispatch(inputItemFailed());
+    });
+};
+
