@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useTheme, makeStyles } from "@mui/styles";
+import { useSelector, useDispatch } from "react-redux";
 import qs from "qs";
 import { useHistory } from "react-router-dom";
 import {
@@ -83,15 +84,12 @@ const TableSupports = (props) => {
   const [flag, setFlag] = useState(false);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [addDialog, setaddDialog] = useState(false);
-  const [addDialogN, setaddDialogN] = useState(false);
-  const [datas, setdatas] = useState(null);
-  const [error, setError] = useState(null);
+  const Items = useSelector((state) => state.TableRedux.Items);
   const query = qs.parse(location.search, {
     ignoreQueryPrefix: true,
   });
   const {tableHead, tableItem} = props;
-
+  console.log("내용", Items)
   useEffect(() => {
   
   }, []);
@@ -106,12 +104,7 @@ const TableSupports = (props) => {
     return arr.join(" ");
   };
 
-  const handleClickOpen = (props) => {
-    /*
-    {
-      login ? history.push(`/AddTableQ`) : history.push(`/AddTableQN`);
-    }*/
-  };
+  
 
   const handleChangePage = (event, newPage) => {
     setPage(--newPage);
@@ -141,8 +134,8 @@ const TableSupports = (props) => {
             </TableRow>
           </TableHead>
           <TableBody className={classes.test}>
-            {tableItem &&
-              tableItem
+            {Items &&
+              Items
                 .slice(page * rowsPerPage, (page + 1) * rowsPerPage) //전체데이터에서 slice를통해 10개만 추출
                 .map(
                   (

@@ -139,3 +139,44 @@ export const FuncJoinResultCheck = (
     return "fail";
   }
 };
+
+
+/*  async 스타일 교체 예정
+export const FuncLoginAsync = async (dispatch, userID, userPW) => {
+  dispatch(loginFetch());
+  console.log("FuncLoginSync", userID, userPW);
+  try {
+    let resultData = await asyncAPI("login", {
+      userid: userID,
+      pass: userPW,
+    });
+    console.log("resultData1 ", resultData);
+    sStorage.setItem("session_id", resultData.session_id);
+    dispatch(loginSuccess(resultData));
+  } catch (e) {
+    console.log("asyncAPI Error Log", e);
+
+    alert(e.resultCode.msg);
+    dispatch(loginFailed());
+  }
+};
+
+export const FuncLogout = (dispatch) => {
+  dispatch(logoutFetch());
+  const session_id = sStorage.getItem("session_id");
+  APIRequest("logout", { session_id: session_id })
+    .then((res) => {
+      console.log(res);
+      if (res.resultcode === 1) {
+        dispatch(logoutSuccess());
+      } else {
+        alert("로그아웃 실패");
+        dispatch(logoutFailed());
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      alert("로그아웃 실패");
+      dispatch(logoutFailed());
+    });
+};*/

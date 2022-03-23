@@ -89,5 +89,9 @@ const Header = (props) => {
     </React.Fragment>
   );
 };
-
+/*propTypes = {
+  sections: PropTypes.array,
+  title: PropTypes.string,
+};
+*/
 export default Header;

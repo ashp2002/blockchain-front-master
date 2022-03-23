@@ -52,7 +52,8 @@ export const asyncAPI = async (request, addParams) => {
   }
   const { data } = await axios({
     method: "POST",
-    url: "https://api.koreasmartvoting.com/" + request,
+    //url: "https://api.koreasmartvoting.com/" + request,
+    url: "https://api.infokeeper.kr/" + request,
     data: params /* request body로 전달 할때는 data 를 사용해야함 */,
     //params: {},
     headers: {
@@ -76,6 +77,7 @@ export const APIRequest = (request, addParams) => {
     axios({
       method: "post",
       url: "https://api.koreasmartvoting.com/" + request,
+      //url: "https://api.infokeeper.kr/" + request,
       //url: "http://localhost:8081/" + request,
       // params: params,
       data: addParams,

@@ -83,8 +83,7 @@ const CustomerSupports = () => {
           {flagPage == 0 ?
           <Box>
             <TableSupports 
-              tableHead={tableHead} 
-              tableItem={Items} 
+              tableHead={tableHead}  
               handleItemPageOpen={handleItemPageOpen}
               page={page} 
             />
