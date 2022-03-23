@@ -62,11 +62,9 @@ export const asyncAPI = async (request, addParams) => {
       Authorization: `${session_id}`,
     },
   });
-
   if (!data) throw new UnexpectedApiResultError(null);
-  if (data.resultCode != 1) throw new UnexpectedApiResultError(data.resultCode);
-
-  return data.resultData;
+  if (data.resultcode != 1) throw new UnexpectedApiResultError(data);
+  return data;
 };
 
 export const APIRequest = (request, addParams) => {

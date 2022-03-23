@@ -10,6 +10,7 @@ import Service from "./Pages/Service";
 import CaseExample from "./Pages/CaseExample";
 import Customer from "./Pages/Customer";
 import User from "./Pages/User";
+import Manager from "./Pages/Manager";
 import Header from "./Container/Header";
 import Bottom from "./Container/Bottom";
 
@@ -26,6 +27,7 @@ const MainRoute = () => {
         <Route path={["/CaseExample"]} component={CaseExample} />
         <Route path={["/Customer"]} component={Customer} />
         <Route path={["/User"]} component={User} />
+        <Route path={["/Manager"]} component={Manager} />
       </ScrollToTop>
       <Bottom />
     </Box>

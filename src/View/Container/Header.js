@@ -27,6 +27,7 @@ const MenuSection = [
 const Header = (props) => {
   const classes = useStyles();
   const loginState = useSelector((state) => state.AccountRedux.loginState);
+  const userLevel = useSelector((state) => state.AccountRedux.userLevel);
   const userName = useSelector((state) => state.AccountRedux.userName);
   const location = useLocation();
   const dispatch = useDispatch();
@@ -66,7 +67,7 @@ const Header = (props) => {
                   {section.title}
               </Button>
             ))}
-            {loginState ?
+            {loginState ? 
               <Button
                 onClick={() => FuncLogout(dispatch)}
                 className={classes.Button} 
@@ -82,6 +83,16 @@ const Header = (props) => {
                   로그인
               </Button>
             }
+            {userLevel && userLevel == 1 && (
+              <Button
+                component={RouterLink}
+                key={"manager"}
+                to={"/Manager"}
+                className={classes.Button}
+              >
+                  관리자
+                </Button>
+              )}
             </Box>
           </Toolbar>
         </Container>

@@ -13,6 +13,7 @@ import { asyncAPI, APIRequest } from "./Common";
 import { useHistory } from "react-router-dom";
 import { verifyEmail, verifyPW, verifyID } from "./CommonFuncs";
 
+/*
 export const FuncLogin = async (dispatch, userID, userPW) => {
   dispatch(loginFetch());
   let temp = 5;
@@ -20,9 +21,11 @@ export const FuncLogin = async (dispatch, userID, userPW) => {
     .then((res) => {
       if (res.resultcode === 1) {
         temp = 1;
+        console.log(res);
         sStorage.setItem("session_id", res.session_id);
         dispatch(loginSuccess(res));
       } else {
+        console.log(res);
         alert("아이디 암호를 다시확인하세요.");
         dispatch(loginFailed());
         temp = 0;
@@ -35,7 +38,30 @@ export const FuncLogin = async (dispatch, userID, userPW) => {
     });
   return temp;
 };
+*/
 
+export const FuncLogin = async (dispatch, userID, userPW) => {
+  dispatch(loginFetch());
+  let temp = 5;
+  console.log("FuncLoginSync", userID, userPW);
+  try {
+    let resultData = await asyncAPI("login", {
+      userid: userID,
+      pass: userPW,
+    });
+    console.log("resultData", resultData);
+    temp = 1;
+    sStorage.setItem("session_id", resultData.session_id);
+    dispatch(loginSuccess(resultData));
+  } catch (e) {
+    console.log("asyncAPI Error Log", e);
+    temp = 0;
+    alert(e.resultCode.msg);
+    dispatch(loginFailed());
+  }
+  return temp;
+};
+/*
 export const FuncLogout = async (dispatch) => {
   dispatch(logoutFetch());
   const session_id = sStorage.getItem("session_id");
@@ -57,6 +83,24 @@ export const FuncLogout = async (dispatch) => {
       dispatch(logoutFailed());
     });
 };
+*/
+export const FuncLogout = async (dispatch) => {
+  dispatch(logoutFetch());
+  const session_id = sStorage.getItem("session_id");
+    try {
+      let resultData = await asyncAPI("logout", {
+        session_id: session_id, 
+      });
+      console.log("resultData", resultData);
+      sStorage.setItem("session_id", "");
+      sStorage.setItem("user_id", "");
+      dispatch(logoutSuccess());
+    } catch (e) {
+      console.log("asyncAPI Error Log", e);
+      alert(e.resultCode.msg);
+      dispatch(logoutFailed());
+    }
+};
 
 export const FuncJoin = async (
   dispatch,
@@ -67,44 +111,32 @@ export const FuncJoin = async (
   txtEmail, //이메일
   txtCompany, // 생년월일
   ) => {
-    await APIRequest("/user/addUser", {
-      userid: txtJoinID,
-      pass: txtJoinPW,
-      name: txtName,
-      phone: txtTel,
-      email: txtEmail,
-      company: txtCompany,
+    try{
+      let resultData = await asyncAPI("/user/addUser", {
+        userid: txtJoinID,
+        pass: txtJoinPW,
+        name: txtName,
+        phone: txtTel,
+        email: txtEmail,
+        company: txtCompany,
       })
-      .then((res) => {
-        console.log(res);
-        if (res.resultcode === 1) {
-          alert("가입완료");
-          return res.resultcode;
-        } else {
-          alert("가입실패");
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        alert("가입실패 다시 확인해주세요.");
-      });
-      return "true";
+    } catch (e) {
+        console.log("asyncAPI Error Log", e);
+        alert(e.resultCode.msg);
+      }
+  return "true";
 };
 
 export const FuncIdCheck = async (dispatch, userID) => {
-  await APIRequest("/user/useridCheck", { userid: userID })
-    .then((res) => {
-      console.log(res);
-      if (res.resultcode === 1) {
-        alert("사용가능한 아이뒤입니다.")
-      } else {
-        alert("중복아이디 입니다.");
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-      alert("아이디체크실패");
+  try {
+    let resultData = await asyncAPI("/user/useridCheck", {
+      userid: userID,
     });
+    console.log("resultData", resultData);
+  } catch (e) {
+    console.log("asyncAPI Error Log", e);
+    alert(e.resultCode.msg);
+  }
 };
 
 export const FuncJoinResultCheck = (
@@ -139,44 +171,3 @@ export const FuncJoinResultCheck = (
     return "fail";
   }
 };
-
-
-/*  async 스타일 교체 예정
-export const FuncLoginAsync = async (dispatch, userID, userPW) => {
-  dispatch(loginFetch());
-  console.log("FuncLoginSync", userID, userPW);
-  try {
-    let resultData = await asyncAPI("login", {
-      userid: userID,
-      pass: userPW,
-    });
-    console.log("resultData1 ", resultData);
-    sStorage.setItem("session_id", resultData.session_id);
-    dispatch(loginSuccess(resultData));
-  } catch (e) {
-    console.log("asyncAPI Error Log", e);
-
-    alert(e.resultCode.msg);
-    dispatch(loginFailed());
-  }
-};
-
-export const FuncLogout = (dispatch) => {
-  dispatch(logoutFetch());
-  const session_id = sStorage.getItem("session_id");
-  APIRequest("logout", { session_id: session_id })
-    .then((res) => {
-      console.log(res);
-      if (res.resultcode === 1) {
-        dispatch(logoutSuccess());
-      } else {
-        alert("로그아웃 실패");
-        dispatch(logoutFailed());
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-      alert("로그아웃 실패");
-      dispatch(logoutFailed());
-    });
-};*/
