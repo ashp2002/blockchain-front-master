@@ -62,6 +62,7 @@ export const asyncAPI = async (request, addParams) => {
       Authorization: `${session_id}`,
     },
   });
+  console.log(data)
   if (!data) throw new UnexpectedApiResultError(null);
   if (data.resultcode != 1) throw new UnexpectedApiResultError(data);
   return data;
@@ -74,8 +75,8 @@ export const APIRequest = (request, addParams) => {
     ////console.log(params);
     axios({
       method: "post",
-      url: "https://api.koreasmartvoting.com/" + request,
-      //url: "https://api.infokeeper.kr/" + request,
+      //url: "https://api.koreasmartvoting.com/" + request,
+      url: "https://api.infokeeper.kr/" + request,
       //url: "http://localhost:8081/" + request,
       // params: params,
       data: addParams,

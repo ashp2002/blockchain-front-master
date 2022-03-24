@@ -13,6 +13,10 @@ const ITEM_LOAD_CLEAR = "table/itemload/clear";
 const ITEM_INPUT_SUCCESS = "table/iteminput/success";
 const ITEM_INPUT_FETCH = "table/iteminput/fetch";
 const ITEM_INPUT_FAILED = "table/iteminput/failed";
+
+const ITEM_DELETE_SUCCESS = "table/itemdelete/success";
+const ITEM_DELETE_FETCH = "table/itemdelete/fetch";
+const ITEM_DELETE_FAILED = "table/itemdelete/failed";
 ////////////////// Load List ////////////////////
 export const loadSuccess = (result) => ({
   type: LIST_LOAD_SUCCESS,
@@ -51,6 +55,17 @@ export const inputItemFailed = () => ({
   type: ITEM_INPUT_FAILED,
 });
 
+////////////////// Delete Item ////////////////////
+export const deleteItemSuccess = () => ({
+  type: ITEM_DELETE_SUCCESS,
+});
+export const deleteItemFetch = () => ({
+  type: ITEM_DELETE_FETCH,
+});
+export const deleteItemFailed = () => ({
+  type: ITEM_DELETE_FAILED,
+});
+
 const initialState = {
   Items: [],
   _Fetching: true,
@@ -71,7 +86,7 @@ const TableRedux = (state = initialState, action) => {
 
       return {
         ...state,
-        Items: action.result,
+        Items: action.result.data,
         _Fetching: false,
       };
     case LIST_LOAD_FAILED:
@@ -125,6 +140,26 @@ const TableRedux = (state = initialState, action) => {
       return {
         ...state,
         _Fetching: false,
+      };
+
+    case ITEM_DELETE_FETCH:
+      console.log(" Delete Loading.. ", action, state);
+      return {
+        ...state,
+        _Fetching: true,
+      };
+    case ITEM_DELET_FAILED:
+      console.log(" Delete Fail", action, state);
+      return {
+        ...state,
+        _Fetching: false,
+      };
+    case ITEM_DELET_SUCCESS:
+      console.log(" Delete Success", action, state);
+      return {
+        ...state,
+        _Fetching: false,
+        ItemInfo: "",
       };
     default:
       return state;

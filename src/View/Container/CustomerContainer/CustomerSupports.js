@@ -86,6 +86,7 @@ const CustomerSupports = () => {
               tableHead={tableHead}  
               handleItemPageOpen={handleItemPageOpen}
               page={page} 
+              Items={Items}
             />
             <Box display="flex" justifyContent="end" mr={2} mt={1}>
               <TableButton 

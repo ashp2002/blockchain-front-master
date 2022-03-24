@@ -7,8 +7,11 @@ import TitleText from "../../Component/Common/TitleText";
 import mainDecs_img from "../../../Images/mainDecs_img.png"
 import DarkTheme from "../../Common/DarkTheme";
 import ColorButton from "../../Component/Common/ColorButton";
+import { ListGetFunc_support } from "../../Common/TableFunc";
+import { useSelector, useDispatch } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
+
   container: {
     backgroundImage: `url(${mainDecs_img})`,
     backgroundSize: "cover",
@@ -20,6 +23,11 @@ const useStyles = makeStyles((theme) => ({
 const MainDecs = () => {
   const classes = useStyles();
   const theme = useTheme();
+  const dispatch = useDispatch();
+
+  const Test = () => {
+    ListGetFunc_support(dispatch);
+  };
 
   return (
     <Box
@@ -45,10 +53,15 @@ const MainDecs = () => {
           */}
           <Box mt={5} display="flex" justifyContent="center">
             <Box width="20%" mr={10}>
-            <ColorButton color="border">문의하기</ ColorButton>
+              <ColorButton 
+                color="border"
+                onClick={() => { Test() }}
+              >
+                문의하기
+              </ ColorButton>
             </Box>
             <Box width="20%">
-            <ColorButton color="border">솔루션보기</ ColorButton>
+              <ColorButton color="border">솔루션보기</ ColorButton>
             </Box>
           </Box>
         </Container>
