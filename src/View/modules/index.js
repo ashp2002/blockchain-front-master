@@ -1,12 +1,12 @@
 import { combineReducers } from "redux";
 import CommonRedux from "./CommonRedux";
 import AccountRedux from "./AccountRedux";
-import TableRedux from "./TableRedux";
+import BoardRedux from "./BoardRedux";
 
 const rootReducer = combineReducers({
   CommonRedux,
   AccountRedux,
-  TableRedux,
+  BoardRedux,
 });
 
 export default rootReducer;

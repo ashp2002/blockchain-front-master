@@ -14,12 +14,9 @@ import {
   TextField,
   useMediaQuery,
 } from "@mui/material";
-import TableFaq from "../../Component/Customer/TableFaq"
+import BoardList_Faq from "../../Component/Customer/BoardList_Faq"
 import CompanyInfo from "../../Component/Bottom/CompanyInfo";
 import TitleText from "../../Component/Common/TitleText";
-//import UpdateItem from "./AddDate/UpdateItem";
-//import AddItem from "./AddDate/AddItem";
-//import DelItem from "./AddDate/DelItem";
 
 const useStyles = makeStyles((theme) => ({
   
@@ -31,11 +28,6 @@ const CustomerFaq = (props) => {
   const history = useHistory();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
-  const [faqdatas, setfaqdatas] = useState(null);
-  const [error, setError] = useState(null);
-  const [addDialog, setaddDialog] = useState(false);
-  const [delDialog, setdelDialog] = useState(false);
-  const [updateDialog, setUpdateDialog] = useState(false);
   const [flag, setFlag] = useState(true);
 
 
@@ -89,7 +81,7 @@ const CustomerFaq = (props) => {
           />
         </Box>
         <Box my={10} width="90%" m="auto">
-          <TableFaq tableItem={tableItem}/>
+          <BoardList_Faq tableItem={tableItem}/>
         </Box>
         <Box mb={10}>
           <CompanyInfo />

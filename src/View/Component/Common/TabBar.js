@@ -35,6 +35,7 @@ const TabBar = (props) => {
           >
             {items.map((item)=>(
               <Tab
+              key={item.title}
               style={{
                 display: "flex",
                 //flexBasis: "200px",

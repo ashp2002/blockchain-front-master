@@ -35,3 +35,13 @@ export const verifyPW = (txt) => {
     return false;
   }
 };
+
+export const ParseDATE = (regdate) => {
+  let yyyy = regdate.substr(0, 4);
+  let mm = regdate.substr(4, 2);
+  let dd = regdate.substr(6, 2);
+
+  const arr = [yyyy, "/", mm, "/", dd];
+
+  return arr.join(" ");
+};

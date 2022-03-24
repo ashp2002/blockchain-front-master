@@ -10,7 +10,7 @@ import {
   Divider,
   useMediaQuery,
 } from "@mui/material"; //테이블에 필요한 컴포넌트
-import TableNotice from "../../Component/Customer/TableNotice"
+import BoardList_Notice from "../../Component/Customer/BoardList_Notice"
 import CompanyInfo from "../../Component/Bottom/CompanyInfo";
 import TitleText from "../../Component/Common/TitleText";
 
@@ -75,7 +75,7 @@ const CustomerNotice = () => {
           />
         </Box>
         <Box my={10} width="80%" m="auto">
-          <TableNotice tableItem={tableItem}/>
+          <BoardList_Notice tableItem={tableItem}/>
         </Box>
         <Box mb={10}>
           <CompanyInfo />

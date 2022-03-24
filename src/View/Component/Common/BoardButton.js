@@ -6,7 +6,7 @@ import { Box, Button, TextField, Typography, Grid } from "@mui/material";
 const TableButton = styled(({ link, color, ...other }) => (
   <Button component={link && RouterLink} {...other} />
 ))((props) => ({
-  background: props.theme.palette.primary.main,
+  background: props.theme.palette.secondary.main,
   boxShadow: "none",
   borderRadius: 5,
   width: "100px",

@@ -13,7 +13,7 @@ import {
   deleteItemSuccess,
   deleteItemFetch,
   deleteItemFailed
-} from "../modules/TableRedux";
+} from "../modules/BoardRedux";
 import { useSelector, useDispatch } from "react-redux";
 import { asyncAPI, APIRequest } from "./Common";
 import { useHistory } from "react-router-dom";
@@ -22,7 +22,7 @@ import { useHistory } from "react-router-dom";
 export const ListGetFunc_support = async (dispatch) => {
   dispatch(loadFetch());
   try {
-    let resultData = await asyncAPI("notice/getConsultingList")
+    let resultData = await asyncAPI("/getQnaList")
     console.log("데이터", resultData)
     dispatch(loadSuccess(resultData));
     } catch (e) {
@@ -47,12 +47,13 @@ export const ItemGetFunc_support = async (dispatch, itemIdx) => {
 
 export const ItemInputFunc_support = async (dispatch, data) => {
   dispatch(inputItemFetch());
+  const session_id = sStorage.getItem("session_id");
   try {
-    let resultData = await asyncAPI("/addQuestionN", {
+    let resultData = await asyncAPI("/notice/addQuestion", {
       title: data.TxtTitle,
       contents: data.TxtContent,
-      name: data.TxtName,
-      phone: data.TxtPhone,
+      session_id: session_id,
+      isprivate: 0,
     })
     console.log("데이터", resultData)
     dispatch(inputItemSuccess());
@@ -63,12 +64,47 @@ export const ItemInputFunc_support = async (dispatch, data) => {
     };
   }
 
-  export const ItemDelFuncN_support = async (dispatch, data) => {
+export const ItemInputFuncN_support = async (dispatch, data) => {
+  dispatch(inputItemFetch());
+  try {
+    let resultData = await asyncAPI("/addQuestionN", {
+      title: data.TxtTitle,
+      contents: data.TxtContent,
+      name: data.TxtName,
+      phone: data.TxtPhone,
+      pass: data.TxtPass,
+      isprivate: 0,
+    })
+    console.log("데이터", resultData)
+    dispatch(inputItemSuccess());
+    } catch (e) {
+      console.log("asyncAPI Error Log", e);
+      alert(e.resultCode.msg);
+      dispatch(inputItemFailed());
+    };
+  }
+
+  export const ItemDelFunc_support = async (dispatch, itemIdx) => {
+    dispatch(deleteItemFetch());
+    try {
+      let resultData = await asyncAPI("/notice/deleteQuestion", {
+        idx: itemIdx,
+      })
+      console.log("데이터", resultData)
+      dispatch(deleteItemSuccess());
+      } catch (e) {
+        console.log("asyncAPI Error Log", e);
+        alert(e.resultCode.msg);
+        dispatch(deleteItemFailed());
+      };
+    }
+
+  export const ItemDelFuncN_support = async (dispatch, itemIdx) => {
     dispatch(deleteItemFetch());
     try {
       let resultData = await asyncAPI("/deleteQuestionN", {
-        idx: data.idx,
-        pass: data.pass,
+        idx: itemIdx,
+        pass: "1111",
       })
       console.log("데이터", resultData)
       dispatch(deleteItemSuccess());

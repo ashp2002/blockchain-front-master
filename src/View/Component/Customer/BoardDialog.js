@@ -10,10 +10,10 @@ import {
   TextField,
   Button,
   Box,
+  Divider,
   } from '@mui/material';
-import SimpleTextField from "../Common/SimpleTextField";
-import SimpleTextArea from "../Common/SimpleTextArea";
-import { SupportAdd } from "../../Common/TableDialogFunc";
+import { SupportAdd, SupportAddN } from "../../Common/BoardDialogFunc";
+import BoardButton from "../Common/BoardButton";
 
 export const useStyles = makeStyles((theme) => ({
   label: {
@@ -28,9 +28,9 @@ export const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const TableDialog = (props) => {
+const BoardDialog = (props) => {
   const classes = useStyles();
-  const { showDialog, setShowModal, handleClick } = props;
+  const { showDialog, setShowModal, handleClickAddItem, page } = props;
   const [datas, setdatas] = useState({
     id: "",
     TxtPass: "",
@@ -46,6 +46,8 @@ const TableDialog = (props) => {
     switch (data) {
       case "SupportAdd":
         return <SupportAdd setData={setdatas} data={datas}/>;
+      case "SupportAddN":
+        return <SupportAddN setData={setdatas} data={datas}/>;
       case "SupportDel":
         return //<SupportDel />;
     }
@@ -72,18 +74,28 @@ const TableDialog = (props) => {
       >
         <DialogTitle id="form-dialog-title">게시글 등록</DialogTitle>
           <DialogContent>
-            <Box>{contentPage("SupportAdd")}</Box>
+            <Box>
+              <Divider />
+                {contentPage(page)}
+              <Divider />
+            </Box>
           </DialogContent>
         <DialogActions>
-          <Button onClick={handleClickClose} color="primary">
-            취소
-          </Button>
-          <Button onClick={()=>{ handleClick(datas) }} color="primary">
-            확인
-          </Button>
+          <Box mr={2} pb={2} display="flex">
+            <Box mr={2}>
+              <BoardButton onClick={handleClickClose} color="primary">
+                취소
+              </BoardButton>
+            </Box>
+            <Box>
+              <BoardButton onClick={()=>{ handleClickAddItem(datas) }} color="primary">
+                확인
+              </BoardButton>
+            </Box>
+          </Box>
         </DialogActions>
       </Dialog>
     </div>
   );
 };
-export default TableDialog;
+export default BoardDialog;

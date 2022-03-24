@@ -11,38 +11,9 @@ import {
   Divider,
   useMediaQuery,
 } from "@mui/material"; //테이블에 필요한 컴포넌트
+import BoardButton from "../Common/BoardButton"
 
 export const useStyles = makeStyles((theme) => ({
-  container: {
-    height: "100%",
-    color: "black",
-    marginTop: "100px",
-    marginBottom: "10%",
-    width: "80%",
-    [theme.breakpoints.down("xs")]: {
-      width: "100%",
-    },
-  },
-  name: {
-    [theme.breakpoints.down("760")]: {
-      fontSize: "15px",
-    },
-  },
-  history: {
-    "&:hover": {
-      cursor: "pointer",
-    },
-  },
-  contents: {
-    width: "100%",
-    color: "black",
-  },
-
-  button: {
-    position: "relative",
-    width: "80%",
-  },
-
   commentcontents: {
     width: "100%",
     marginTop: "16px",
@@ -51,7 +22,6 @@ export const useStyles = makeStyles((theme) => ({
       fontSize: "12px",
     },
   },
-
   resize: {
     [theme.breakpoints.down("760")]: {
       lineHeight: "normal",
@@ -60,7 +30,7 @@ export const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const TableItemSupports = (props) => {
+const BoardItem_Supports = (props) => {
   const theme = useTheme();
   const classes = useStyles();
   const history = useHistory();
@@ -70,12 +40,13 @@ const TableItemSupports = (props) => {
   const query = qs.parse(location.search, {
     ignoreQueryPrefix: true,
   });
-  const {Item} = props;
+  const { Item , handleClickItemDel} = props;
 
   useEffect(() => {
   
   }, []);
 
+  
 
   return (
     <Container maxWidth="lg">
@@ -85,9 +56,9 @@ const TableItemSupports = (props) => {
           </Typography>
             <Box mt={2} mb={2}>
               <TextField
+                fullWidth
                 className={classes.contents}
                 id="outlined-multiline-static"
-                //label="내 용"
                 multiline
                 value={Item.contents}
                 rows={10}
@@ -101,23 +72,29 @@ const TableItemSupports = (props) => {
               />
             </Box>
           <Divider />
-          <Box className={classes.button}>
-            <Button 
-            color="inherit" 
-            onClick={() => 
-              {props.handleItemPageClose(0);}
-              }>
-              목록으로
-            </Button>
-            <Button color="inherit">
-              댓글쓰기
-            </Button>
-            <Button color="inherit">
-              글삭제
-            </Button>
+          <Box display="flex" justifyContent="end">
+            <Box >
+              <BoardButton color="inherit">
+                댓글쓰기
+              </BoardButton>
+            </Box>
+            <Box ml={2}>
+              <BoardButton color="inherit" onClick={handleClickItemDel}>
+                글삭제
+              </BoardButton>
+            </Box>
+            <Box ml={2}>
+              <BoardButton 
+                color="inherit" 
+                onClick={() => 
+                  {props.handleItemPageClose(0);}
+                }>
+                목록으로
+              </BoardButton>
+            </Box>
           </Box>
         </Box>  
       </Container>
   );
 };
-export default TableItemSupports;
+export default BoardItem_Supports;

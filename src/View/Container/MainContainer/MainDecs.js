@@ -7,8 +7,6 @@ import TitleText from "../../Component/Common/TitleText";
 import mainDecs_img from "../../../Images/mainDecs_img.png"
 import DarkTheme from "../../Common/DarkTheme";
 import ColorButton from "../../Component/Common/ColorButton";
-import { ListGetFunc_support } from "../../Common/TableFunc";
-import { useSelector, useDispatch } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
 
@@ -23,10 +21,9 @@ const useStyles = makeStyles((theme) => ({
 const MainDecs = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const dispatch = useDispatch();
 
   const Test = () => {
-    ListGetFunc_support(dispatch);
+
   };
 
   return (

@@ -1,22 +1,22 @@
 import React from "react";
 import { asyncAPI, APIRequest } from "../Common/Common";
 
-const LIST_LOAD_SUCCESS = "table/list/success";
-const LIST_LOAD_FETCH = "table/list/fetch";
-const LIST_LOAD_FAILED = "table/list/failed";
+const LIST_LOAD_SUCCESS = "board/list/success";
+const LIST_LOAD_FETCH = "board/list/fetch";
+const LIST_LOAD_FAILED = "board/list/failed";
 
-const ITEM_LOAD_SUCCESS = "table/itemload/success";
-const ITEM_LOAD_FETCH = "table/itemload/fetch";
-const ITEM_LOAD_FAILED = "table/itemload/failed";
-const ITEM_LOAD_CLEAR = "table/itemload/clear";
+const ITEM_LOAD_SUCCESS = "board/itemload/success";
+const ITEM_LOAD_FETCH = "board/itemload/fetch";
+const ITEM_LOAD_FAILED = "board/itemload/failed";
+const ITEM_LOAD_CLEAR = "board/itemload/clear";
 
-const ITEM_INPUT_SUCCESS = "table/iteminput/success";
-const ITEM_INPUT_FETCH = "table/iteminput/fetch";
+const ITEM_INPUT_SUCCESS = "board/iteminput/success";
+const ITEM_INPUT_FETCH = "board/iteminput/fetch";
 const ITEM_INPUT_FAILED = "table/iteminput/failed";
 
-const ITEM_DELETE_SUCCESS = "table/itemdelete/success";
-const ITEM_DELETE_FETCH = "table/itemdelete/fetch";
-const ITEM_DELETE_FAILED = "table/itemdelete/failed";
+const ITEM_DELETE_SUCCESS = "board/itemdelete/success";
+const ITEM_DELETE_FETCH = "board/itemdelete/fetch";
+const ITEM_DELETE_FAILED = "board/itemdelete/failed";
 ////////////////// Load List ////////////////////
 export const loadSuccess = (result) => ({
   type: LIST_LOAD_SUCCESS,
@@ -72,7 +72,7 @@ const initialState = {
   ItemInfo: [],
 };
 
-const TableRedux = (state = initialState, action) => {
+const BoardRedux = (state = initialState, action) => {
   //console.log("accout redux:", action, state);
   switch (action.type) {
     case LIST_LOAD_FETCH:
@@ -148,13 +148,13 @@ const TableRedux = (state = initialState, action) => {
         ...state,
         _Fetching: true,
       };
-    case ITEM_DELET_FAILED:
+    case ITEM_DELETE_FAILED:
       console.log(" Delete Fail", action, state);
       return {
         ...state,
         _Fetching: false,
       };
-    case ITEM_DELET_SUCCESS:
+    case ITEM_DELETE_SUCCESS:
       console.log(" Delete Success", action, state);
       return {
         ...state,
@@ -166,4 +166,4 @@ const TableRedux = (state = initialState, action) => {
   }
 };
 
-export default TableRedux;
+export default BoardRedux;

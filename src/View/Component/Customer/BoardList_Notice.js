@@ -75,7 +75,7 @@ export const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const TableSupports = (props) => {
+const BoardList_Notice = (props) => {
   const theme = useTheme();
   const classes = useStyles();
   const history = useHistory();
@@ -83,15 +83,19 @@ const TableSupports = (props) => {
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
   const [flag, setFlag] = useState(false);
   const [page, setPage] = useState(0);
+  const Items = useSelector((state) => state.BoardRedux.Items);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const Items = useSelector((state) => state.TableRedux.Items);
+  const [addDialog, setaddDialog] = useState(false);
+  const [addDialogN, setaddDialogN] = useState(false);
+  const [datas, setdatas] = useState(null);
+  const [error, setError] = useState(null);
   const query = qs.parse(location.search, {
     ignoreQueryPrefix: true,
   });
-  const {tableHead, tableItem} = props;
-  console.log("내용", Items)
+  const { tableItem } = props;
+
   useEffect(() => {
-  
+    console.log(Items)
   }, []);
 
   const parse = (regdate) => {
@@ -104,7 +108,12 @@ const TableSupports = (props) => {
     return arr.join(" ");
   };
 
-  
+  const handleClickOpen = (props) => {
+    /*
+    {
+      login ? history.push(`/AddTableQ`) : history.push(`/AddTableQN`);
+    }*/
+  };
 
   const handleChangePage = (event, newPage) => {
     setPage(--newPage);
@@ -119,42 +128,26 @@ const TableSupports = (props) => {
     <>
       <TableContainer className={classes.tableBorder}>
         <Table size="small">
-          <TableHead>
-            <TableRow height="60">
-            {tableHead.map((section) => (
-              <TableCell width={section.width} align={section.align} >
-                <Typography
-                  variant={section.font}
-                  className={classes.tablebody}
-                >
-                  {section.title}
-                </Typography>
-              </TableCell>
-            ))}  
-            </TableRow>
-          </TableHead>
           <TableBody className={classes.test}>
-            {Items &&
-              Items
+            {tableItem &&
+              tableItem
                 .slice(page * rowsPerPage, (page + 1) * rowsPerPage) //전체데이터에서 slice를통해 10개만 추출
                 .map(
                   (
                     {
                       id,
-                      name,
                       title,
                       regdate,
                       idx,
-                      status,
-                      views,
-                      isprivate,
                     },
                     i
                   ) => (
                     <TableRow
                       hover
                       onClick={() => {
-                        props.handleItemPageOpen(1, idx);
+                        isprivate
+                          ? props.history.push(`/TableItemPass?idx=${idx}`)
+                          : props.history.push(`/TableItem?idx=${idx}`);
                       }}
                       key={id}
                       height="60"
@@ -181,34 +174,16 @@ const TableSupports = (props) => {
                           {title}
                         </Typography>
                       </TableCell>
-                      <TableCell align="left">
-                        <Typography
-                          variant="body2"
-                          className={classes.tablebody}
-                        >
-                          {name}
-                        </Typography>
-                      </TableCell>
                       <TableCell
                         align="center"
+                        width="300"
                         className={classes.date_cell}
                       >
                         <Typography
                           variant="body2"
                           className={classes.tablebody}
                         >
-                          {parse(regdate)}
-                        </Typography>
-                      </TableCell>
-                      <TableCell
-                        align="center"
-                        className={classes.comment_cell}
-                      >
-                        <Typography
-                          variant="body2"
-                          className={classes.tablebody}
-                        >
-                          {views}
+                          {regdate}
                         </Typography>
                       </TableCell>
                     </TableRow>
@@ -217,7 +192,17 @@ const TableSupports = (props) => {
           </TableBody>
         </Table>
       </TableContainer>
+    <Box mt={8} display="flex" justifyContent="center">
+      <Pagination
+        count={tableItem === null ? 0 : parseInt(tableItem.length / 10) + 1}
+        page={page + 1}
+        onChange={handleChangePage}
+        color="primary"
+        showFirstButton
+        showLastButton
+      />
+    </Box>
   </>
   );
 };
-export default TableSupports;
+export default BoardList_Notice;
