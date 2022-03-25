@@ -30,7 +30,7 @@ export const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BoardItem_Supports = (props) => {
+const BoardItem_Notice = (props) => {
   const theme = useTheme();
   const classes = useStyles();
   const history = useHistory();
@@ -49,6 +49,9 @@ const BoardItem_Supports = (props) => {
         <Box width="95%" m="auto">
           <Typography variant="subtitle1" className={classes.name}>
               {`작성자 : ${Item.name}`}
+          </Typography>
+          <Typography variant="subtitle1" className={classes.name}>
+              {`작성자 : ${Item.title}`}
           </Typography>
             <Box mt={2} mb={2}>
               <TextField
@@ -69,11 +72,6 @@ const BoardItem_Supports = (props) => {
             </Box>
           <Divider />
           <Box display="flex" justifyContent="end" mt={2}>
-            <Box >
-              <BoardButton color="inherit">
-                댓글쓰기
-              </BoardButton>
-            </Box>
             <Box ml={2}>
               <BoardButton color="inherit" onClick={handleClickItemDel}>
                 글삭제
@@ -93,4 +91,4 @@ const BoardItem_Supports = (props) => {
       </Container>
   );
 };
-export default BoardItem_Supports;
+export default BoardItem_Notice;

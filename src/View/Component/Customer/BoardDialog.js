@@ -12,7 +12,7 @@ import {
   Box,
   Divider,
   } from '@mui/material';
-import { SupportAdd, SupportAddN } from "../../Common/BoardDialogFunc";
+import { SupportAdd, SupportAddN, SupportDel } from "../../Common/BoardDialogFunc";
 import BoardButton from "../Common/BoardButton";
 
 export const useStyles = makeStyles((theme) => ({
@@ -30,7 +30,7 @@ export const useStyles = makeStyles((theme) => ({
 
 const BoardDialog = (props) => {
   const classes = useStyles();
-  const { showDialog, setShowModal, handleClickAddItem, page } = props;
+  const { title, showDialog, setShowModal, handleClick, page } = props;
   const [datas, setdatas] = useState({
     id: "",
     TxtPass: "",
@@ -49,13 +49,9 @@ const BoardDialog = (props) => {
       case "SupportAddN":
         return <SupportAddN setData={setdatas} data={datas}/>;
       case "SupportDel":
-        return //<SupportDel />;
+        return <SupportDel setData={setdatas} data={datas}/>;
     }
   };
-
-  useEffect(() => {
-  
-  }, []);
 
   const handleClickClose = () => {
     setShowModal(false);
@@ -72,7 +68,7 @@ const BoardDialog = (props) => {
         fullWidth={true}
         maxWidth="xs"
       >
-        <DialogTitle id="form-dialog-title">게시글 등록</DialogTitle>
+        <DialogTitle id="form-dialog-title">{title}</DialogTitle>
           <DialogContent>
             <Box>
               <Divider />
@@ -88,7 +84,10 @@ const BoardDialog = (props) => {
               </BoardButton>
             </Box>
             <Box>
-              <BoardButton onClick={()=>{ handleClickAddItem(datas) }} color="primary">
+              <BoardButton onClick={()=>{ 
+                handleClick(datas)
+                setdatas("");
+                }} color="primary">
                 확인
               </BoardButton>
             </Box>

@@ -1,18 +1,29 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useTheme, makeStyles } from "@mui/styles";
+import { useSelector, useDispatch } from "react-redux";
 import qs from "qs";
-import { useHistory } from "react-router-dom";
+import { Link as RouterLink, useLocation, useHistory } from "react-router-dom";
 import {
   Button,
   Container,
   Box,
   Typography,
   Divider,
+  Pagination,
   useMediaQuery,
 } from "@mui/material"; //테이블에 필요한 컴포넌트
+import { loadItemClear } from "../../modules/BoardRedux";
+import { 
+  ListGetFunc_notice, 
+  ItemGetFunc_notice, 
+  ItemInputFunc_notice,
+  ItemDelFunc_notice
+} from "../../Common/BoardFunc";
 import BoardList_Notice from "../../Component/Customer/BoardList_Notice"
+import BoardItem_Notice from "../../Component/Customer/BoardItem_Notice"
 import CompanyInfo from "../../Component/Bottom/CompanyInfo";
 import TitleText from "../../Component/Common/TitleText";
+import BoardButton from "../../Component/Common/BoardButton";
 
 export const useStyles = makeStyles((theme) => ({
   
@@ -22,16 +33,17 @@ const CustomerNotice = () => {
   const theme = useTheme();
   const classes = useStyles();
   const history = useHistory();
+  const dispatch = useDispatch();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
-
-  const [flag, setFlag] = useState(false);
-  const [addDialog, setaddDialog] = useState(false);
-  const [addDialogN, setaddDialogN] = useState(false);
-
-  const query = qs.parse(location.search, {
-    ignoreQueryPrefix: true,
-  });
+  const Items = useSelector((state) => state.BoardRedux.Items);
+  const ItemInfo = useSelector((state) => state.BoardRedux.ItemInfo);
+  const loginState = useSelector((state) => state.AccountRedux.loginState);
+  const [flagPage, setFlagPage] = useState(0);
+  const [flag, setflag] = useState(false);
+  const [page, setPage] = useState(0);
+  const [showDialogAdd, setShowModalAdd] = useState(false);
+  const [showDialogDel, setShowModalDel] = useState(false);
 
   let tableItem = [
     { id: "1" , title: "공지제목", regdate: "2022/04/16", idx: "1"},
@@ -51,20 +63,40 @@ const CustomerNotice = () => {
   ];
 
   useEffect(() => {
-    /*
-    if (userData) {
-      checkToken(setLogin, setUserData);
-    }
-    APIRequest("getQnaList")
-      .then((receivedData) => {
-        setdatas(receivedData);
-        //console.log(receivedData);
-      })
-      .catch((err) => {
-        alert("에러" + err);
-        //console.log(err);
-      });*/
+    ListGetFunc_notice(dispatch)
   }, []);
+
+  const handleItemPageOpen = (flag, idx) => {
+    setFlagPage(flag);
+    ItemGetFunc_notice(dispatch, idx)
+  };
+
+  const handleItemPageClose = (data) => {
+    setFlagPage(data);
+    dispatch(loadItemClear());
+  };
+
+  const handleClickAddItem = async (data) => {
+    let result = await ItemInputFunc_notice(dispatch, data) 
+    if(result !== ""){
+      setShowModalAdd(false);
+      ListGetFunc_notice(dispatch);
+      setflag(!flag);
+    }
+  };
+  
+  const handleChangePage = (event, newPage) => {
+    setPage(--newPage);
+  };
+
+  const handleClickItemDel = async ()=> {
+    let result = await ItemDelFunc_notice(dispatch, ItemInfo.idx) 
+    if(result !== ""){
+      setFlagPage(0);
+      ListGetFunc_notice(dispatch);
+      setflag(!flag);
+    }
+  }
 
   return (
       <Container maxWidth="lg">
@@ -75,9 +107,37 @@ const CustomerNotice = () => {
           />
         </Box>
         <Box my={10} width="80%" m="auto">
-          <BoardList_Notice tableItem={tableItem}/>
+          <Box>
+            <BoardList_Notice  
+              handleItemPageOpen={handleItemPageOpen}
+              page={page} 
+              Items={Items}
+            />
+            <Box display="flex" justifyContent="end" mr={2} mt={1}>
+              <BoardButton 
+                onClick={()=>{ setShowModalAdd(true); }}
+              >
+                글 쓰 기
+              </BoardButton>
+            </Box>
+            <Box mt={2} display="flex" justifyContent="center">
+              <Pagination
+                count={Items === null ? 0 : parseInt(Items.length / 10) + 1}
+                page={page + 1}
+                onChange={handleChangePage}
+                color="secondary"
+                showFirstButton
+                showLastButton
+              />
+            </Box>
+          </Box>
+          : <BoardItem_Notice 
+              Item={ItemInfo} 
+              handleItemPageClose={handleItemPageClose} 
+              handleClickItemDel={handleClickItemDel}
+            />
         </Box>
-        <Box mb={10}>
+        <Box my={5}>
           <CompanyInfo />
         </Box>
       </Container>

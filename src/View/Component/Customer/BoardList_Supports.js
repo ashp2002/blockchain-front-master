@@ -51,11 +51,9 @@ const BoardList_Supports = (props) => {
   const history = useHistory();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
-  const [flag, setFlag] = useState(false);
-  const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const Items = useSelector((state) => state.BoardRedux.Items);
-  const { tableHead } = props;
+  const { tableHead, page } = props;
   
   useEffect(() => {
   

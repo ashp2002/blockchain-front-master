@@ -43,39 +43,10 @@ const CustomerSupports = () => {
   const ItemInfo = useSelector((state) => state.BoardRedux.ItemInfo);
   const loginState = useSelector((state) => state.AccountRedux.loginState);
   const [flagPage, setFlagPage] = useState(0);
+  const [flag, setflag] = useState(false);
   const [page, setPage] = useState(0);
-  const [showDialog, setShowModal] = useState(false);
-
-  useEffect(() => {
-    ListGetFunc_support(dispatch)
-  }, [dispatch]);
-
-  const handleItemPageOpen = (flag, idx) => {
-    setFlagPage(flag);
-    ItemGetFunc_support(dispatch, idx)
-    console.log("페이지");
-  };
-
-  const handleItemPageClose = (data) => {
-    setFlagPage(data);
-    dispatch(loadItemClear());
-    console.log(flagPage);
-  };
-
-  const handleClickAddItem = (data) => {
-    loginState ? ItemInputFunc_support(dispatch, data) : ItemInputFuncN_support(dispatch, data)
-    console.log("밖에", data);
-  };
-  
-  const handleChangePage = (event, newPage) => {
-    setPage(--newPage);
-  };
-
-  const handleClickItemDel = ()=> {
-    loginState ? ItemDelFunc_support(dispatch, ItemInfo.idx) : ItemDelFuncN_support(dispatch, ItemInfo.idx)
-    console.log("삭제")
-  }
- 
+  const [showDialogAdd, setShowModalAdd] = useState(false);
+  const [showDialogDel, setShowModalDel] = useState(false);
   const tableHead = [
     { title: "NO.", width: "100", align: "center", font: "subtitle1" },
     { title: "제목", align: "center", font: "subtitle1" },
@@ -83,6 +54,61 @@ const CustomerSupports = () => {
     { title: "작성날짜", width: "150", align: "center", font: "subtitle1" },
     { title: "조회수", width: "100", align: "center", font: "subtitle1" },
   ];
+
+  useEffect(() => {
+    ListGetFunc_support(dispatch)
+  }, []);
+
+  useEffect(() => {
+  }, [flag]);
+
+  const handleItemPageOpen = (flag, idx) => {
+    setFlagPage(flag);
+    ItemGetFunc_support(dispatch, idx)
+  };
+
+  const handleItemPageClose = (data) => {
+    setFlagPage(data);
+    dispatch(loadItemClear());
+  };
+
+  const handleClickAddItem = async (data) => {
+    let result = ""
+    loginState ? 
+    result = await ItemInputFunc_support(dispatch, data) 
+    : result = await ItemInputFuncN_support(dispatch, data)
+    if(result !== ""){
+      setShowModalAdd(false);
+      ListGetFunc_support(dispatch);
+      setflag(!flag);
+    }
+  };
+  
+  const handleChangePage = (event, newPage) => {
+    setPage(--newPage);
+  };
+
+  const handleClickItemDel = async ()=> {
+    let result = ""
+    loginState ? 
+    result = await ItemDelFunc_support(dispatch, ItemInfo.idx) 
+    : setShowModalDel(true)
+    if(result !== ""){
+      setFlagPage(0);
+      ListGetFunc_support(dispatch);
+      setflag(!flag);
+    }
+  }
+
+  const handleClickDialogDel = async (data)=> {
+    let result = await ItemDelFuncN_support(dispatch, ItemInfo.idx, data.TxtPass)
+    if(result !== ""){
+      setFlagPage(0);
+      ListGetFunc_support(dispatch);
+      setflag(!flag);
+      setShowModalDel(false);
+    }
+  }
 
   return (
       <Container maxWidth="lg">
@@ -103,7 +129,7 @@ const CustomerSupports = () => {
             />
             <Box display="flex" justifyContent="end" mr={2} mt={1}>
               <BoardButton 
-                onClick={()=>{ setShowModal(true); }}
+                onClick={()=>{ setShowModalAdd(true); }}
               >
                 글 쓰 기
               </BoardButton>
@@ -130,10 +156,18 @@ const CustomerSupports = () => {
           <CompanyInfo />
         </Box>
         <BoardDialog
-          showDialog={showDialog}
-          setShowModal={setShowModal}
-          handleClickAddItem={handleClickAddItem}
+          title="게시글등록"
+          showDialog={showDialogAdd}
+          setShowModal={setShowModalAdd}
+          handleClick={handleClickAddItem}
           page={loginState ? "SupportAdd" : "SupportAddN"}
+        />
+        <BoardDialog
+          title="패스워드입력"
+          showDialog={showDialogDel}
+          setShowModal={setShowModalDel}
+          handleClick={handleClickDialogDel}
+          page={"SupportDel"}
         />
       </Container>
   );
