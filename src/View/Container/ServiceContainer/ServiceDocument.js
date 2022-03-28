@@ -14,19 +14,19 @@ const ServiceDocument = () => {
 
   return (
     <Container>
-      <Box my={10}>
+      <Box sx={{ my: 10 }}>
         <ServiceDocInfo />
       </Box>
-      <Box display="flex" justifyContent="center">
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
         <img src={ServiceDoc_Img} />
       </Box>
-      <Box my={10}>
+      <Box sx={{ my: 10 }}>
         <ServiceVoteAgent />
       </Box>
-      <Box display="flex" justifyContent="center">
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
         <img src={ServiceDoc_Img} />
       </Box>
-      <Box my={10}>
+      <Box sx={{ my: 10 }}>
         <ServiceVoteTrust />
       </Box>
     </Container>

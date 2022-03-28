@@ -15,25 +15,20 @@ import ColorButton from "../../Component/Common/ColorButton";
 import CompanyInfo from "../../Component/Bottom/CompanyInfo";
 import BottomInput from "../../Component/Bottom/BottomInput";
 const useStyles = makeStyles((theme) => ({
- 
+
 }));
 
 export default function WhiteBottom(props) {
   const theme = useTheme();
   const classes = useStyles();
-  const history = useHistory();
-  const location = useLocation();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <>
-      <Box sx={{
-        width: "100%",
-        backgroundColor: "white",
-      }}>
-        <Container maxWidth="lg">
-          <Box py={8}>
+      <Box sx={{ width: "100%", backgroundColor: "white" }}>
+        <Container sx={{ maxWidth: "lg" }}>
+          <Box sx={{py: 8}}>
             <TitleText
                 title="COMTACT US"
                 description="문의하실 부분이 있다면 여기 남겨 주세요."
@@ -41,15 +36,16 @@ export default function WhiteBottom(props) {
                 size="h3"
             />
           </Box>
-          <Box px={10}>
+          <Box sx={{ px: 10 }}>
             <BottomInput />
           </Box>
-          <Box width="40%" margin="auto" mt={2}>
+          <Box sx={{ width: "40%", margin: "auto", mt: 2 }}
+          >
             <ColorButton color="primary">
               무료상담받기 
             </ColorButton> 
           </Box>
-          <Box mt={6}>
+          <Box sx={{ mt: 6 }}>
               <CompanyInfo />
           </Box>
         </Container>

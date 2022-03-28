@@ -21,11 +21,13 @@ const MainTransection = () => {
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <Box width="100%" bgcolor="#F4F4F4">
+    <Box sx={{ width: "100%", bgcolor: "#F4F4F4" }}>
       <Container>
-        <Box   
-          pt={15}
-          pb={15}
+        <Box
+          sx={{
+            pt: 15,
+            pb: 15
+          }}   
         >
           <TitleText
             title="트랜잭션 생성 및 조회"

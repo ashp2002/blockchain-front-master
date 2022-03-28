@@ -31,7 +31,12 @@ const Customer = (props) => {
     <Box sx={{ mt: 14 }}>
       <CustomerDecs />
       <TabBar handleChange={handleChange} items={tabContainText} value={value}/>
-      <Box display="flex" flexDirection="column" alignItems="center">
+      <Box sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center"
+        }}
+      >
         {value === 0 && <CustomerInquiry />}
         {value === 1 && <CustomerNotice />}
         {value === 2 && <CustomerFaq />}

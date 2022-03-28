@@ -13,7 +13,7 @@ const ServicePayment = () => {
   return (
     <Box>
       <Container>
-        <Box py={10}>
+        <Box sx={{ my: 10 }}>
           <TitleText
             title="결제조작감지"
             subtitle="준비중입니다."

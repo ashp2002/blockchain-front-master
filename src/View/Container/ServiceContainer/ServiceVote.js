@@ -18,19 +18,19 @@ const ServiceVote = () => {
         <Box>
           <ServiceVoteTitle />
         </Box>
-        <Box my={10}>
+        <Box sx={{ my: 10 }}>
           <ServiceVoteInfo />
         </Box>
-        <Box display="flex" justifyContent="center">
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
           <img src={ServiceEther_Img} />
         </Box>
-        <Box my={10}>
+        <Box sx={{ my: 10 }}>
           <ServiceVoteAgent />
         </Box>
-        <Box display="flex" justifyContent="center">
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
           <img src={ServiceVote_Img} />
         </Box>
-        <Box my={10}>
+        <Box sx={{ my: 10 }}>
           <ServiceVoteTrust />
         </Box>
       </Container>

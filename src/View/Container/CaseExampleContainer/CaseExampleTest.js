@@ -18,7 +18,7 @@ const CaseExampleTest = () => {
 
   return (
     <Container>
-      <Box my={10}>
+      <Box sx={{ my: 10 }}>
         <TitleText
           title="준비중...."
           size="h2"

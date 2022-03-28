@@ -15,10 +15,8 @@ import {
   AccordionSummary,
   AccordionDetails
 } from "@mui/material";
-import { ParseDATE_notice } from "../../Common/CommonFuncs"
 
 const useStyles = makeStyles((theme) => ({
-
   bodycontainer: {
     backgroundColor: "#ECF0F4",
   },
@@ -69,7 +67,7 @@ const BoardList_Faq = (props) => {
 
   return (
     <>
-      <Container maxWidth="lg" className={classes.container}>
+      <Container sx={{ maxWidth: "lg" }}>
         <Box>
           {Items ? (
             Items.map((data) => (
@@ -80,11 +78,13 @@ const BoardList_Faq = (props) => {
                   className={classes.test}
                   id={data.idx}
                 >
-                  <Box
-                    display="flex"
-                    alignItems="center"
-                    width="100%"
-                    height={50}
+                  <Box 
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      width: "100%",
+                      height: 50
+                    }}
                   >
                     {/* 
                     <Box flexBasis="10%" pl={3}>
@@ -93,9 +93,9 @@ const BoardList_Faq = (props) => {
                         : `Q${data.id}`}
                     </Box>
                     */}
-                    <Box flexBasis="90%">
+                    <Box sx={{ flexBasis: "90%" }}>
                       <Typography
-                        variant="subtitle2"
+                        sx={{ variant: "subtitle2" }}
                         className={classes.titlecontents}
                       >
                         {data.title}
@@ -104,8 +104,8 @@ const BoardList_Faq = (props) => {
                   </Box>
                 </AccordionSummary>
                 <AccordionDetails className={classes.bodycontainer}>
-                  <Box display="flex" width="100%" py={2}>
-                    <Box flexBasis="10%" pt={2} pl={3}>
+                  <Box sx={{ display: "flex", width: "100%", py: 2 }}>
+                    <Box sx={{ flexBasis: "10%", pt: 2, pl: 3 }}>
                       A
                     </Box>
                     <TextField
@@ -129,7 +129,7 @@ const BoardList_Faq = (props) => {
               </Accordion>
             ))
           ) : (
-            <Box height="250px"></Box>
+            <Box sx={{ height: "250px" }}></Box>
           )}
         </Box>
       </Container>

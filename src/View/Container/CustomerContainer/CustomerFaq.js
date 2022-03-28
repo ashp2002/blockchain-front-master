@@ -79,14 +79,14 @@ const CustomerFaq = (props) => {
   }
   
   return (
-    <Container maxWidth="lg">
-      <Box mt={10}>
+    <Container sx={{ maxWidth: "lg" }}>
+      <Box sx={{ mt: 10 }}>
         <TitleText
           title="자 주 하 는 질 문"
           size="h2"
         />
       </Box>
-      <Box my={10} width="80%" m="auto">
+      <Box sx={{ my:10, width: "80%", m: "auto" }}>
         {flagPage == 0 ?
         <Box>
           <BoardList_Faq  
@@ -94,7 +94,7 @@ const CustomerFaq = (props) => {
             page={page} 
           />
           {userLevel == 1 ? 
-            <Box display="flex" justifyContent="end" mr={2} mt={1}>
+            <Box sx={{ display: "flex", justifyContent: "end", mr: 2, mt: 1 }}>
               <BoardButton 
                 onClick={()=>{ setShowModalAdd(true); }}
               >
@@ -110,7 +110,7 @@ const CustomerFaq = (props) => {
           />
         }   
       </Box>
-      <Box my={5}>
+      <Box sx={{ my:5 }}>
         <CompanyInfo />
       </Box>
       <BoardDialog

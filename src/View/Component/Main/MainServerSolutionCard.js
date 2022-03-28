@@ -23,34 +23,36 @@ const MainDBImmutabilityCard = (props) => {
   const { image, title, decs } = props;
 
   return (
-    <Box 
-      px={[1, 3, 4]}
-      py={[2, 5, 7]}
-      border={2}
-      display="flex" 
-      flexDirection="column" 
-      justifyContent="space-between"
-      borderRadius={1}
-      borderColor="#A8A8A8"
+    <Box
+      sx={{
+        px: [1, 3, 4],
+        py: [2, 5, 7],
+        border: 2,
+        display: "flex", 
+        flexDirection: "column", 
+        justifyContent: "space-between",
+        borderRadius: 1,
+        borderColor: "#A8A8A8",
+      }} 
+    >
+      <Box 
+        className={classes.boximage}
+        sx={{
+          display: "flex", 
+          justifyContent: "center"
+        }}
       >
-      <Box display="flex" justifyContent="center" className={classes.boximage}>
         <img
           src={image}
         ></img>
       </Box>
       <Box mt={5}>
-        <Typography
-          variant="body1"
-          align="center"
-        >
+        <Typography sx={{ variant: "body1", align: "center" }}>
           {title}
         </Typography>
       </Box>
-      <Box mt={1} width="250px">
-        <Typography
-          variant="body1"
-          align="center"
-        >
+      <Box sx={{ mt: 1, width: "250px" }}>
+        <Typography sx={{ variant: "body1", align: "center" }}>
           {decs}
         </Typography>
       </Box>

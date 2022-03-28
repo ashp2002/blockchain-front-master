@@ -24,12 +24,14 @@ const MainEtherInfo = () => {
   return (
     <Container>
       <Box   
-        pt={15}
-        pb={15}
+        sx={{
+          pt: 15,
+          pb: 15
+        }}  
       >
         <MainEtherInfoTitle />
         <MainEtherInfoBody />
-        <Box mt={5} display="flex" justifyContent="center">
+        <Box sx={{ mt: 5, display: "flex", justifyContent: "center" }}>
           <img
               src={mainEtherInfo}
           ></img> 

@@ -22,17 +22,15 @@ const MainDecs = () => {
   const classes = useStyles();
   const theme = useTheme();
 
-  const Test = () => {
-
-  };
-
   return (
     <Box
       className={classes.container}
-      width="100%"
-      height={["370px", "470px", "500px"]}
-      bgcolor="RGB(246,248,247)"
-      pt={10}
+      sx={{
+        pt: 10,
+        width: "100%",
+        height: ["370px", "470px", "500px"],
+        bgcolor: "RGB(246,248,247)"
+      }}
     >
       <ThemeProvider theme={DarkTheme}>
         <Container>
@@ -48,8 +46,13 @@ const MainDecs = () => {
           <MainContents />
           <LoginTest />
           */}
-          <Box mt={5} display="flex" justifyContent="center">
-            <Box width="20%" mr={10}>
+          <Box sx={{
+              mt: 5,
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <Box sx={{ width: "20%", mr: 10, }}>
               <ColorButton 
                 color="border"
                 onClick={() => { Test() }}
@@ -57,7 +60,7 @@ const MainDecs = () => {
                 문의하기
               </ ColorButton>
             </Box>
-            <Box width="20%">
+            <Box sx={{ width: "20%" }}>
               <ColorButton color="border">솔루션보기</ ColorButton>
             </Box>
           </Box>

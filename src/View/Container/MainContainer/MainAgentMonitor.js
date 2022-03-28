@@ -21,14 +21,16 @@ const MainAgentMonitor = () => {
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <Box width="100%" bgcolor="#F4F4F4">
+    <Box sx={{ width: "100%", bgcolor: "#F4F4F4" }}>
       <Container>
         <Box   
-          pt={15}
-          pb={15}
+          sx={{
+            pt: 15,
+            pb: 15
+          }}  
         >
           <MainAgentMonitorTitle />
-          <Box mt={6} display="flex" justifyContent="center">
+          <Box sx={{ mt: 6, display: "flex", justifyContent: "center" }}>
             <img
                 src={mainMonitor_img}
             ></img> 

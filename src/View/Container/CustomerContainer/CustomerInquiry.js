@@ -12,7 +12,7 @@ const CustomerInquiry = () => {
   const classes = useStyles();
 
   return (
-    <Box width="80%" mb={10}>
+    <Box sx={{ width: "80%", mb: 10 }}>
         <WhiteBottom />
     </Box>
   );

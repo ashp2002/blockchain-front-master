@@ -61,21 +61,30 @@ const UserJoin = (props) => {
 
   return (
     <Container>
-      <Box 
-        width="50%" 
-        mx="auto" 
-        my={20} 
-        border={1}
-        borderRadius={10} 
-        px={5} 
-        py={4}>
+      <Box
+        sx={{
+          width: "50%",
+          mx: "auto",
+          my: 20,
+          px: 5,
+          py: 4,
+          border: 1,
+          borderRadius: 10,
+        }} 
+      >
         <Box>
           <TitleText 
             title="회 원 가 입"
             size="h2"/>
         </Box>
-        <Box display="flex">
-          <Box my={2} display="flex" flexDirection="column" flexBasis="70%">
+        <Box sx={{ display: "flex" }}>
+          <Box sx={{
+            my: 2,
+            display: "flex",
+            flexDirection: "column",
+            flexBasis: "70%",
+            }}
+          >
             <Box>사용자 ID</Box>
             <SimpleTextField
               value={txtJoinID || ""}
@@ -87,15 +96,28 @@ const UserJoin = (props) => {
               placeholder="영문소문자, 숫자 조합"
             />
           </Box>
-          <Box display="flex" flexDirection="column" flexBasis="5%"></Box>
-          <Box my={2} pt={3} display="flex" flexDirection="column" flexBasis="25%">
+          <Box sx={{ display: "flex", flexDirection: "column", flexBasis: "5%" }} />
+          <Box 
+            sx={{ 
+              my: 2, 
+              pt: 3, 
+              display: "flex", 
+              flexDirection: "column", 
+              flexBasis: "25%"}}
+            >
             <ColorButton onClick={handleIdcheck} color="secondary" height="small" radius="true">
                 조 회
             </ColorButton>
           </Box>
         </Box>
-        <Box display="flex">
-          <Box mt={2} display="flex" flexDirection="column" flexBasis="45%">
+        <Box sx={{ display: "flex" }}>
+          <Box sx={{ 
+            mt: 2, 
+            display: "flex", 
+            flexDirection: "column", 
+            flexBasis: "45%"
+            }}
+          >
             <Box>비밀번호</Box>
             <SimpleTextField
               radius={5}
@@ -105,8 +127,8 @@ const UserJoin = (props) => {
               onChange={({ target: { value } }) => setTxtJoinPW(value)}
             />
           </Box>
-          <Box display="flex" flexDirection="column" flexBasis="10%"></Box>
-          <Box mt={2} display="flex" flexDirection="column" flexBasis="45%">
+          <Box sx={{ display: "flex", flexDirection: "column", flexBasis: "10%" }} />
+          <Box sx={{ display: "flex", flexDirection: "column", flexBasis: "45%" }}>
             <Box>비밀번호 확인</Box>
             <SimpleTextField
               radius={5}
@@ -121,14 +143,16 @@ const UserJoin = (props) => {
             />
             {txtJoinPW2 != "" ? (
               PWCheckResult ? null : (
-                <Box color="red">
+                <Box sx={{ color: "red" }}>
                   비밀번호가 일치하지 않습니다.
                 </Box>
               )
             ) : null}
           </Box>
         </Box>
-        <Box color="red"> 영문소문자, 숫자,특수문자 조합 8자~ 15자 </Box>
+        <Box sx={{ color: "red" }}> 
+          영문소문자, 숫자,특수문자 조합 8자~ 15자 
+        </Box>
         <Box my={2}>
           <Box>이름</Box>
           <SimpleTextField
@@ -139,7 +163,7 @@ const UserJoin = (props) => {
           />
         </Box>
         {/*<BirthTextSet txtBirth={txtBirth} setTxtBirth={setTxtBirth} />*/}
-        <Box my={2}>
+        <Box sx={{ my: 2 }}>
           <Box>회사명</Box>
           <SimpleTextField
             radius={5}
@@ -149,7 +173,7 @@ const UserJoin = (props) => {
             onChange={({ target: { value } }) => setTxtCompany(value)}
           />
         </Box>
-        <Box my={2}>
+        <Box sx={{ my: 2 }}>
           <Box>휴대전화</Box>
           <SimpleTextField
             radius={5}
@@ -159,7 +183,7 @@ const UserJoin = (props) => {
             onChange={({ target: { value } }) => setTxtTel(value)}
           />
         </Box>
-        <Box my={2}>
+        <Box sx={{ my: 2 }}>
           <Box>이메일</Box>
           <SimpleTextField
             radius={5}
@@ -168,7 +192,7 @@ const UserJoin = (props) => {
             onChange={({ target: { value } }) => setTxtEmail(value)}
           />
         </Box>
-        <Box mt={2} mb={4} display="flex" justifyContent="center">
+        <Box sx={{ mt: 2, mb: 4, display: "flex", justifyContent: "center" }}>
           회원가입 시 개인정보 처리방침과 이용약관을 확인하였으며,동의합니다.
         </Box>
         <Box>
@@ -176,7 +200,7 @@ const UserJoin = (props) => {
             회원가입하기
           </ColorButton>
         </Box>
-        <Box my={2}>
+        <Box sx={{ my: 2 }}>
           <ColorButton onClick={handlePageFlag} color="secondary">
               돌아가기
           </ColorButton>

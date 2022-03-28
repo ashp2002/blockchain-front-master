@@ -23,13 +23,21 @@ const MainDecs = () => {
   return (
     <Box
       className={classes.container}
-      width="100%"
-      height={["200px", "250px", "400px"]}
-      bgcolor="RGB(246,248,247)"
+      sx={{
+        width: "100%",
+        height: ["200px", "250px", "400px"],
+        bgcolor: "RGB(246,248,247)"
+      }}
     >
       <ThemeProvider theme={DarkTheme}>
       <Container>
-        <Box position="relative" left="-500px" bottom="-270px">
+        <Box 
+          sx={{
+            position: "relative",
+            left: "-500px",
+            bottom: "-270px",
+          }}
+        >
           <TitleText
             title="적 용 사 례"
             size="h1"

@@ -29,19 +29,21 @@ const MainPartners = () => {
   return (
     <Container>
       <Box   
-        pt={15}
-        pb={15}
+        sx={{
+          pt: 15,
+          pb: 15
+        }}   
       >
         <TitleText
           title="협 력 업 체"
           size="h3"
         />
-        <Box display="flex" justifyContent="center">
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
           <MainPartnersCard image={MainPartners_Img1} title="대한체육회TV" />
           <MainPartnersCard image={MainPartners_Img2} title="한국스마트선거" margin="true" />
           <MainPartnersCard image={MainPartners_Img3} title="제니스" />
         </Box>
-        <Box display="flex" justifyContent="center">
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
           <MainPartnersCard image={MainPartners_Img4} title="진단보증협회" />
           <MainPartnersCard image={MainPartners_Img5} title="플랜에이" margin="true" />
           <MainPartnersCard image={MainPartners_Img6} title="월급날" />

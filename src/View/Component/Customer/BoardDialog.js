@@ -79,8 +79,8 @@ const BoardDialog = (props) => {
             </Box>
           </DialogContent>
         <DialogActions>
-          <Box mr={2} pb={2} display="flex">
-            <Box mr={2}>
+          <Box sx={{ mr: 2, pb: 2, display: "flex" }}>
+            <Box sx={{ mr: 2 }}>
               <BoardButton onClick={handleClickClose} color="primary">
                 취소
               </BoardButton>

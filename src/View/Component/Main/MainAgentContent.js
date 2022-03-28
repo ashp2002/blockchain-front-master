@@ -26,23 +26,25 @@ const MainAgentContent = (props) => {
 
   return (
     <Box
-      display="flex"
+      sx={{ display: "flex" }}
       //flexDirection={isMobile || isTablet ? "column" : "row"}
       //mt={[5, 6, 8]}
       //mb={[5, 6, 8]}
     >
       <Box
-        display="flex"
-        flexBasis="50%"
-        justifyContent="center"
-        mt={location === "Img_left" ? "" : [5, 5, 0]}
+        sx={{
+          display: "flex",
+          flexBasis: "50%",
+          justifyContent: "center",
+          mt: location === "Img_left" ? "" : [5, 5, 0]
+        }}
       >
       {location === "Img_left" ?
           <img
             className={classes.container}
             src={image}
           ></img> : 
-        <Box px={4} pt={10}>
+        <Box sx={{ px: 4, pt: 10 }}>
           <TitleText
             title={title}
             description={decs}
@@ -54,13 +56,15 @@ const MainAgentContent = (props) => {
       }
       </Box>
       <Box
-        display="flex"
-        flexBasis="50%"
-        justifyContent="center"
-        mt={location === "Img_left" ? [5, 5, 0] : ""}
+        sx={{
+          display: "flex",
+          flexBasis: "50%",
+          justifyContent: "center",
+          mt: location === "Img_left" ? "" : [5, 5, 0]
+        }}
       >
         {location === "Img_left" ?
-          <Box px={4} pt={10}>
+          <Box sx={{ px: 4, pt: 10 }}>
             <TitleText
               title={title}
               description={decs}

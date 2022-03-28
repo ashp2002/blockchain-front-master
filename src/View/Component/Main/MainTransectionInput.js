@@ -26,50 +26,56 @@ const MainTransectionInput = (props) => {
 
   return (
     <Box
-      display="flex"
-      //flexDirection={isMobile || isTablet ? "column" : "row"}
-      //mt={[5, 6, 8]}
-      //mb={[5, 6, 8]}
-      border={2}
-      borderColor="#707070"
-      borderRadius={15}
-      px={4}
-      py={14}
+      sx={{
+        //flexDirection: isMobile || isTablet ? "column" : "row"
+        //mt: [5, 6, 8]
+        //mb: [5, 6, 8]
+        display: "flex",
+        border: 2,
+        borderColor: "#707070",
+        borderRadius: 15,
+        px: 4,
+        py: 14,
+      }}
     >
       <Box
-        flexBasis="50%"
-        justifyContent="center"
-        borderRight={1}
-        px={8}
-        py={3}
+        sx={{
+          flexBasis: "50%",
+          justifyContent: "center",
+          borderRight: 1,
+          px: 8,
+          py: 3,
+        }}
       >
         <TitleText title="파일 해시 값 생성하기" size="h3"/>
-        <Box display="flex" justifyContent="center">
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
           <img
             src={TransectionTemp1}
           ></img>
         </Box>
-        <Box mt={6} mb={4}>
+        <Box sx={{ mt: 6, mb: 4 }}>
           <SimpleTextField />
         </Box>
-        <Box mb={3}>
+        <Box sx={{ mb: 3 }}>
           <ColorButton color="secondary"> 복사하기 </ ColorButton>
         </Box>
       </Box>
       <Box
-        flexBasis="50%"
-        justifyContent="center"
-        px={8}
-        py={3}
+        sx={{
+          flexBasis: "50%",
+          justifyContent: "center",
+          px: 8,
+          py: 3
+        }}
       >
         <TitleText title="이더리움 해시값 조회하기" size="h3"/>
         <Box>
           <SimpleTextField />
         </Box>
-        <Box mt={4} mb={6}>
+        <Box sx={{ mt: 4, mb: 6 }}>
           <ColorButton color="secondary"> 복사하기 </ ColorButton>
         </Box>
-        <Box display="flex" justifyContent="center">
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
           <img
             src={TransectionTemp2}
           ></img>

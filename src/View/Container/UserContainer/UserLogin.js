@@ -33,19 +33,22 @@ const UserLogin = (props) => {
 
   return (
     <Container>
-      <Box 
-        width="50%" 
-        mx="auto" 
-        my={20} 
-        border={1}
-        borderRadius={10} 
-        px={5} 
-        py={4}>
+      <Box
+        sx={{
+          width: "50%",
+          mx: "auto",
+          my: 20,
+          px: 5,
+          py: 4,
+          border: 1,
+          borderRadius: 10,
+        }} 
+      >
         <Box>
           <TitleText 
             title="로 그 인"
             size="h2"/>
-          <Box my={2}>
+          <Box sx={{ my: 2 }}>
             <SimpleTextField
               autoFocus
               value={txtID}
@@ -54,7 +57,7 @@ const UserLogin = (props) => {
               placeholder="아이디를 입력해주세요."
             />
           </Box>
-          <Box my={2}>
+          <Box sx={{ my: 2 }}>
             <SimpleTextField
               value={txtPW}
               onChange={({ target: { value } }) => setTxtPW(value)}
@@ -67,7 +70,7 @@ const UserLogin = (props) => {
             {loginFail && "아이디 또는 비밀번호를 확인해주세요."}
           </Typography>
           */}
-          <Box mt={8}>
+          <Box sx={{ mt: 8 }}>
             <ColorButton 
               onClick={handleLogin
                 /*async () => {
@@ -79,35 +82,51 @@ const UserLogin = (props) => {
               로그인 
             </ ColorButton>
           </Box>
-          <Box display="flex" justifyContent="center" m={2}>
+          <Box 
+            sx={{
+              m: 2,
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
             <Box
-              display="flex"
-              flexBasis="50%"
-              justifyContent="center"
-              alignItems="center"
-              borderRight={1}
+              sx={{
+                display: "flex",
+                flexBasis: "50%",
+                justifyContent: "center",
+                alignItems: "center",
+                borderRight: 1,
+              }}
               onClick={() => alert("1:1문의 상담에 올려주세요.")}
             >
               아이디를 잊어버렸어요
             </Box>
             <Box
-              display="flex"
-              flexBasis="50%"
-              justifyContent="center"
-              alignItems="center"
+              sx={{
+                display: "flex",
+                flexBasis: "50%",
+                justifyContent: "center",
+                alignItems: "center",
+                borderRight: 1,
+              }}
               onClick={() => alert("1:1문의 상담에 올려주세요.")}
             >
               비밀번호를 잊어버렸어요
             </Box>
           </Box>
           <Box>
-            <ColorButton
-            onClick={handlePageFlag}
-            color="secondary">
+            <ColorButton onClick={handlePageFlag} color="secondary">
               회원가입
             </ ColorButton>
           </Box>
-          <Box mt={8} mb={2} display="flex" justifyContent="center">
+          <Box 
+            sx={{
+              mt: 8,
+              mb: 2,
+              display: "flex",
+              justifyContent: "center"
+            }}
+          >
             회원가입 시{" "}개인정보 처리방침{" "}확인하였으며,동의합니다.
           </Box>
         </Box>

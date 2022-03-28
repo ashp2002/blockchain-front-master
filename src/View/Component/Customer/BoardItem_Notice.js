@@ -44,18 +44,16 @@ const BoardItem_Notice = (props) => {
   
   }, []);
 
-  
-
   return (
-    <Container maxWidth="lg">
-        <Box width="95%" m="auto">
-          <Typography variant="subtitle1" className={classes.name}>
+    <Container sx={{ maxWidth: "lg" }}>
+        <Box sx={{ width: "95%", m: "auto" }}>
+          <Typography sx={{ variant: "subtitle1" }} className={classes.name}>
               {`작성자 : ${Item.name}`}
           </Typography>
-          <Typography variant="subtitle1" className={classes.name}>
+          <Typography sx={{ variant: "subtitle1" }} className={classes.name}>
               {`제목 : ${Item.title}`}
           </Typography>
-            <Box mt={2} mb={2}>
+            <Box sx={{ my: 2 }}>
               <TextField
                 fullWidth
                 className={classes.contents}
@@ -73,17 +71,20 @@ const BoardItem_Notice = (props) => {
               />
             </Box>
           <Divider />
-          <Box display="flex" justifyContent="end" mt={2}>
+          <Box sx={{ display: "flex", justifyContent: "end", mt: 2 }}>
             {userLevel == 1 ? 
-              <Box ml={2}>
-                <BoardButton color="inherit" onClick={handleClickItemDel}>
+              <Box sx={{ ml: 2 }}>
+                <BoardButton 
+                  sx={{ color: "inherit" }} 
+                  onClick={handleClickItemDel}
+                >
                   글삭제
                 </BoardButton>
               </Box> : ""
             }
-            <Box ml={2}>
+            <Box sx={{ ml: 2 }}>
               <BoardButton 
-                color="inherit" 
+                sx={{ color: "inherit" }} 
                 onClick={() => 
                   {props.handleItemPageClose(0);}
                 }>

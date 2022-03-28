@@ -24,11 +24,13 @@ const MainDBImmutability = () => {
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <Box width="100%" bgcolor="#F4F4F4">
+    <Box sx={{ width: "100%", bgcolor: "#F4F4F4" }}>
       <Container>
         <Box
-          pt={15}
-          pb={15}
+          sx={{
+            pt: 15,
+            pb: 15
+          }}  
           //flexDirection={isMobile || isTablet ? "column" : "row"}
         >
           <TitleText
@@ -40,7 +42,7 @@ const MainDBImmutability = () => {
             size="h3"
             decssize="h5"
           />
-          <Box mt={5} display="flex" justifyContent="space-between">
+          <Box sx={{ mt: 5, display: "flex", justifyContent: "center" }}>
             <MainDBImmutabilityCard image={mainDBImmutability_Img1} title="내부자에 의한 조작" />
             <MainDBImmutabilityCard image={mainDBImmutability_Img2} title="외부에 의한 악의적인 조작" />
             <MainDBImmutabilityCard image={mainDBImmutability_Img3} title="의도치 않은 변형" />

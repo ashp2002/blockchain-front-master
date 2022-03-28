@@ -25,27 +25,25 @@ const MainPartnersCard = (props) => {
   return (
     <Box>
       <Box 
-        border={8}
-        display="flex" 
-        flexDirection="column" 
-        justifyContent="center"
-        borderRadius={1}
-        borderColor="#E5E5E5"
-        mx={margin === "true" ? "80px" : "0px"}
         className={classes.box}
-        >
-        <Box display="flex" justifyContent="center" >
+        sx={{
+          border: 8,
+          display: "flex", 
+          flexDirection: "column", 
+          justifyContent: "center",
+          borderRadius: 1,
+          borderColor: "#E5E5E5",
+          mx: margin === "true" ? "80px" : "0px"
+        }}
+      >
+        <Box sx={{ display: "flex", justifyContent: "center"}}>
           <img
             src={image}
           ></img>
         </Box>
       </Box>
-      <Box display="flex" justifyContent="center" mb={4} >
-        <Typography
-          mt={1}
-          align="center"
-          variant="h5"
-        >
+      <Box sx={{ display: "flex", justifyContent: "center", mb: 4 }} >
+        <Typography sx={{ mt: 1, align: "center", variant: "h5"}}>
           {title}
         </Typography>
       </Box>

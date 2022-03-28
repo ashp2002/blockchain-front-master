@@ -12,7 +12,7 @@ const ServiceAccess = () => {
   return (
     <Box>
       <Container>
-        <Box py={10}>
+        <Box sx={{ py: 10 }}>
           <TitleText
             title="접근기록조작감지"
             subtitle="준비중입니다."

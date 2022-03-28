@@ -111,14 +111,14 @@ const CustomerSupports = () => {
   }
 
   return (
-      <Container maxWidth="lg">
-        <Box mt={10}>
+      <Container sx={{ maxWidth: "lg" }}>
+        <Box sx={{ mt: 10, }}>
           <TitleText
             title="기 술 지 원"
             size="h2"
           />
         </Box>
-        <Box my={10} width="80%" m="auto">
+        <Box sx={{ my: 10, m: "auto", width: "80%"}}>
           {flagPage == 0 ?
           <Box>
             <BoardSupports 
@@ -127,14 +127,14 @@ const CustomerSupports = () => {
               page={page} 
               Items={Items}
             />
-            <Box display="flex" justifyContent="end" mr={2} mt={1}>
+            <Box sx={{ display: "flex", justifyContent: "end", mr: 2, mt: 1 }}>
               <BoardButton 
                 onClick={()=>{ setShowModalAdd(true); }}
               >
                 글 쓰 기
               </BoardButton>
             </Box>
-            <Box mt={2} display="flex" justifyContent="center">
+            <Box sx={{ display: "flex", justifyContent: "end", mt: 2 }}>
               <Pagination
                 count={Items === null ? 0 : parseInt(Items.length / 10) + 1}
                 page={page + 1}
@@ -152,7 +152,7 @@ const CustomerSupports = () => {
             />
           }
         </Box> 
-        <Box my={5}>
+        <Box sx={{ my: 5 }}>
           <CompanyInfo />
         </Box>
         <BoardDialog

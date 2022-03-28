@@ -19,7 +19,7 @@ const MainEtherInfoBody = (props) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
   return (
-    <Box mt={5}>
+    <Box sx={{ mt: 5 }}>
       <BodyText text="블록체인은 불변성(Immutability)을 보장합니다." color="#0F0F0F"></ BodyText>
       <BodyText text="참여자 간 합의(Consensus)하에 만들어진 거래들은 블록으로 만들어지고,  이 블록들은 체인 형태로 연결되며 참여자들에게 전파됩니다."></ BodyText>
       <BodyText text="이 체인 형태로 인하여 특정 거래를 위/변조하려면, 해당 블록 이후 생성된 모든 참여자의 블록들을 빠른 시간 내에 위/변조해야 하므로 "></ BodyText>

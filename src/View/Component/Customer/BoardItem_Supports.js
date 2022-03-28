@@ -42,15 +42,13 @@ const BoardItem_Supports = (props) => {
   
   }, []);
 
-  
-
   return (
-    <Container maxWidth="lg">
-        <Box width="95%" m="auto">
-          <Typography variant="subtitle1" className={classes.name}>
+    <Container sx={{ maxWidth: "lg" }}>
+        <Box sx={{ width: "95%", m: "auto"}}>
+          <Typography sx={{ variant: "subtitle1" }} className={classes.name}>
               {`작성자 : ${Item.name}`}
           </Typography>
-            <Box mt={2} mb={2}>
+            <Box sx={{ mt: 2, mb: 2 }}>
               <TextField
                 fullWidth
                 className={classes.contents}
@@ -68,20 +66,20 @@ const BoardItem_Supports = (props) => {
               />
             </Box>
           <Divider />
-          <Box display="flex" justifyContent="end" mt={2}>
+          <Box sx={{ display: "flex", justifyContent: "end", mt: 2 }}>
             <Box >
-              <BoardButton color="inherit">
+              <BoardButton sx={{ color: "inherit" }}>
                 댓글쓰기
               </BoardButton>
             </Box>
-            <Box ml={2}>
-              <BoardButton color="inherit" onClick={handleClickItemDel}>
+            <Box sx={{ ml: 2 }}>
+              <BoardButton sx={{ color: "inherit" }} onClick={handleClickItemDel}>
                 글삭제
               </BoardButton>
             </Box>
-            <Box ml={2}>
+            <Box sx={{ ml: 2 }}>
               <BoardButton 
-                color="inherit" 
+                sx={{ color: "inherit" }} 
                 onClick={() => 
                   {props.handleItemPageClose(0);}
                 }>
