@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useTheme, makeStyles } from "@mui/styles";
+import { useSelector, useDispatch } from "react-redux";
 import qs from "qs";
 import { useHistory } from "react-router-dom";
 import {
@@ -14,27 +15,10 @@ import {
   AccordionSummary,
   AccordionDetails
 } from "@mui/material";
+import { ParseDATE_notice } from "../../Common/CommonFuncs"
 
 const useStyles = makeStyles((theme) => ({
-  container: {
-    height: "100%",
-    width: "70%",
-    color: "black",
-    marginTop: "100px",
-    marginBottom: "10%",
-    [theme.breakpoints.down("xs")]: {
-      width: "100%",
-    },
-  },
 
-  title: {
-    [theme.breakpoints.down("760")]: {
-      fontSize: "24px",
-    },
-    [theme.breakpoints.up("lg")]: {
-      fontSize: "36px",
-    },
-  },
   bodycontainer: {
     backgroundColor: "#ECF0F4",
   },
@@ -46,11 +30,7 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "15px",
     },
   },
-  history: {
-    "&:hover": {
-      cursor: "pointer",
-    },
-  },
+
   bodycontents: {
     width: "90%",
     color: "black",
@@ -74,57 +54,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const TableFaq = (props) => {
+const BoardList_Faq = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const history = useHistory();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
-  const [faqdatas, setfaqdatas] = useState(null);
+  const Items = useSelector((state) => state.BoardRedux.Items);
   const [error, setError] = useState(null);
   const [flag, setFlag] = useState(true);
-  const { tableItem } = props;
 
   useEffect(() => {
-    /*
-    if (userData) {
-      checkToken(setLogin, setUserData);
-    }
-    APIRequest("getFaqList")
-      .then((receivedData) => {
-        //console.log(receivedData);
-        setfaqdatas(receivedData);
-      })
-      .catch((err) => {
-        alert("에러" + err);
-        //console.log(err);
-      });*/
-  }, [flag]);
-
-  const handleClickAdd = () => {
-    {
-      setaddDialog(true);
-    }
-  };
-
-  const handleClickDel = () => {
-    {
-      setdelDialog(true);
-    }
-  };
-
-  const handleClickUpdate = () => {
-    {
-      setUpdateDialog(true);
-    }
-  };
+  }, []);
 
   return (
     <>
       <Container maxWidth="lg" className={classes.container}>
         <Box>
-          {tableItem ? (
-            tableItem.map((data) => (
+          {Items ? (
+            Items.map((data) => (
               <Accordion key={data.id}>
                 <AccordionSummary
                   //expandIcon={<ExpandMoreIcon />}
@@ -189,4 +137,4 @@ const TableFaq = (props) => {
   );
 };
 
-export default TableFaq;
+export default BoardList_Faq;

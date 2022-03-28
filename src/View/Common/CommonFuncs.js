@@ -45,3 +45,13 @@ export const ParseDATE = (regdate) => {
 
   return arr.join(" ");
 };
+
+export const ParseDATE_notice = (regdate) => {
+  let yyyy = regdate.substr(0, 4);
+  let mm = regdate.substr(5, 2);
+  let dd = regdate.substr(8, 2);
+
+  const arr = [yyyy, "/", mm, "/", dd];
+
+  return arr.join(" ");
+};

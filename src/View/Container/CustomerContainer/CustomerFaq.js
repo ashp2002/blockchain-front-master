@@ -1,134 +1,126 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useTheme, makeStyles } from "@mui/styles";
+import { useSelector, useDispatch } from "react-redux";
 import qs from "qs";
-import { useHistory } from "react-router-dom";
-//import { AppContext } from "../../AppContext";
-//import { checkToken } from "../../Function/UserFuncs";
-//import { APIRequest } from "../../Common/Common";
+import { Link as RouterLink, useLocation, useHistory } from "react-router-dom";
 import {
   Button,
-  Typography,
   Container,
   Box,
+  Typography,
   Divider,
-  TextField,
+  Pagination,
   useMediaQuery,
-} from "@mui/material";
+} from "@mui/material"; //테이블에 필요한 컴포넌트
+import { loadItemClear } from "../../modules/BoardRedux";
+import { 
+  ListGetFunc_faq, 
+  ItemGetFunc_faq, 
+  ItemInputFunc_faq,
+  ItemDelFunc_faq
+} from "../../Common/BoardFunc";
 import BoardList_Faq from "../../Component/Customer/BoardList_Faq"
+import BoardItem_Faq from "../../Component/Customer/BoardItem_Faq"
 import CompanyInfo from "../../Component/Bottom/CompanyInfo";
 import TitleText from "../../Component/Common/TitleText";
+import BoardButton from "../../Component/Common/BoardButton";
+import BoardDialog from "../../Component/Customer/BoardDialog";
 
-const useStyles = makeStyles((theme) => ({
-  
+export const useStyles = makeStyles((theme) => ({
+
 }));
 
 const CustomerFaq = (props) => {
-  const classes = useStyles();
   const theme = useTheme();
+  const classes = useStyles();
   const history = useHistory();
+  const dispatch = useDispatch();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
-  const [flag, setFlag] = useState(true);
-
-
-  let tableItem = [
-    { id: "1" , name: "안성호", title: "FAQ1", contents: "내용1", regdate: "2022/04/16", idx: "1", status: "완료", isprivate: false, views: "100"},
-    { id: "2" , name: "안성호", title: "FAQ2", contents: "내용2", regdate: "2022/04/16", idx: "2", status: "완료", isprivate: false, views: "100"},
-    { id: "3" , name: "안성호", title: "FAQ3", contents: "내용3" ,regdate: "2022/04/16", idx: "3", status: "완료", isprivate: false, views: "10"},
-  ];
+  const Items = useSelector((state) => state.BoardRedux.Items);
+  const ItemInfo = useSelector((state) => state.BoardRedux.ItemInfo);
+  const loginState = useSelector((state) => state.AccountRedux.loginState);
+  const userLevel = useSelector((state) => state.AccountRedux.userLevel);
+  const [flagPage, setFlagPage] = useState(0);
+  const [flag, setflag] = useState(false);
+  const [page, setPage] = useState(0);
+  const [showDialogAdd, setShowModalAdd] = useState(false);
 
   useEffect(() => {
-    /*
-    if (userData) {
-      checkToken(setLogin, setUserData);
-    }
-    APIRequest("getFaqList")
-      .then((receivedData) => {
-        //console.log(receivedData);
-        setfaqdatas(receivedData);
-      })
-      .catch((err) => {
-        alert("에러" + err);
-        //console.log(err);
-      });*/
-  }, [flag]);
+    ListGetFunc_faq(dispatch)
+  }, []);
 
-  const handleClickAdd = () => {
-    {
-      setaddDialog(true);
+  const handleItemPageOpen = (flag, idx) => {
+    setFlagPage(flag);
+    ItemGetFunc_faq(dispatch, idx)
+  };
+
+  const handleItemPageClose = (data) => {
+    setFlagPage(data);
+    dispatch(loadItemClear());
+  };
+  
+  const handleClickAddItem = async (data) => {
+    let result = await ItemInputFunc_faq(dispatch, data) 
+    if(result !== ""){
+      setShowModalAdd(false);
+      ListGetFunc_faq(dispatch);
+      setflag(!flag);
     }
   };
 
-  const handleClickDel = () => {
-    {
-      setdelDialog(true);
+  const handleClickItemDel = async ()=> {
+    let result = await ItemDelFunc_faq(dispatch, ItemInfo.idx) 
+    if(result !== ""){
+      setFlagPage(0);
+      ListGetFunc_faq(dispatch);
+      setflag(!flag);
     }
-  };
-
-  const handleClickUpdate = () => {
-    {
-      setUpdateDialog(true);
-    }
-  };
-
+  }
+  
   return (
-    <>
-      <Container maxWidth="lg" className={classes.container}>
-        <Box mt={10}>
-          <TitleText
-            title="자 주 하 는 질 문"
-            size="h2"
+    <Container maxWidth="lg">
+      <Box mt={10}>
+        <TitleText
+          title="자 주 하 는 질 문"
+          size="h2"
+        />
+      </Box>
+      <Box my={10} width="80%" m="auto">
+        {flagPage == 0 ?
+        <Box>
+          <BoardList_Faq  
+            handleItemPageOpen={handleItemPageOpen}
+            page={page} 
           />
+          {userLevel == 1 ? 
+            <Box display="flex" justifyContent="end" mr={2} mt={1}>
+              <BoardButton 
+                onClick={()=>{ setShowModalAdd(true); }}
+              >
+                글 쓰 기
+              </BoardButton>
+            </Box> : ""
+          }
         </Box>
-        <Box my={10} width="90%" m="auto">
-          <BoardList_Faq tableItem={tableItem}/>
-        </Box>
-        <Box mb={10}>
-          <CompanyInfo />
-        </Box>
-        {/*
-        <AddItem
-          showDialog={addDialog}
-          flag={flag}
-          setFlag={setFlag}
-          setShowModal={setaddDialog}
-          item_Api="/notice/addFaq"
-          title="FAQ 등록하기"
-        />
-        <DelItem
-          showDialog={delDialog}
-          flag={flag}
-          setFlag={setFlag}
-          setShowModal={setdelDialog}
-          item_Api="/notice/deleteFaq"
-          title="FAQ 삭제하기"
-        />
-        <UpdateItem
-          showDialog={updateDialog}
-          setShowModal={setUpdateDialog}
-          item_Api="/notice/updateFaq"
-          serch_Api="/getFaqInfo"
-          title="FAQ 수정하기"
-          flag={flag}
-          setFlag={setFlag}
-        />
-          */}
-        {/* 
-          {userData && userData.u_level == 1 && (
-            <Box>
-              <Button color="inherit" onClick={handleClickAdd}>
-                FAQ등록하기
-              </Button>
-              <Button color="inherit" onClick={handleClickDel}>
-                FAQ삭제하기
-              </Button>
-              <Button color="inherit" onClick={handleClickUpdate}>
-                FAQ수정하기
-              </Button>
-            </Box>
-        )}*/}
-      </Container>
-    </>
+        : <BoardItem_Faq 
+            Item={ItemInfo} 
+            handleItemPageClose={handleItemPageClose} 
+            handleClickItemDel={handleClickItemDel}
+          />
+        }   
+      </Box>
+      <Box my={5}>
+        <CompanyInfo />
+      </Box>
+      <BoardDialog
+        title="FAQ등록"
+        showDialog={showDialogAdd}
+        setShowModal={setShowModalAdd}
+        handleClick={handleClickAddItem}
+        page="NoticeAdd"
+      />
+    </Container>
   );
 };
 

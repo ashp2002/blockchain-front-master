@@ -132,4 +132,39 @@ export const SupportDel = (props) => {
   );
 };
 
+export const NoticeAdd = (props) => {
+  const { setData , data } = props;
+  const handleChange = (event, name) => {
+    setData(data=>({
+      ...data,
+      [event.target.name] : event.target.value,
+    }))
+  };
+
+  return (
+    <Box>
+      <Box mt={2}>
+        <LabelTextField 
+          title="제목" 
+          inputWidth="100%" 
+          handleChange={handleChange}
+          value={data.TxtTitle}
+          name="TxtTitle"
+        />
+      </Box>
+      <Box mt={2}>
+        <LabelTextField 
+          title="내용" 
+          inputWidth="100%" 
+          handleChange={handleChange}
+          value={data.TxtContent}
+          name="TxtContent"
+          multiline= "5"
+          />
+      </Box>
+    </Box>
+  );
+};
+
+
 

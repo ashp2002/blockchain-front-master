@@ -21,12 +21,12 @@ import {
   ItemDelFunc_support,
   ItemDelFuncN_support
 } from "../../Common/BoardFunc";
-import BoardSupports from "../../Component/Customer/BoardList_Supports"
-import BoardItemSupports from "../../Component/Customer/BoardItem_Supports"
+import BoardSupports from "../../Component/Customer/BoardList_Supports";
+import BoardItemSupports from "../../Component/Customer/BoardItem_Supports";
 import CompanyInfo from "../../Component/Bottom/CompanyInfo";
 import TitleText from "../../Component/Common/TitleText";
 import BoardButton from "../../Component/Common/BoardButton";
-import BoardDialog from "../../Component/Customer/BoardDialog"
+import BoardDialog from "../../Component/Customer/BoardDialog";
 
 export const useStyles = makeStyles((theme) => ({
   

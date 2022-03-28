@@ -31,7 +31,7 @@ export const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BoardItem_Notice = (props) => {
+const BoardItem_Faq = (props) => {
   const theme = useTheme();
   const classes = useStyles();
   const history = useHistory();
@@ -95,4 +95,4 @@ const BoardItem_Notice = (props) => {
       </Container>
   );
 };
-export default BoardItem_Notice;
+export default BoardItem_Faq;

@@ -225,10 +225,11 @@ export const ItemInputFunc_notice = async (dispatch, data) => {
 
 
 export const ItemDelFunc_notice = async (dispatch, data) => {
+  console.log("커몬안",data)
   dispatch(deleteItemFetch());
   try {
     let resultData = await asyncAPI("/notice/deleteNotice", {
-      idx: data.idx,
+      idx: `${data}`,
     })
     console.log("데이터", resultData)
     dispatch(deleteItemSuccess());

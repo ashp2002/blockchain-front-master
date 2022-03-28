@@ -24,6 +24,7 @@ import BoardItem_Notice from "../../Component/Customer/BoardItem_Notice"
 import CompanyInfo from "../../Component/Bottom/CompanyInfo";
 import TitleText from "../../Component/Common/TitleText";
 import BoardButton from "../../Component/Common/BoardButton";
+import BoardDialog from "../../Component/Customer/BoardDialog";
 
 export const useStyles = makeStyles((theme) => ({
   
@@ -39,29 +40,12 @@ const CustomerNotice = () => {
   const Items = useSelector((state) => state.BoardRedux.Items);
   const ItemInfo = useSelector((state) => state.BoardRedux.ItemInfo);
   const loginState = useSelector((state) => state.AccountRedux.loginState);
+  const userLevel = useSelector((state) => state.AccountRedux.userLevel);
   const [flagPage, setFlagPage] = useState(0);
   const [flag, setflag] = useState(false);
   const [page, setPage] = useState(0);
   const [showDialogAdd, setShowModalAdd] = useState(false);
-  const [showDialogDel, setShowModalDel] = useState(false);
-
-  let tableItem = [
-    { id: "1" , title: "공지제목", regdate: "2022/04/16", idx: "1"},
-    { id: "2" , title: "문의제목", regdate: "2022/04/16", idx: "2"},
-    { id: "3" , title: "문의제목", regdate: "2022/04/16", idx: "3"},
-    { id: "4" , title: "문의제목", regdate: "2022/04/16", idx: "4"},
-    { id: "5" , title: "문의제목", regdate: "2022/04/16", idx: "5"},
-    { id: "6" , title: "문의제목", regdate: "2022/04/16", idx: "6"},
-    { id: "7" , title: "문의제목", regdate: "2022/04/16", idx: "7"},
-    { id: "8" , title: "문의제목", regdate: "2022/04/16", idx: "8"},
-    { id: "9" , title: "문의제목", regdate: "2022/04/16", idx: "9"},
-    { id: "10" , title: "문의제목", regdate: "2022/04/16", idx: "10"},
-    { id: "11" , title: "문의제목", regdate: "2022/04/16", idx: "11"},
-    { id: "12" , title: "문의제목", regdate: "2022/04/16", idx: "12"},
-    { id: "13" , title: "문의제목", regdate: "2022/04/16", idx: "13"},
-
-  ];
-
+  
   useEffect(() => {
     ListGetFunc_notice(dispatch)
   }, []);
@@ -75,6 +59,10 @@ const CustomerNotice = () => {
     setFlagPage(data);
     dispatch(loadItemClear());
   };
+  
+  const handleChangePage = (event, newPage) => {
+    setPage(--newPage);
+  };
 
   const handleClickAddItem = async (data) => {
     let result = await ItemInputFunc_notice(dispatch, data) 
@@ -83,10 +71,6 @@ const CustomerNotice = () => {
       ListGetFunc_notice(dispatch);
       setflag(!flag);
     }
-  };
-  
-  const handleChangePage = (event, newPage) => {
-    setPage(--newPage);
   };
 
   const handleClickItemDel = async ()=> {
@@ -107,19 +91,21 @@ const CustomerNotice = () => {
           />
         </Box>
         <Box my={10} width="80%" m="auto">
+          {flagPage == 0 ?
           <Box>
             <BoardList_Notice  
               handleItemPageOpen={handleItemPageOpen}
               page={page} 
-              Items={Items}
             />
-            <Box display="flex" justifyContent="end" mr={2} mt={1}>
-              <BoardButton 
-                onClick={()=>{ setShowModalAdd(true); }}
-              >
-                글 쓰 기
-              </BoardButton>
-            </Box>
+            {userLevel == 1 ? 
+              <Box display="flex" justifyContent="end" mr={2} mt={1}>
+                <BoardButton 
+                  onClick={()=>{ setShowModalAdd(true); }}
+                >
+                  글 쓰 기
+                </BoardButton>
+              </Box> : ""
+            }
             <Box mt={2} display="flex" justifyContent="center">
               <Pagination
                 count={Items === null ? 0 : parseInt(Items.length / 10) + 1}
@@ -136,10 +122,18 @@ const CustomerNotice = () => {
               handleItemPageClose={handleItemPageClose} 
               handleClickItemDel={handleClickItemDel}
             />
+          }   
         </Box>
         <Box my={5}>
           <CompanyInfo />
         </Box>
+        <BoardDialog
+          title="공지사항등록"
+          showDialog={showDialogAdd}
+          setShowModal={setShowModalAdd}
+          handleClick={handleClickAddItem}
+          page="NoticeAdd"
+        />
       </Container>
   );
 };

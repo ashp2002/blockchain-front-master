@@ -12,7 +12,7 @@ import {
   Box,
   Divider,
   } from '@mui/material';
-import { SupportAdd, SupportAddN, SupportDel } from "../../Common/BoardDialogFunc";
+import { SupportAdd, SupportAddN, SupportDel, NoticeAdd } from "../../Common/BoardDialogFunc";
 import BoardButton from "../Common/BoardButton";
 
 export const useStyles = makeStyles((theme) => ({
@@ -50,6 +50,8 @@ const BoardDialog = (props) => {
         return <SupportAddN setData={setdatas} data={datas}/>;
       case "SupportDel":
         return <SupportDel setData={setdatas} data={datas}/>;
+      case "NoticeAdd":
+        return <NoticeAdd setData={setdatas} data={datas}/>;
     }
   };
 
