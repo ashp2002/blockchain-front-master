@@ -21,7 +21,6 @@ import {
 import { ParseDATE_notice } from "../../Common/CommonFuncs"
 
 export const useStyles = makeStyles((theme) => ({
-
   tableBorder: {
     borderTop: "1px solid #707070",
     borderBottom: "1px solid #707070",
@@ -57,7 +56,7 @@ const BoardList_Notice = (props) => {
     <>
       <TableContainer className={classes.tableBorder}>
         <Table size="small">
-          <TableBody className={classes.test}>
+          <TableBody>
             {Items &&
               Items
                 .slice(page * rowsPerPage, (page + 1) * rowsPerPage) //전체데이터에서 slice를통해 10개만 추출
@@ -76,11 +75,10 @@ const BoardList_Notice = (props) => {
                       onClick={() => {
                         props.handleItemPageOpen(1, idx);
                       }}
-                      key={id}
+                      key={idx}
                       height="60"
                     >
                       <TableCell
-                        component="th"
                         scope="row"
                         width="100"
                         align="center"

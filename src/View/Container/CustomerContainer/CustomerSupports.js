@@ -42,6 +42,7 @@ const CustomerSupports = () => {
   const Items = useSelector((state) => state.BoardRedux.Items);
   const ItemInfo = useSelector((state) => state.BoardRedux.ItemInfo);
   const loginState = useSelector((state) => state.AccountRedux.loginState);
+  const _Fetching = useSelector((state) => state.AccountRedux.loginState);
   const [flagPage, setFlagPage] = useState(0);
   const [flag, setflag] = useState(false);
   const [page, setPage] = useState(0);

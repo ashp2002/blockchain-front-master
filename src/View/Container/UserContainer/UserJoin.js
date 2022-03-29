@@ -28,6 +28,16 @@ const UserJoin = (props) => {
   const [txtJoinPW, setTxtJoinPW] = React.useState("");
   const [txtJoinPW2, setTxtJoinPW2] = React.useState("");
   const [PWCheckResult, setPWCheckResult] = React.useState(false);
+  const [personInfo, setPersonInfo] = useState({
+    id: "",
+    txtName: "",
+    txtTel: "",
+    txtEmail: "",
+    txtCompany: "",
+    txtJoinID: "",
+    txtJoinPW: "",
+    txtJoinPW2: "",
+  });
 
   const handleJoin = async () => {
     let Checkresult = FuncJoinResultCheck(
@@ -56,7 +66,15 @@ const UserJoin = (props) => {
   };
 
   const handleIdcheck = async() => {
-    FuncIdCheck(txtJoinID)
+    console.log(personInfo)
+    //FuncIdCheck(txtJoinID) 임시 삭제
+  };
+
+  const handleChange = (event, name) => {
+    setPersonInfo(personInfo=>({
+      ...personInfo,
+      [event.target.name] : event.target.value,
+    }))
   };
 
   return (
@@ -87,10 +105,9 @@ const UserJoin = (props) => {
           >
             <Box>사용자 ID</Box>
             <SimpleTextField
-              value={txtJoinID || ""}
-              onChange={({ target: { value } }) => {
-                setTxtJoinID(value);
-              }}
+              name="txtJoinID"
+              value={personInfo.txtJoinID || ""}
+              handleChange={handleChange}
               autoFocus
               radius={5}
               placeholder="영문소문자, 숫자 조합"
@@ -120,11 +137,12 @@ const UserJoin = (props) => {
           >
             <Box>비밀번호</Box>
             <SimpleTextField
+              name="txtJoinPW"
               radius={5}
               type="password"
               placeholder="비밀번호"
-              value={txtJoinPW || ""}
-              onChange={({ target: { value } }) => setTxtJoinPW(value)}
+              value={personInfo.txtJoinPW || ""}
+              handleChange={handleChange}
             />
           </Box>
           <Box sx={{ display: "flex", flexDirection: "column", flexBasis: "10%" }} />
@@ -132,12 +150,13 @@ const UserJoin = (props) => {
             <Box>비밀번호 확인</Box>
             <SimpleTextField
               radius={5}
+              name="txtJoinPW2"
               type="password"
               placeholder="비밀번호 확인"
               value={txtJoinPW2 || ""}
               onChange={({ target: { value } }) => {
-                setTxtJoinPW2(value);
-                if (txtJoinPW == value) { setPWCheckResult(true); }
+                handleChange()
+                if (personInfo.txtNametxtJoinPW == value) { setPWCheckResult(true); }
                 else { setPWCheckResult(false); }
               }}
             />
@@ -156,40 +175,44 @@ const UserJoin = (props) => {
         <Box my={2}>
           <Box>이름</Box>
           <SimpleTextField
+            name="txtName"
             radius={5}
             fullWidth
-            value={txtName || ""}
-            onChange={({ target: { value } }) => setTxtName(value)}
+            value={personInfo.txtName || ""}
+            handleChange={handleChange}
           />
         </Box>
         {/*<BirthTextSet txtBirth={txtBirth} setTxtBirth={setTxtBirth} />*/}
         <Box sx={{ my: 2 }}>
           <Box>회사명</Box>
           <SimpleTextField
+            name="txtCompany"
             radius={5}
             maxlength={12}
             placeholder="회사명을 입력해주세요"
-            value={txtCompany || ""}
-            onChange={({ target: { value } }) => setTxtCompany(value)}
+            value={personInfo.txtCompany || ""}
+            handleChange={handleChange}
           />
         </Box>
         <Box sx={{ my: 2 }}>
           <Box>휴대전화</Box>
           <SimpleTextField
+            name="txtTel"
             radius={5}
             maxlength={12}
             placeholder="(예시) 01012345678"
-            value={txtTel || ""}
-            onChange={({ target: { value } }) => setTxtTel(value)}
+            value={personInfo.txtTel || ""}
+            handleChange={handleChange}
           />
         </Box>
         <Box sx={{ my: 2 }}>
           <Box>이메일</Box>
           <SimpleTextField
+            name="txtEmail"
             radius={5}
             type="email"
-            value={txtEmail || ""}
-            onChange={({ target: { value } }) => setTxtEmail(value)}
+            value={personInfo.txtEmail || ""}
+            handleChange={handleChange}
           />
         </Box>
         <Box sx={{ mt: 2, mb: 4, display: "flex", justifyContent: "center" }}>

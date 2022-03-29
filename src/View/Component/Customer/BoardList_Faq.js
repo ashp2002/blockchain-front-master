@@ -71,7 +71,7 @@ const BoardList_Faq = (props) => {
         <Box>
           {Items ? (
             Items.map((data) => (
-              <Accordion key={data.id}>
+              <Accordion key={data.idx}>
                 <AccordionSummary
                   //expandIcon={<ExpandMoreIcon />}
                   aria-controls="FAQ Contents"

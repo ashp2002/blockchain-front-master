@@ -66,7 +66,7 @@ const BoardList_Supports = (props) => {
           <TableHead>
             <TableRow height="60">
             {tableHead.map((section) => (
-              <TableCell width={section.width} align={section.align} >
+              <TableCell key={section.title} width={section.width} align={section.align} >
                 <Typography
                   variant={section.font}
                   className={classes.tablebody}
@@ -100,7 +100,7 @@ const BoardList_Supports = (props) => {
                       onClick={() => {
                         props.handleItemPageOpen(1, idx);
                       }}
-                      key={id}
+                      key={idx}
                       height="60"
                     >
                       <TableCell

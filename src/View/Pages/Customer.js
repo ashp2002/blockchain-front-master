@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useTheme, makeStyles } from "@mui/styles";
+import { useSelector, useDispatch } from "react-redux";
 import TabBar from "../Component/Common/TabBar";
 import { Box } from "@mui/material";
 import CustomerNotice from "../Container/CustomerContainer/CustomerNotice";
@@ -7,6 +8,7 @@ import CustomerFaq from "../Container/CustomerContainer/CustomerFaq";
 import CustomerSupports from "../Container/CustomerContainer/CustomerSupports";
 import CustomerDecs from "../Container/CustomerContainer/CustomerDecs";
 import CustomerInquiry from "../Container/CustomerContainer/CustomerInquiry";
+import { loadClear } from "../modules/BoardRedux";
 
 export const useStyles = makeStyles((theme) => ({
 }));
@@ -20,9 +22,11 @@ const tabContainText = [
 
 const Customer = (props) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (newValue) => {
+    dispatch(loadClear());
     setValue(newValue);
     //console.log(newValue);
   };
