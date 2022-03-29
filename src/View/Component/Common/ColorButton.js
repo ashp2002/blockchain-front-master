@@ -23,7 +23,7 @@ const ColorButton = styled(({ link, color, ...other }) => (
   borderRadius: props.radius === "true" ? 15 : 1,
   width: "100%",
   border: props.color === "outer" ? "solid" : props.color === "border" ? "solid"  : null,
-  borderWidth: props.color === "outer" ? "1px" : props.color === "border" ? "2px" : 0,
+  borderWidth: props.color === "outer" ? "1px" : props.color === "border" ? "3px" : 0,
   borderColor: props.color === "outer" ? props.theme.palette.border.dark
     : props.color === "border" ? props.theme.palette.secondary.main : null,
   color: props.color === "outer" ? props.theme.palette.text.primary : "white",

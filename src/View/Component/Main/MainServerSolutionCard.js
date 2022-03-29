@@ -25,12 +25,11 @@ const MainDBImmutabilityCard = (props) => {
   return (
     <Box
       sx={{
-        px: [1, 3, 4],
+        px: [1, 3, 5],
         py: [2, 5, 7],
         border: 2,
         display: "flex", 
         flexDirection: "column", 
-        justifyContent: "space-between",
         borderRadius: 1,
         borderColor: "#A8A8A8",
       }} 
@@ -47,12 +46,12 @@ const MainDBImmutabilityCard = (props) => {
         ></img>
       </Box>
       <Box mt={5}>
-        <Typography sx={{ variant: "body1", align: "center" }}>
+        <Typography sx={{ typography: "body1", textAlign: "center" }}>
           {title}
         </Typography>
       </Box>
       <Box sx={{ mt: 1, width: "250px" }}>
-        <Typography sx={{ variant: "body1", align: "center" }}>
+        <Typography sx={{ typography: "subtitle2", textAlign: "center" }}>
           {decs}
         </Typography>
       </Box>

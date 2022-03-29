@@ -90,7 +90,7 @@ const DarkTheme = createTheme({
     body2: {
       fontFamily: "Spoqa Han Sans Neo Medium",
       fontSize: "20px",
-      fontWeight: "800",
+      fontWeight: "500",
       //letterSpacing: "-0.5pt",
       color: "#ffffff",
     },

@@ -41,6 +41,7 @@ const MainDecs = () => {
             description2="귀사의 데이터베이스에 블록체인 솔루션을 적용하면"
             description3="누구도 조작이 불가능한 데이터베이스가 됩니다!"
             size="h2"
+            decssize="body2"
           />
           {/* 
           <MainContents />

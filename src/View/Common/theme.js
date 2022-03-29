@@ -58,12 +58,12 @@ const theme = createTheme({
       color: "#7A7A7A",
     },
     h6: {
-      fontFamily: "Spoqa Han Sans Neo Regular",
-      fontSize: "25px",
-      fontWeight: "800",
+      fontFamily: "Spoqa Han Sans Neo Medium",
+      fontSize: "20px",
+      fontWeight: "600",
       letterSpacing: "-0.03em",
       letterSpacing: "-1pt",
-      color: "#0F0F0F",
+      color: "#212121",
     },
     subtitle1: {
       fontFamily: "Spoqa Han Sans Neo Regular",
@@ -76,7 +76,7 @@ const theme = createTheme({
     subtitle2: {
       fontFamily: "Spoqa Han Sans Neo Medium",
       fontSize: "16px",
-      fontWeight: "800",
+      fontWeight: "600",
       letterSpacing: "-0.5pt",
       color: "#707070",
     },
@@ -90,7 +90,7 @@ const theme = createTheme({
     body2: {
       fontFamily: "Spoqa Han Sans Neo Medium",
       fontSize: "20px",
-      fontWeight: "800",
+      fontWeight: "500",
       //letterSpacing: "-0.5pt",
       color: "#7A7A7A",
     },

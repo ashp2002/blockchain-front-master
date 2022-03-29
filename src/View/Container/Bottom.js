@@ -32,13 +32,15 @@ export default function Footer(props) {
   return (
     <>
       <ThemeProvider theme={DarkTheme}>
-      <Box sx={{
+      <Box 
+        sx={{
         width: "100%",
         backgroundColor: theme.palette.secondary.main,
         display: location.pathname === "/Customer" ? "none" : "",
-        }}>
+        }}
+        >
         <Container sx={{ maxWidth: "lg" }}>
-          <Box sx={{py: 8}}>
+          <Box sx={{pt: 8, pb: 5}}>
             <TitleText
                 title="COMTACT US"
                 description="문의하실 부분이 있다면 여기 남겨 주세요."
@@ -46,7 +48,7 @@ export default function Footer(props) {
                 size="h3"
             />
           </Box>
-          <Box sx={{py: 10}}>
+          <Box margin="auto" width="70%">
             <BottomInput />
           </Box>
           <Box 
@@ -69,9 +71,10 @@ export default function Footer(props) {
         width: "100%",
         backgroundColor: theme.palette.secondary.main,
       }}>
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" width="70%">
           <Box sx={{
-            py: 4,
+            pt: 8,
+            pb: 5,
             px: 8,
             display: "flex",
             justifyContent: "space-between",

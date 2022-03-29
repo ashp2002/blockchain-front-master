@@ -40,7 +40,6 @@ const BoardDialog = (props) => {
     TxtPhone: "",
     idx: "",
   });
-  let history = useHistory();
 
   const contentPage = (data) => {
     switch (data) {
@@ -86,10 +85,13 @@ const BoardDialog = (props) => {
               </BoardButton>
             </Box>
             <Box>
-              <BoardButton onClick={()=>{ 
-                handleClick(datas)
-                setdatas("");
-                }} color="primary">
+              <BoardButton 
+                onClick={()=>{ 
+                  handleClick(datas)
+                  setdatas("");
+                }} 
+                color="primary"
+              >
                 확인
               </BoardButton>
             </Box>

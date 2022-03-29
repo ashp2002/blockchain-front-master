@@ -86,7 +86,7 @@ const CustomerFaq = (props) => {
           size="h2"
         />
       </Box>
-      <Box sx={{ my:10, width: "80%", m: "auto" }}>
+      <Box sx={{ my: 10, width: "80%", m: "auto" }}>
         {flagPage == 0 ?
         <Box>
           <BoardList_Faq  
@@ -94,7 +94,7 @@ const CustomerFaq = (props) => {
             page={page} 
           />
           {userLevel == 1 ? 
-            <Box sx={{ display: "flex", justifyContent: "end", mr: 2, mt: 1 }}>
+            <Box sx={{ display: "flex", justifyContent: "end", mt: 1 }}>
               <BoardButton 
                 onClick={()=>{ setShowModalAdd(true); }}
               >
@@ -110,7 +110,7 @@ const CustomerFaq = (props) => {
           />
         }   
       </Box>
-      <Box sx={{ my:5 }}>
+      <Box sx={{ my: 5 }}>
         <CompanyInfo />
       </Box>
       <BoardDialog

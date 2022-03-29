@@ -14,7 +14,7 @@ export const GetUserList = async (dispatch) => {
       });
       console.log("resultData", resultData);
     } catch (e) {
-      console.log("asyncAPI Error Log", e);
-      alert(e.resultCode.msg);
+        console.log("asyncAPI Error Log", e);
+        alert(e.resultCode.msg);
     }
 };

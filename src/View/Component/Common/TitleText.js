@@ -9,17 +9,7 @@ import {
 } from "@mui/material";
 
 const useStyles = makeStyles((theme) => ({
-  title: {
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "25px",
-    },
-  },
-
-  subtitle: {
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "13px",
-    },
-  },
+ 
 }));
 
 const TitleText = (props) => {
@@ -40,48 +30,38 @@ const TitleText = (props) => {
   return (
     <Box>
       <Box>
-        <Typography
-          align={align === "left" ? "left" : "center"}
-          variant={size}
-          className={classes.title}
-        >
-          {title}
-        </Typography>
-      </Box>
-      <Box>
-        <Typography
-          align={align === "left" ? "left" : "center"}
-          variant={size}
-          className={classes.title}
-        >
-          {subtitle}
-        </Typography>
+        <TexitItem text={title} variant={size} align={align}/>
+        <TexitItem text={subtitle} variant={size} align={align}/>
       </Box>
       <Box mt={5}>
-        <Typography
-          align={align === "left" ? "left" : "center"}
-          variant={decssize}
-          className={classes.subtitle}
-        >
-          {description}
-        </Typography>
-        <Typography
-          align={align === "left" ? "left" : "center"}
-          variant={decssize}
-          className={classes.subtitle}
-        >
-          {description2}
-        </Typography>
-        <Typography
-          align={align === "left" ? "left" : "center"}
-          variant={decssize}
-          className={classes.subtitle}
-        >
-          {description3}
-        </Typography>
+        <TexitItem text={description} variant={decssize} align={align}/>
+        <TexitItem text={description2} variant={decssize} align={align}/>
+        <TexitItem text={description3} variant={decssize} align={align}/>
       </Box>
     </Box>
   );
 };
 
 export default TitleText;
+
+
+const TexitItem = (props) => {
+  const classes = useStyles();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
+  const { text, variant, align }  = props;
+   
+  return (
+    <Box sx={{ mt: 1 }}>
+      <Typography
+        sx={{ 
+          textAlign: align === "left" ? "left" : "center",
+          typography: variant,
+        }}
+      >
+        {text}
+      </Typography>
+    </Box>
+  );
+};

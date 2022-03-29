@@ -22,27 +22,30 @@ const BottomInput = (props) => {
 
   return (
     <Box> 
-      <Box display="flex">
+      <Box sx={{ display: "flex" }}>
         <Box
-          flexBasis="50%"
-          justifyContent="center"
-          pr={4}
+          sx={{ 
+            flexBasis: "50%",
+            justifyContent: "center",
+            mr: 4,
+          }} 
         >
           <Box>
             <SimpleTextField />
           </Box>
         </Box>
         <Box
-          flexBasis="50%"
-          justifyContent="center"
-          pl={4}
+           sx={{ 
+            flexBasis: "50%",
+            justifyContent: "center",
+          }} 
         >
           <Box>
             <SimpleTextField />
           </Box>
         </Box>
       </Box>
-      <Box mt={2}>
+      <Box sx={{ mt: 2 }}>
         <SimpleTextArea rows="10"/>
       </Box>
     </Box>

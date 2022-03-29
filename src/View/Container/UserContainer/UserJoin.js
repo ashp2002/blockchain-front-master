@@ -128,7 +128,7 @@ const UserJoin = (props) => {
             />
           </Box>
           <Box sx={{ display: "flex", flexDirection: "column", flexBasis: "10%" }} />
-          <Box sx={{ display: "flex", flexDirection: "column", flexBasis: "45%" }}>
+          <Box sx={{ mt: 2, display: "flex", flexDirection: "column", flexBasis: "45%" }}>
             <Box>비밀번호 확인</Box>
             <SimpleTextField
               radius={5}

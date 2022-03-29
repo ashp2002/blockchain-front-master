@@ -98,7 +98,7 @@ const CustomerNotice = () => {
               page={page} 
             />
             {userLevel == 1 ? 
-              <Box sx={{ display: "flex", justifyContent: "end", mr: 2, mt: 1 }}>
+              <Box sx={{ display: "flex", justifyContent: "end", mt: 1 }}>
                 <BoardButton 
                   onClick={()=>{ setShowModalAdd(true); }}
                 >
@@ -106,7 +106,7 @@ const CustomerNotice = () => {
                 </BoardButton>
               </Box> : ""
             }
-            <Box sx={{ display: "flex", justifyContent: "end", mt: 2 }}>
+            <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
               <Pagination
                 count={Items === null ? 0 : parseInt(Items.length / 10) + 1}
                 page={page + 1}

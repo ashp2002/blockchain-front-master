@@ -21,12 +21,14 @@ const CompanyInfoItem = (props) => {
   const { text1, text2, border} = props;
   return (
     <Box
-      display="flex"
-      flexBasis="30%"
-      justifyContent="center"
-      borderLeft={ border === "true" ? 1 : "" }
-      borderRight={ border === "true" ? 1 : "" }
-      borderColor="#FFFFFF"
+      sx={{
+        display: "flex",
+        flexBasis: "30%",
+        justifyContent: "center",
+        borderLeft: border === "true" ? 1 : "",
+        borderRight: border === "true" ? 1 : "",
+        borderColor: "#FFFFFF"
+      }}
     >
       <Box py={2}>
         <BodyText marginTop="false" location="center" text={text1} />

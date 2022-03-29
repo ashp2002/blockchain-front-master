@@ -23,6 +23,7 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   resize: {
+    fontSize: 16,
     [theme.breakpoints.down("760")]: {
       lineHeight: "normal",
       fontSize: "15px",
@@ -45,7 +46,7 @@ const BoardItem_Supports = (props) => {
   return (
     <Container sx={{ maxWidth: "lg" }}>
         <Box sx={{ width: "95%", m: "auto"}}>
-          <Typography sx={{ variant: "subtitle1" }} className={classes.name}>
+          <Typography sx={{ typography: "subtitle1" }} className={classes.name}>
               {`작성자 : ${Item.name}`}
           </Typography>
             <Box sx={{ mt: 2, mb: 2 }}>
@@ -68,18 +69,18 @@ const BoardItem_Supports = (props) => {
           <Divider />
           <Box sx={{ display: "flex", justifyContent: "end", mt: 2 }}>
             <Box >
-              <BoardButton sx={{ color: "inherit" }}>
+              <BoardButton sx={{ color: "white" }}>
                 댓글쓰기
               </BoardButton>
             </Box>
             <Box sx={{ ml: 2 }}>
-              <BoardButton sx={{ color: "inherit" }} onClick={handleClickItemDel}>
+              <BoardButton sx={{ color: "white" }} onClick={handleClickItemDel}>
                 글삭제
               </BoardButton>
             </Box>
             <Box sx={{ ml: 2 }}>
               <BoardButton 
-                sx={{ color: "inherit" }} 
+                sx={{ color: "white" }} 
                 onClick={() => 
                   {props.handleItemPageClose(0);}
                 }>

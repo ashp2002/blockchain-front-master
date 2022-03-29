@@ -47,10 +47,10 @@ const BoardItem_Faq = (props) => {
   return (
     <Container sx={{ maxWidth: "lg" }}>
         <Box sx={{ width: "95%", m: "auto" }}>
-          <Typography sx={{ variant: "subtitle1" }} className={classes.name}>
+          <Typography sx={{ typography: "subtitle1" }} className={classes.name}>
               {`작성자 : ${Item.name}`}
           </Typography>
-          <Typography sx={{ variant: "subtitle1" }} className={classes.name}>
+          <Typography sx={{ typography: "subtitle1" }} className={classes.name}>
               {`제목 : ${Item.title}`}
           </Typography>
             <Box sx={{ mt: 2, mb: 2 }}>
@@ -82,7 +82,7 @@ const BoardItem_Faq = (props) => {
                 </BoardButton>
               </Box> : ""
             }
-            <Box sx={{ ml: 2 }}ml={2}>
+            <Box sx={{ ml: 2 }}>
               <BoardButton 
                 sx={{ color: "inherit" }} 
                 onClick={() => 

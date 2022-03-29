@@ -8,6 +8,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import TitleText from "../Common/TitleText";
+import BodyText from "../Common/BodyText";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -22,7 +23,7 @@ const MainAgentContent = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
-  const { image, location, title, decs } = props;
+  const { image, location, title, decs1, decs2, decs3, decs4 } = props;
 
   return (
     <Box
@@ -45,13 +46,11 @@ const MainAgentContent = (props) => {
             src={image}
           ></img> : 
         <Box sx={{ px: 4, pt: 10 }}>
-          <TitleText
-            title={title}
-            description={decs}
-            size="h3"
-            decssize="h5"
-            align="left"
-          />
+          <TitleText title={title} size="h3" align="left" />
+          <BodyText text={decs1} location="left" />
+          <BodyText text={decs2} location="left" />
+          <BodyText text={decs3} location="left" />
+          <BodyText text={decs4} location="left" />
         </Box>
       }
       </Box>
@@ -65,13 +64,11 @@ const MainAgentContent = (props) => {
       >
         {location === "Img_left" ?
           <Box sx={{ px: 4, pt: 10 }}>
-            <TitleText
-              title={title}
-              description={decs}
-              size="h3"
-              decssize="h5"
-              align="left"
-            />
+           <TitleText title={title} size="h3" align="left" />
+            <BodyText text={decs1} location="left" />
+            <BodyText text={decs2} location="left" />
+            <BodyText text={decs3} location="left" />
+            <BodyText text={decs4} location="left" />
           </Box> : 
           <img
             className={classes.container}

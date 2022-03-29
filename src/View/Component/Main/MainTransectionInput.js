@@ -47,7 +47,7 @@ const MainTransectionInput = (props) => {
           py: 3,
         }}
       >
-        <TitleText title="파일 해시 값 생성하기" size="h3"/>
+        <TitleText title="파일 해시 값 생성하기" size="h4"/>
         <Box sx={{ display: "flex", justifyContent: "center" }}>
           <img
             src={TransectionTemp1}
@@ -68,7 +68,7 @@ const MainTransectionInput = (props) => {
           py: 3
         }}
       >
-        <TitleText title="이더리움 해시값 조회하기" size="h3"/>
+        <TitleText title="이더리움 해시값 조회하기" size="h4"/>
         <Box>
           <SimpleTextField />
         </Box>

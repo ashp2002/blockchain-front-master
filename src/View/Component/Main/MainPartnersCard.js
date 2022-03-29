@@ -43,7 +43,7 @@ const MainPartnersCard = (props) => {
         </Box>
       </Box>
       <Box sx={{ display: "flex", justifyContent: "center", mb: 4 }} >
-        <Typography sx={{ mt: 1, align: "center", variant: "h5"}}>
+        <Typography sx={{ mt: 1, typography: "subtitle2"}}>
           {title}
         </Typography>
       </Box>

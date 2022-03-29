@@ -22,7 +22,8 @@ const TabBar = (props) => {
     <ThemeProvider theme={DarkTheme}>
       <Box sx={{
         backgroundColor: theme.palette.secondary.main
-      }}>
+      }}
+      >
         <Container sx={{ maxWidth: "lg" }}>
           <Tabs
             color="white"

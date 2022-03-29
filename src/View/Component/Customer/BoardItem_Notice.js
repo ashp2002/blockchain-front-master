@@ -47,10 +47,10 @@ const BoardItem_Notice = (props) => {
   return (
     <Container sx={{ maxWidth: "lg" }}>
         <Box sx={{ width: "95%", m: "auto" }}>
-          <Typography sx={{ variant: "subtitle1" }} className={classes.name}>
+          <Typography sx={{ typography: "subtitle1" }} className={classes.name}>
               {`작성자 : ${Item.name}`}
           </Typography>
-          <Typography sx={{ variant: "subtitle1" }} className={classes.name}>
+          <Typography sx={{ typography: "subtitle1" }} className={classes.name}>
               {`제목 : ${Item.title}`}
           </Typography>
             <Box sx={{ my: 2 }}>
@@ -75,7 +75,7 @@ const BoardItem_Notice = (props) => {
             {userLevel == 1 ? 
               <Box sx={{ ml: 2 }}>
                 <BoardButton 
-                  sx={{ color: "inherit" }} 
+                  sx={{ color: "white" }} 
                   onClick={handleClickItemDel}
                 >
                   글삭제
@@ -84,7 +84,7 @@ const BoardItem_Notice = (props) => {
             }
             <Box sx={{ ml: 2 }}>
               <BoardButton 
-                sx={{ color: "inherit" }} 
+                sx={{ color: "white" }} 
                 onClick={() => 
                   {props.handleItemPageClose(0);}
                 }>

@@ -22,10 +22,12 @@ const MainBodyText = (props) => {
   return (
     <Box>
       <Typography
-        mt={marginTop === "false" ? "5px" : "16px" }
-        align={location === "center" ? "center" : "left"}
-        variant="h5"
-        color={color}
+        sx={{
+          mt: marginTop === "false" ? "5px" : "16px",
+          align: location === "center" ? "center" : "left",
+          typography: "h5",
+          color: color
+        }}
       >
         {text}
       </Typography>

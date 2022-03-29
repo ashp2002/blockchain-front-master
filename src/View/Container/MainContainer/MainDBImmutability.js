@@ -43,9 +43,15 @@ const MainDBImmutability = () => {
             decssize="h5"
           />
           <Box sx={{ mt: 5, display: "flex", justifyContent: "center" }}>
-            <MainDBImmutabilityCard image={mainDBImmutability_Img1} title="내부자에 의한 조작" />
-            <MainDBImmutabilityCard image={mainDBImmutability_Img2} title="외부에 의한 악의적인 조작" />
-            <MainDBImmutabilityCard image={mainDBImmutability_Img3} title="의도치 않은 변형" />
+            <Box>
+              <MainDBImmutabilityCard image={mainDBImmutability_Img1} title="내부자에 의한 조작" />
+            </Box>
+            <Box sx={{ mx: 9 }}>
+              <MainDBImmutabilityCard image={mainDBImmutability_Img2} title="외부에 의한 악의적인 조작" />
+            </Box>
+            <Box>
+              <MainDBImmutabilityCard image={mainDBImmutability_Img3} title="의도치 않은 변형" />
+            </Box>
           </Box>
         </Box>
       </Container>

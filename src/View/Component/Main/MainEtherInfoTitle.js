@@ -30,18 +30,21 @@ const MainEtherInfoTitle = (props) => {
   return (
     <Box sx={{ pt: 11 }}>
       <Box>
-        <Typography sx={{ align: "left", variant: "h3" }}>
+        <Typography sx={{ textAlign: "left", typography: "h3" }}>
           블록체인 기술도 모두 다 같은 블록체인이 아닙니다!
         </Typography>
       </Box>
       <Box sx={{ display: "flex" }}>
-        <Typography sx={{ align: "left", variant: "h3" }}>
+        <Typography sx={{ textAlign: "left", typography: "h3" }}>
           절대 신뢰할 수 있는 블록체인 네트워크는 바로
         </Typography>
-        <Typography sx={{ color: "primary", variant: "h3"}}>
+        <Typography
+          variant="h3" 
+          sx={{ color: theme.palette.primary.main }}
+        >
           이더리움 메인 넷
         </Typography>
-        <Typography sx={{ variant: "h3" }}>
+        <Typography sx={{ typography: "h3" }}>
           입니다!
         </Typography>
       </Box>

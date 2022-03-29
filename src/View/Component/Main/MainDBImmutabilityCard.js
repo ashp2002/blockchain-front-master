@@ -47,7 +47,7 @@ const MainDBImmutabilityCard = (props) => {
         ></img>
       </Box>
       <Box mt={5}>
-        <Typography sx={{ variant: "body1", align: "center"}}>
+        <Typography sx={{ typography: "h6", textAlign: "center" }}>
           {title}
         </Typography>
       </Box>
