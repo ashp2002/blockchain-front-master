@@ -128,9 +128,7 @@ const BoardList_Faq = (props) => {
                 </AccordionDetails>
               </Accordion>
             ))
-          ) : (
-            <Box sx={{ height: "250px" }}></Box>
-          )}
+          ) : ""}
         </Box>
       </Container>
     </Box>

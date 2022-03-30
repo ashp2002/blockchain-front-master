@@ -278,6 +278,7 @@ export const ItemGetFunc_inquiry = async (dispatch, itemIdx) => {
 
 export const ItemInputFuncN_inquiry = async (dispatch, data) => {
   dispatch(inputItemFetch());
+  console.log(data)
   try {
     let resultData = await asyncAPI("/addQuestionN1", {
       contents: data.txtContent,
