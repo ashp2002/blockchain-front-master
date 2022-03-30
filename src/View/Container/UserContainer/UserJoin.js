@@ -40,25 +40,10 @@ const UserJoin = (props) => {
   });
 
   const handleJoin = async () => {
-    let Checkresult = FuncJoinResultCheck(
-      txtJoinID, 
-      txtJoinPW, 
-      PWCheckResult, 
-      txtName, 
-      txtEmail
-    );
-    if(Checkresult === "fail"){return;}
-
-    let Joinresult = await FuncJoin(
-      dispatch,
-      txtJoinID, // 아이디
-      txtJoinPW, // 암호
-      txtName, //이름
-      txtTel, //전번
-      txtEmail, //이메일
-      txtCompany, // 생년월일
-    );
-    if(Joinresult === "true"){history.goBack()}
+    let Checkresult = FuncJoinResultCheck(personInfo, PWCheckResult);
+    if(Checkresult === "fail") {return;}
+    let Joinresult = await FuncJoin( personInfo );
+    if(Joinresult === "true") { history.goBack() }
   };
   
   const handlePageFlag = () => {
@@ -66,8 +51,7 @@ const UserJoin = (props) => {
   };
 
   const handleIdcheck = async() => {
-    console.log(personInfo)
-    //FuncIdCheck(txtJoinID) 임시 삭제
+    FuncIdCheck(personInfo.txtJoinID);
   };
 
   const handleChange = (event, name) => {
@@ -107,7 +91,7 @@ const UserJoin = (props) => {
             <SimpleTextField
               name="txtJoinID"
               value={personInfo.txtJoinID || ""}
-              handleChange={handleChange}
+              onChange={(event)=>handleChange(event)}
               autoFocus
               radius={5}
               placeholder="영문소문자, 숫자 조합"
@@ -142,8 +126,11 @@ const UserJoin = (props) => {
               type="password"
               placeholder="비밀번호"
               value={personInfo.txtJoinPW || ""}
-              handleChange={handleChange}
+              onChange={(event)=>handleChange(event)}
             />
+            <Box sx={{ color: "red" }}> 
+              영문,숫자,특수문자 조합 8자~ 15자 
+            </Box>
           </Box>
           <Box sx={{ display: "flex", flexDirection: "column", flexBasis: "10%" }} />
           <Box sx={{ mt: 2, display: "flex", flexDirection: "column", flexBasis: "45%" }}>
@@ -153,14 +140,14 @@ const UserJoin = (props) => {
               name="txtJoinPW2"
               type="password"
               placeholder="비밀번호 확인"
-              value={txtJoinPW2 || ""}
-              onChange={({ target: { value } }) => {
-                handleChange()
-                if (personInfo.txtNametxtJoinPW == value) { setPWCheckResult(true); }
+              value={personInfo.txtJoinPW2 || ""}
+              onChange={(event)=> {
+                handleChange(event)
+                if (personInfo.txtJoinPW == event.target.value) { setPWCheckResult(true); }
                 else { setPWCheckResult(false); }
               }}
             />
-            {txtJoinPW2 != "" ? (
+            {personInfo.txtJoinPW2 != "" ? (
               PWCheckResult ? null : (
                 <Box sx={{ color: "red" }}>
                   비밀번호가 일치하지 않습니다.
@@ -169,17 +156,13 @@ const UserJoin = (props) => {
             ) : null}
           </Box>
         </Box>
-        <Box sx={{ color: "red" }}> 
-          영문소문자, 숫자,특수문자 조합 8자~ 15자 
-        </Box>
         <Box my={2}>
           <Box>이름</Box>
           <SimpleTextField
             name="txtName"
             radius={5}
-            fullWidth
             value={personInfo.txtName || ""}
-            handleChange={handleChange}
+            onChange={(event)=>handleChange(event)}
           />
         </Box>
         {/*<BirthTextSet txtBirth={txtBirth} setTxtBirth={setTxtBirth} />*/}
@@ -188,10 +171,10 @@ const UserJoin = (props) => {
           <SimpleTextField
             name="txtCompany"
             radius={5}
-            maxlength={12}
+            maxLength={12}
             placeholder="회사명을 입력해주세요"
             value={personInfo.txtCompany || ""}
-            handleChange={handleChange}
+            onChange={(event)=>handleChange(event)}
           />
         </Box>
         <Box sx={{ my: 2 }}>
@@ -202,7 +185,7 @@ const UserJoin = (props) => {
             maxlength={12}
             placeholder="(예시) 01012345678"
             value={personInfo.txtTel || ""}
-            handleChange={handleChange}
+            onChange={(event)=>handleChange(event)}
           />
         </Box>
         <Box sx={{ my: 2 }}>
@@ -212,7 +195,7 @@ const UserJoin = (props) => {
             radius={5}
             type="email"
             value={personInfo.txtEmail || ""}
-            handleChange={handleChange}
+            onChange={(event)=>handleChange(event)}
           />
         </Box>
         <Box sx={{ mt: 2, mb: 4, display: "flex", justifyContent: "center" }}>

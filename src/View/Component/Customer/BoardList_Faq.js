@@ -66,7 +66,7 @@ const BoardList_Faq = (props) => {
   }, []);
 
   return (
-    <>
+    <Box>
       <Container sx={{ maxWidth: "lg" }}>
         <Box>
           {Items ? (
@@ -133,7 +133,7 @@ const BoardList_Faq = (props) => {
           )}
         </Box>
       </Container>
-    </>
+    </Box>
   );
 };
 

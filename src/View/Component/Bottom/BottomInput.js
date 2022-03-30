@@ -19,34 +19,47 @@ const BottomInput = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
+  const { setPersonInfo, personInfo } = props;
+
+  const handleChange = (event, name) => {
+    setPersonInfo(personInfo=>({
+      ...personInfo,
+      [event.target.name] : event.target.value,
+    }))
+  };
 
   return (
     <Box> 
       <Box sx={{ display: "flex" }}>
-        <Box
-          sx={{ 
-            flexBasis: "50%",
-            justifyContent: "center",
-            mr: 4,
-          }} 
-        >
+        <Box sx={{ flexBasis: "50%", justifyContent: "center", mr: 4, }}>
           <Box>
-            <SimpleTextField />
+            <SimpleTextField
+              name="txtEmail"
+              value={personInfo.txtEmail || ""}
+              onChange={(event)=>handleChange(event)}
+              placeholder="E-Mail 입력"
+            />
           </Box>
         </Box>
-        <Box
-           sx={{ 
-            flexBasis: "50%",
-            justifyContent: "center",
-          }} 
-        >
+        <Box sx={{ flexBasis: "50%", justifyContent: "center" }}>
           <Box>
-            <SimpleTextField />
+            <SimpleTextField 
+              name="txtTel"
+              value={personInfo.txtTel || ""}
+              onChange={(event)=>handleChange(event)}
+              placeholder="연락처 입력"
+            />
           </Box>
         </Box>
       </Box>
       <Box sx={{ mt: 2 }}>
-        <SimpleTextArea rows="10"/>
+        <SimpleTextArea 
+          name="txtContent"
+          value={personInfo.txtContent || ""}
+          onChange={(event)=>handleChange(event)}
+          rows="10"
+          placeholder="상담내용을 입력해주세요"
+        />
       </Box>
     </Box>
   );

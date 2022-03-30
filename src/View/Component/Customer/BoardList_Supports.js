@@ -60,7 +60,7 @@ const BoardList_Supports = (props) => {
   }, []);
 
   return (
-    <>
+    <Box>
       <TableContainer className={classes.tableBorder}>
         <Table size="small">
           <TableHead>
@@ -161,7 +161,7 @@ const BoardList_Supports = (props) => {
           </TableBody>
         </Table>
       </TableContainer>
-  </>
+  </Box>
   );
 };
 export default BoardList_Supports;

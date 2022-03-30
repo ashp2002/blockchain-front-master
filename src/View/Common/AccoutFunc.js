@@ -102,23 +102,15 @@ export const FuncLogout = async (dispatch) => {
     }
 };
 
-export const FuncJoin = async (
-  dispatch,
-  txtJoinID, // 아이디
-  txtJoinPW, // 암호
-  txtName, //이름
-  txtTel, //전번
-  txtEmail, //이메일
-  txtCompany, // 생년월일
-  ) => {
+export const FuncJoin = async ( personInfo ) => {
     try{
       let resultData = await asyncAPI("/user/addUser", {
-        userid: txtJoinID,
-        pass: txtJoinPW,
-        name: txtName,
-        phone: txtTel,
-        email: txtEmail,
-        company: txtCompany,
+        userid: personInfo.txtJoinID,
+        pass: personInfo.txtJoinPW,
+        name: personInfo.txtName,
+        phone: personInfo.txtTel,
+        email: personInfo.txtEmail,
+        company: personInfo.txtCompany,
       })
     } catch (e) {
         console.log("asyncAPI Error Log", e);
@@ -139,18 +131,12 @@ export const FuncIdCheck = async (dispatch, userID) => {
   }
 };
 
-export const FuncJoinResultCheck = (
-    txtJoinID, 
-    txtJoinPW, 
-    PWCheckResult, 
-    txtName, 
-    txtEmail
-  ) => {
-  if (!verifyID(txtJoinID)) {
+export const FuncJoinResultCheck = (personInfo, PWCheckResult) => {
+  if (!verifyID(personInfo.txtJoinID)) {
     alert("아이디를 6자 이상 영어 소문자 또는 숫자로 입력해주세요");
     return "fail";
   }
-  if (!verifyPW(txtJoinPW)) {
+  if (!verifyPW(personInfo.txtJoinPW)) {
     alert(
       "암호는 8자이상 영문 대문자,소문자,숫자,특수문자를 모두 포함해야합니다."
     );
@@ -158,15 +144,16 @@ export const FuncJoinResultCheck = (
   }
 
   if (!PWCheckResult) {
+    console.log()
     alert("비밀번호가 다릅니다. 비밀번호를 확인해주세요.");
     return "fail";
   }
 
-  if (txtName.length < 2) {
+  if (personInfo.txtName.length < 2) {
     alert("이름을 입력해주세요");
     return "fail";
   }
-  if (!verifyEmail(txtEmail)) {
+  if (!verifyEmail(personInfo.txtEmail)) {
     alert("이메일을 정확히 입력해주세요");
     return "fail";
   }

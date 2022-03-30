@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useTheme, makeStyles } from "@mui/styles";
 import { ThemeProvider } from "@mui/material/styles";
 import { Link as RouterLink, useHistory, useLocation } from "react-router-dom";
@@ -10,6 +11,9 @@ import {
   Button,
   useMediaQuery,
 } from "@mui/material";
+import { 
+  ItemInputFuncN_inquiry
+} from "../Common/BoardFunc";
 import DarkTheme from "../Common/DarkTheme";
 import TitleText from "../Component/Common/TitleText";
 import BodyText from "../Component/Common/BodyText";
@@ -23,12 +27,22 @@ const useStyles = makeStyles((theme) => ({
 export default function Footer(props) {
   const theme = useTheme();
   const classes = useStyles();
-  const history = useHistory();
   const location = useLocation();
+  const dispatch = useDispatch();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
+  const [personInfo, setPersonInfo] = useState({
+    txtName: "",
+    txtTel: "",
+    txtEmail: "",
+    txtContent: "",
+  });
 
-  console.log(location.pathname);
+  const hadleClickReg = () => {
+    ItemInputFuncN_inquiry(dispatch, personInfo);
+    setPersonInfo("");
+  };
+
   return (
     <>
       <ThemeProvider theme={DarkTheme}>
@@ -49,7 +63,7 @@ export default function Footer(props) {
             />
           </Box>
           <Box margin="auto" width="70%">
-            <BottomInput />
+            <BottomInput setPersonInfo={setPersonInfo} personInfo={personInfo}/>
           </Box>
           <Box 
             sx={{
@@ -58,7 +72,7 @@ export default function Footer(props) {
               mt: 2,
             }}
           >
-            <ColorButton color="primary">
+            <ColorButton onClick={hadleClickReg} color="primary">
               무료상담받기 
             </ColorButton> 
           </Box>

@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useTheme, makeStyles } from "@mui/styles";
 import { ThemeProvider } from "@mui/material/styles";
-import { Link as RouterLink, useHistory, useLocation } from "react-router-dom";
 import {
   Link,
   Typography,
@@ -23,6 +22,7 @@ export default function WhiteBottom(props) {
   const classes = useStyles();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
+  const { hadleClickReg, personInfo, setPersonInfo } = props;
 
   return (
     <>
@@ -37,11 +37,11 @@ export default function WhiteBottom(props) {
             />
           </Box>
           <Box sx={{ px: 10 }}>
-            <BottomInput />
+            <BottomInput setPersonInfo={setPersonInfo} personInfo={personInfo}/>
           </Box>
           <Box sx={{ width: "40%", margin: "auto", mt: 2 }}
           >
-            <ColorButton color="primary">
+            <ColorButton onClick={hadleClickReg} color="primary">
               무료상담받기 
             </ColorButton> 
           </Box>

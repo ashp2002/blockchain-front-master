@@ -69,6 +69,8 @@ const Header = (props) => {
             ))}
             {loginState ? 
               <Button
+                component={RouterLink}
+                to={"/"}
                 onClick={() => FuncLogout(dispatch)}
                 className={classes.Button} 
                 >

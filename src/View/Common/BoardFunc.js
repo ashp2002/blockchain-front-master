@@ -56,6 +56,7 @@ export const ItemInputFunc_support = async (dispatch, data) => {
       isprivate: 0,
     })
     console.log("데이터", resultData)
+    alert(resultData.msg);
     dispatch(inputItemSuccess());
     return resultData;
     } catch (e) {
@@ -77,6 +78,7 @@ export const ItemInputFuncN_support = async (dispatch, data) => {
       isprivate: 0,
     })
     console.log("데이터", resultData)
+    alert(resultData.msg);
     dispatch(inputItemSuccess());
     return resultData;
     } catch (e) {
@@ -93,6 +95,7 @@ export const ItemInputFuncN_support = async (dispatch, data) => {
         idx: itemIdx,
       })
       console.log("데이터", resultData)
+      alert(resultData.msg);
       dispatch(deleteItemSuccess());
       return resultData;
       } catch (e) {
@@ -110,6 +113,7 @@ export const ItemInputFuncN_support = async (dispatch, data) => {
         pass: pass,
       })
       console.log("데이터", resultData)
+      alert(resultData.msg);
       dispatch(deleteItemSuccess());
       return resultData;
       } catch (e) {
@@ -156,6 +160,7 @@ export const ItemInputFunc_faq = async (dispatch, data) => {
       contents: data.TxtContent,
     })
     console.log("데이터", resultData)
+    alert(resultData.msg);
     dispatch(inputItemSuccess());
     } catch (e) {
       console.log("asyncAPI Error Log", e);
@@ -170,6 +175,7 @@ export const ItemDelFunc_faq = async (dispatch, data) => {
       idx: data.idx,
     })
     console.log("데이터", resultData)
+    alert(resultData.msg);
     dispatch(deleteItemSuccess());
     } catch (e) {
       console.log("asyncAPI Error Log", e);
@@ -215,6 +221,7 @@ export const ItemInputFunc_notice = async (dispatch, data) => {
       top: "",
     })
     console.log("데이터", resultData)
+    alert(resultData.msg);
     dispatch(inputItemSuccess());
     } catch (e) {
       console.log("asyncAPI Error Log", e);
@@ -232,6 +239,7 @@ export const ItemDelFunc_notice = async (dispatch, data) => {
       idx: `${data}`,
     })
     console.log("데이터", resultData)
+    alert(resultData.msg);
     dispatch(deleteItemSuccess());
     } catch (e) {
       console.log("asyncAPI Error Log", e);
@@ -272,13 +280,12 @@ export const ItemInputFuncN_inquiry = async (dispatch, data) => {
   dispatch(inputItemFetch());
   try {
     let resultData = await asyncAPI("/addQuestionN1", {
-      title: data.TxtTitle,
-      contents: data.TxtContent,
-      phone: data.TxtPhone,
-      email: data.TxtEmail,
-      category: data.TxtCategory,
+      contents: data.txtContent,
+      phone: data.txtTel,
+      email: data.txtEmail,
     })
     console.log("데이터", resultData)
+    alert(resultData.msg);
     dispatch(inputItemSuccess());
     } catch (e) {
       console.log("asyncAPI Error Log", e);
