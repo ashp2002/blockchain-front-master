@@ -3,6 +3,8 @@ import { Box, Container, Tabs, Tab } from "@mui/material";
 import { useTheme, makeStyles } from "@mui/styles";
 import { ThemeProvider } from "@mui/material/styles";
 import DarkTheme from "../../Common/DarkTheme";
+import { tabIndex } from "../../modules/CommonRedux";
+import { useSelector, useDispatch } from "react-redux";
 
 export const useStyles = makeStyles((theme) => ({
  
@@ -11,10 +13,13 @@ export const useStyles = makeStyles((theme) => ({
 const TabBar = (props) => {
   const classes = useStyles();
   const theme = useTheme();
-  const { value, items } = props;
-  
-  const handleChange = (event, newValue) => {
-    props.handleChange(newValue);
+  const dispatch = useDispatch();
+  const { items, handleChange } = props;
+  const newValue = useSelector((state) => state.CommonRedux.tabValue);
+
+  const handleTabChange = (event, value) => {
+    dispatch(tabIndex(value));
+    handleChange(value);
   };
 
   return (
@@ -27,9 +32,9 @@ const TabBar = (props) => {
         <Container sx={{ maxWidth: "lg" }}>
           <Tabs
             color="white"
-            value={props.value}
+            value={newValue}
             variant="fullWidth"
-            onChange={handleChange}
+            onChange={handleTabChange}
             indicatorColor="primary"
             textColor="primary"
             centered

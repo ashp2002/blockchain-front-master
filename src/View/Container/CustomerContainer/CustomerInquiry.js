@@ -66,7 +66,6 @@ const CustomerInquiry = () => {
     ItemGetFunc_inquiry(dispatch, idx)
   };
 
-  console.log("리스트", Items)
   const hadleClickReg = () => {
     ItemInputFuncN_inquiry(dispatch, personInfo);
     setPersonInfo("");

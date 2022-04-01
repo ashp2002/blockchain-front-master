@@ -8,7 +8,7 @@ import ScrollToTop from "./Common/ScrollToTop";
 import Main from "./Pages/Main";
 import Service from "./Pages/Service";
 import CaseExample from "./Pages/CaseExample";
-import Customer from "./Pages/Customer";
+import Customer from "./Pages/CustomerRoute";
 import User from "./Pages/User";
 import Manager from "./Pages/Manager";
 import Header from "./Container/Header";
