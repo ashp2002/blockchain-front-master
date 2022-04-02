@@ -44,7 +44,7 @@ const BoardList_Notice = (props) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
   const [flag, setFlag] = useState(false);
-  const Items = useSelector((state) => state.BoardRedux.Items);
+  const Items = useSelector((state) => state.BoardRedux_Notice.NoticeItems);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const { page } = props;
 

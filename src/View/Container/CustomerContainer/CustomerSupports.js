@@ -12,7 +12,7 @@ import {
   Pagination,
   useMediaQuery,
 } from "@mui/material"; //테이블에 필요한 컴포넌트
-import { loadItemClear } from "../../modules/BoardRedux";
+import { loadItemClear } from "../../modules/BoardRedux_Supports";
 import { 
   ListGetFunc_support, 
   ItemGetFunc_support, 
@@ -20,7 +20,7 @@ import {
   ItemInputFuncN_support,
   ItemDelFunc_support,
   ItemDelFuncN_support
-} from "../../Common/BoardFunc";
+} from "../../Common/Board/BoardFunc_Supports";
 import BoardSupports from "../../Component/Customer/BoardList_Supports";
 import BoardItemSupports from "../../Component/Customer/BoardItem_Supports";
 import CompanyInfo from "../../Component/Bottom/CompanyInfo";
@@ -39,8 +39,8 @@ const CustomerSupports = () => {
   const dispatch = useDispatch();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
-  const Items = useSelector((state) => state.BoardRedux.Items);
-  const ItemInfo = useSelector((state) => state.BoardRedux.ItemInfo);
+  const Items = useSelector((state) => state.BoardRedux_Supports.SupportsItems);
+  const ItemInfo = useSelector((state) => state.BoardRedux_Supports.SupportsItemInfo);
   const loginState = useSelector((state) => state.AccountRedux.loginState);
   const _Fetching = useSelector((state) => state.AccountRedux.loginState);
   const [flagPage, setFlagPage] = useState(0);
@@ -57,7 +57,8 @@ const CustomerSupports = () => {
   ];
 
   useEffect(() => {
-    ListGetFunc_support(dispatch)
+    console.log("기술지원");
+    ListGetFunc_support(dispatch);
   }, []);
 
   useEffect(() => {

@@ -12,7 +12,7 @@ import {
   Box,
   Divider,
   } from '@mui/material';
-import { SupportAdd, SupportAddN, SupportDel, NoticeAdd } from "../../Common/BoardDialogFunc";
+import { SupportAdd, SupportAddN, SupportDel, NoticeAdd } from "../../Common/Board/BoardDialogFunc";
 import BoardButton from "../Common/BoardButton";
 
 export const useStyles = makeStyles((theme) => ({

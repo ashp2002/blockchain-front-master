@@ -53,7 +53,7 @@ const BoardList_Inquiry = (props) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const Items = useSelector((state) => state.BoardRedux.Items);
+  const Items = useSelector((state) => state.BoardRedux_Inquiry.InquiryItems);
   const { tableHead, page } = props;
   
   useEffect(() => {

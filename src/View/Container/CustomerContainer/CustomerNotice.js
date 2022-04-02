@@ -12,13 +12,13 @@ import {
   Pagination,
   useMediaQuery,
 } from "@mui/material"; //테이블에 필요한 컴포넌트
-import { loadItemClear } from "../../modules/BoardRedux";
+import { loadItemClear } from "../../modules/BoardRedux_Notice";
 import { 
   ListGetFunc_notice, 
   ItemGetFunc_notice, 
   ItemInputFunc_notice,
   ItemDelFunc_notice
-} from "../../Common/BoardFunc";
+} from "../../Common/Board/BoardFunc_Notice";
 import BoardList_Notice from "../../Component/Customer/BoardList_Notice"
 import BoardItem_Notice from "../../Component/Customer/BoardItem_Notice"
 import CompanyInfo from "../../Component/Bottom/CompanyInfo";
@@ -37,8 +37,8 @@ const CustomerNotice = () => {
   const dispatch = useDispatch();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
-  const Items = useSelector((state) => state.BoardRedux.Items);
-  const ItemInfo = useSelector((state) => state.BoardRedux.ItemInfo);
+  const Items = useSelector((state) => state.BoardRedux_Notice.NoticeItems);
+  const ItemInfo = useSelector((state) => state.BoardRedux_Notice.NoticeItemInfo);
   const loginState = useSelector((state) => state.AccountRedux.loginState);
   const userLevel = useSelector((state) => state.AccountRedux.userLevel);
   const [flagPage, setFlagPage] = useState(0);

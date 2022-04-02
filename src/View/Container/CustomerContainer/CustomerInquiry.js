@@ -15,7 +15,7 @@ import {
   ItemGetFunc_inquiry,
   ItemDelFunc_inquiry,
   ItemInputFuncN_inquiry
-} from "../../Common/BoardFunc";
+} from "../../Common/Board/BoardFunc_Inquiry";
 import WhiteBottom from "../../Component/Customer/WhiteBottom";
 import TitleText from "../../Component/Common/TitleText";
 import BoardList_Inquiry from "../../Component/Customer/BoardList_Inquiry";
@@ -31,8 +31,8 @@ const CustomerInquiry = () => {
   const [flagPage, setFlagPage] = useState(0);
   const [flag, setflag] = useState(false);
   const [page, setPage] = useState(0);
-  const Items = useSelector((state) => state.BoardRedux.Items);
-  const ItemInfo = useSelector((state) => state.BoardRedux.ItemInfo);
+  const Items = useSelector((state) => state.BoardRedux_Inquiry.InquiryItems);
+  const ItemInfo = useSelector((state) => state.BoardRedux_Inquiry.InquiryItemInfo);
   const userLevel = useSelector((state) => state.AccountRedux.userLevel);
   const loginState = useSelector((state) => state.AccountRedux.loginState);
   const _Fetching = useSelector((state) => state.AccountRedux.loginState);
@@ -51,7 +51,7 @@ const CustomerInquiry = () => {
   ];
 
   useEffect(() => {
-    userLevel == -1 ? ListGetFunc_inquiry(dispatch) : ""
+    userLevel == 1 ? ListGetFunc_inquiry(dispatch) : ""
   }, []);
   
   useEffect(() => {
@@ -74,7 +74,7 @@ const CustomerInquiry = () => {
   return (
     <Container sx={{ maxWidth: "lg" }}>
       <Box sx={{ width: "80%", mb: 10, m: "auto" }}>
-        {userLevel == -1 ?
+        {userLevel == 1 ?
         <Box sx={{ m: "auto" }}>
           <Box sx={{ mt: 10, }}>
             <TitleText

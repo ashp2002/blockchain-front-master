@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import { 
   ItemInputFuncN_inquiry
-} from "../Common/BoardFunc";
+} from "../Common/Board/BoardFunc_Inquiry";
 import DarkTheme from "../Common/DarkTheme";
 import TitleText from "../Component/Common/TitleText";
 import BodyText from "../Component/Common/BodyText";

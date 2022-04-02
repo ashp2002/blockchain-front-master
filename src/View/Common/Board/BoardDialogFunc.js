@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useTheme, makeStyles } from "@mui/styles";
 import { Typography, Box } from "@mui/material";
-import LabelTextField from "../Component/Common/LabelTextField";
+import LabelTextField from "../../Component/Common/LabelTextField";
 
 
 export const SupportAddN = (props) => {

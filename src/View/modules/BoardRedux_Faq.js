@@ -1,23 +1,23 @@
 import React from "react";
 import { asyncAPI, APIRequest } from "../Common/Common";
 
-const LIST_LOAD_SUCCESS = "board/list/success";
-const LIST_LOAD_FETCH = "board/list/fetch";
-const LIST_LOAD_FAILED = "board/list/failed";
-const LIST_LOAD_CLEAR = "board/list/clear";
+const LIST_LOAD_SUCCESS = "board/faqlist/success";
+const LIST_LOAD_FETCH = "board/faqlist/fetch";
+const LIST_LOAD_FAILED = "board/faqlist/failed";
+const LIST_LOAD_CLEAR = "board/faqlist/clear";
 
-const ITEM_LOAD_SUCCESS = "board/itemload/success";
-const ITEM_LOAD_FETCH = "board/itemload/fetch";
-const ITEM_LOAD_FAILED = "board/itemload/failed";
-const ITEM_LOAD_CLEAR = "board/itemload/clear";
+const ITEM_LOAD_SUCCESS = "board/faqitemload/success";
+const ITEM_LOAD_FETCH = "board/faqitemload/fetch";
+const ITEM_LOAD_FAILED = "board/faqitemload/failed";
+const ITEM_LOAD_CLEAR = "board/faqitemload/clear";
 
-const ITEM_INPUT_SUCCESS = "board/iteminput/success";
-const ITEM_INPUT_FETCH = "board/iteminput/fetch";
-const ITEM_INPUT_FAILED = "table/iteminput/failed";
+const ITEM_INPUT_SUCCESS = "board/faqiteminput/success";
+const ITEM_INPUT_FETCH = "board/faqiteminput/fetch";
+const ITEM_INPUT_FAILED = "board/faqiteminput/failed";
 
-const ITEM_DELETE_SUCCESS = "board/itemdelete/success";
-const ITEM_DELETE_FETCH = "board/itemdelete/fetch";
-const ITEM_DELETE_FAILED = "board/itemdelete/failed";
+const ITEM_DELETE_SUCCESS = "board/faqitemdelete/success";
+const ITEM_DELETE_FETCH = "board/faqitemdelete/fetch";
+const ITEM_DELETE_FAILED = "board/faqitemdelete/failed";
 ////////////////// Load List ////////////////////
 export const loadSuccess = (result) => ({
   type: LIST_LOAD_SUCCESS,
@@ -71,114 +71,115 @@ export const deleteItemFailed = () => ({
 });
 
 const initialState = {
-  Items: [],
-  _Fetching: false,
-  ItemInfo: [],
+  FaqItems: [],
+  FaqFetching: false,
+  FaqItemInfo: [],
+  FaqItemIdx: "",
 };
 
-const BoardRedux = (state = initialState, action) => {
+const BoardRedux_Faq = (state = initialState, action) => {
   //console.log("accout redux:", action, state);
   switch (action.type) {
     case LIST_LOAD_FETCH:
       console.log(" List Loading.. ", action, state);
       return {
         ...state,
-        _Fetching: true,
+        FaqFetching: true,
       };
 
     case LIST_LOAD_SUCCESS:
       console.log(" Loading Success", action, state);
       return {
         ...state,
-        Items: action.result.data,
-        _Fetching: false,
+        FaqItems: action.result.data,
+        FaqFetching: false,
       };
 
     case LIST_LOAD_FAILED:
       console.log(" Loading Fail", action, state);
       return {
         ...state,
-        _Fetching: false,
+        FaqFetching: false,
       };
 
     case LIST_LOAD_CLEAR:
       console.log(" List Clear.. ", action, state);
       return {
         ...state,
-        Items: "",
-        ItemInfo: "",
+        FaqItems: "",
+        FaqItemInfo: "",
       };
 
     case ITEM_LOAD_FETCH:
       console.log(" Item Loading.. ", action, state);
       return {
         ...state,
-        _Fetching: true,
+        FaqFetching: true,
       };
 
     case ITEM_LOAD_CLEAR:
       console.log(" Item Clear.. ", action, state);
       return {
         ...state,
-        ItemInfo: "",
+        FaqFetching: "",
       };
 
     case ITEM_LOAD_SUCCESS:
       console.log(" Loading Success", action, state);
       return {
         ...state,
-        ItemInfo: action.result,
-        _Fetching: false,
+        FaqItemInfo: action.result,
+        FaqFetching: false,
       };
 
     case ITEM_LOAD_FAILED:
       console.log(" Loading Fail", action, state);
       return {
         ...state,
-        _Fetching: false,
+        FaqFetching: false,
       };
 
     case ITEM_INPUT_FETCH:
       console.log(" Input Loading.. ", action, state);
       return {
         ...state,
-        _Fetching: true,
+        FaqFetching: true,
       };
 
     case ITEM_INPUT_FAILED:
       console.log(" Input Fail", action, state);
       return {
         ...state,
-        _Fetching: false,
+        FaqFetching: false,
       };
 
     case ITEM_INPUT_SUCCESS:
       console.log(" Input Success", action, state);
       return {
         ...state,
-        _Fetching: false,
+        FaqFetching: false,
       };
 
     case ITEM_DELETE_FETCH:
       console.log(" Delete Loading.. ", action, state);
       return {
         ...state,
-        _Fetching: true,
+        FaqFetching: true,
       };
 
     case ITEM_DELETE_FAILED:
       console.log(" Delete Fail", action, state);
       return {
         ...state,
-        _Fetching: false,
+        FaqFetching: false,
       };
 
     case ITEM_DELETE_SUCCESS:
       console.log(" Delete Success", action, state);
       return {
         ...state,
-        _Fetching: false,
-        ItemInfo: "",
+        FaqFetching: false,
+        FaqItemInfo: "",
       };
 
     default:
@@ -186,4 +187,4 @@ const BoardRedux = (state = initialState, action) => {
   }
 };
 
-export default BoardRedux;
+export default BoardRedux_Faq;
