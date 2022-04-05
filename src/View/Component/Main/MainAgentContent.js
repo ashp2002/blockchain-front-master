@@ -22,12 +22,12 @@ const MainAgentContent = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
-  const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.down("lg"));
   const { image, location, title, decs1, decs2, decs3, decs4 } = props;
 
   return (
     <Box
-      sx={{ display: "flex" }}
+      sx={{ display: "flex", flexDirection: isMobile || isTablet ? "column" : "row"  }}
       //flexDirection={isMobile || isTablet ? "column" : "row"}
       //mt={[5, 6, 8]}
       //mb={[5, 6, 8]}
@@ -64,7 +64,7 @@ const MainAgentContent = (props) => {
       >
         {location === "Img_left" ?
           <Box sx={{ px: 4, pt: 10 }}>
-           <TitleText title={title} size="h3" align="left" />
+            <TitleText title={title} size="h3" align="left" />
             <BodyText text={decs1} location="left" />
             <BodyText text={decs2} location="left" />
             <BodyText text={decs3} location="left" />

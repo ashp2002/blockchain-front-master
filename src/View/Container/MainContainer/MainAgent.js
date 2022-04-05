@@ -21,7 +21,7 @@ const MainAgent = () => {
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
-  const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.down("lg"));
 
   return (
       <Container>
@@ -38,7 +38,7 @@ const MainAgent = () => {
           />
           <MainAgentContent 
             image={mainAgentDapp} 
-            location="Img_right"
+            location={isMobile || isTablet ? "Img_left" : "Img_right"}
             title="Etherium 메인넷 기반 DAPP 솔루션"
             decs1="DSOP BlockChain Agent는 업계 유일 이더리움 메인넷기만 DAPP 솔루"
             decs2="션으로 타유사 솔루션과 비교될수 없는 보안성을 자랑합니다. Etherium" 

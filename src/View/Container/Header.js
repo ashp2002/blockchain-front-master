@@ -15,6 +15,18 @@ const useStyles = makeStyles((theme) => ({
   Button: {
     marginLeft: "20px",
   },
+  menuButton: {
+    display: "none",
+  },
+
+  "@media (max-width: 1000px)": {
+    navbar: {
+      display: "none",
+    },
+    menuButton: {
+      display: "flex",
+    },
+  },
 }));
 
 const MenuSection = [
@@ -52,7 +64,7 @@ const Header = (props) => {
               <img alt="로고" src={Logo}></img>
             </Link>
             <Box flexGrow={1} />
-            <Box>
+            <Box className={classes.navbar}>
               {MenuSection.map((section) => (
                 <Button
                   component={RouterLink}
