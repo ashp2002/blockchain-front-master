@@ -7,12 +7,14 @@ import {
   Link, 
   Button, 
   IconButton,
+  useMediaQuery,
 } from "@mui/material/";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useTheme, makeStyles } from "@mui/styles";
 import { useSelector, useDispatch } from "react-redux";
-import Logo from "../../Images/common/logo.png"
+import Logo from "../../Images/common/logo3.png"
+import LogoMobile from "../../Images/common/logo_mobile.png"
 import { FuncLogin, FuncLogout, Test } from "../Common/AccoutFunc";
 import MobileDropMenu from "../Component/Common/MobileDropMenu"
 
@@ -28,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     display: "none",
   },
 
-  "@media (max-width: 1000px)": {
+  "@media (max-width: 1150px)": {
     navbar: {
       display: "none",
     },
@@ -47,9 +49,12 @@ const MenuSection = [
 
 const Header = (props) => {
   const classes = useStyles();
+  const theme = useTheme();
   const loginState = useSelector((state) => state.AccountRedux.loginState);
   const userLevel = useSelector((state) => state.AccountRedux.userLevel);
   const userName = useSelector((state) => state.AccountRedux.userName);
+  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
   const location = useLocation();
   const dispatch = useDispatch();
   console.log("Header", userName);
@@ -70,7 +75,7 @@ const Header = (props) => {
             }}
           >
             <Link component={RouterLink} to={"/"}>
-              <img alt="로고" src={Logo}></img>
+              <img alt="로고" src={isMobile || isTablet ? LogoMobile : Logo}></img>
             </Link>
             <Box flexGrow={1} />
             <Box className={classes.navbar}>

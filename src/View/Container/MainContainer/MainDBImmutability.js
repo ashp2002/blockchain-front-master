@@ -26,27 +26,21 @@ const MainDBImmutability = () => {
   return (
     <Box sx={{ width: "100%", bgcolor: "#F4F4F4" }}>
       <Container>
-        <Box
-          sx={{
-            pt: 15,
-            pb: 15
-          }}  
-          //flexDirection={isMobile || isTablet ? "column" : "row"}
-        >
+        <Box sx={{ pt: [5, 5, 15], pb: [5, 5, 15] }}>
           <TitleText
             title="누구도 조작할 수 없는 불변의 데이터베이스"
             subtitle="블록체인 에이젼트로 가능합니다."
             description="블록체인에 기록한 Database는 어느 누구도, 어떠한 방법으로도 위/변조가 불가능합니다."
             description2="참여자들은 블록체인에 기록된 데이터를 신뢰할 수 있습니다."
             description3="또한, 데이터 생성및 변경 내역 또한 블록체인에 기록되므로 데이터 이력 추적 관리가 가능하여 투명성 또한 보장받을 수 있습니다"
-            size="h3"
+            size={isMobile || isTablet ? "h4" : "h3"}
             decssize="h5"
           />
-          <Box sx={{ mt: 5, display: "flex", justifyContent: "center" }}>
+          <Box sx={{ mt: 5, display: "flex", justifyContent: "space-evenly", flexWrap: "wrap" }}>
             <Box>
               <MainDBImmutabilityCard image={mainDBImmutability_Img1} title="내부자에 의한 조작" />
             </Box>
-            <Box sx={{ mx: 9 }}>
+            <Box>
               <MainDBImmutabilityCard image={mainDBImmutability_Img2} title="외부에 의한 악의적인 조작" />
             </Box>
             <Box>

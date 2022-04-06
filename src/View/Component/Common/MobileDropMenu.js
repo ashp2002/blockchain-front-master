@@ -106,12 +106,12 @@ const MobileDropMenu = (props) => {
         <IconButton
           color="primary"
           ref={anchorRef}
-          fontSize="large"
+          size="large"
           aria-controls={open ? "menu-list-grow" : undefined}
           aria-haspopup="true"
           onClick={handleToggle}
         >
-          <MenuIcon />
+          <MenuIcon sx={{ width: "40px", height: "40px", pb: ["10px", "5px", "0px"] }}/>
         </IconButton>
         <Popper
           open={open}

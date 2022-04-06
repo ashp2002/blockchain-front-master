@@ -23,12 +23,7 @@ const MainAgentMonitor = () => {
   return (
     <Box sx={{ width: "100%", bgcolor: "#F4F4F4" }}>
       <Container>
-        <Box   
-          sx={{
-            pt: 15,
-            pb: 15
-          }}  
-        >
+        <Box sx={{ pt: [5, 5, 15], pb: [5, 5, 15] }}>
           <MainAgentMonitorTitle />
           <Box sx={{ mt: 6, display: "flex", justifyContent: "center" }}>
             <img

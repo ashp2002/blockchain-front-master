@@ -53,8 +53,8 @@ const MainAgentContent = (props) => {
             className={classes.container}
             src={image}
           ></img> : 
-        <Box sx={{ px: 4, pt: 10 }}>
-          <TitleText title={title} size="h3" align="left" />
+        <Box sx={{ px: 4, pt: isMobile || isTablet ? 2 : 10, pb: isMobile || isTablet ? 5 : 0 }}>
+          <TitleText title={title} size={isMobile || isTablet ? "h4" : "h2"} align="left" />
           <BodyText text={decs1} location="left" />
           <BodyText text={decs2} location="left" />
           <BodyText text={decs3} location="left" />
@@ -71,8 +71,8 @@ const MainAgentContent = (props) => {
         }}
       >
         {location === "Img_left" ?
-          <Box sx={{ px: 4, pt: 10 }}>
-            <TitleText title={title} size="h3" align="left" />
+          <Box sx={{ px: 4, pt: isMobile || isTablet ? 2 : 10, pb: isMobile || isTablet ? 5 : 0 }}>
+            <TitleText title={title} size={isMobile || isTablet ? "h4" : "h2"} align="left" />
             <BodyText text={decs1} location="left" />
             <BodyText text={decs2} location="left" />
             <BodyText text={decs3} location="left" />

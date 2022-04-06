@@ -23,12 +23,7 @@ const MainTransection = () => {
   return (
     <Box sx={{ width: "100%", bgcolor: "#F4F4F4" }}>
       <Container>
-        <Box
-          sx={{
-            pt: 15,
-            pb: 15
-          }}   
-        >
+        <Box sx={{ pt: [5, 5, 15], pb: [5, 5, 15] }}>
           <TitleText
             title="트랜잭션 생성 및 조회"
             size="h3"

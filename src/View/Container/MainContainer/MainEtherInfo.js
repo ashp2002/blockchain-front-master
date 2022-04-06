@@ -13,6 +13,13 @@ import mainEtherInfo from "../../../Images/mainEtherInfo_Img.png"
 
 const useStyles = makeStyles((theme) => ({
 
+  "@media (max-width: 700px)": {
+    imgBox: {
+      width: "380px",
+      height: "250px",
+      objectFit: "cover",
+    },
+  },
 }));
 
 const MainEtherInfo = () => {
@@ -23,17 +30,13 @@ const MainEtherInfo = () => {
 
   return (
     <Container>
-      <Box   
-        sx={{
-          pt: 15,
-          pb: 15
-        }}  
-      >
+      <Box sx={{ pt: [5, 5, 15], pb: [5, 5, 15] }}>
         <MainEtherInfoTitle />
         <MainEtherInfoBody />
         <Box sx={{ mt: 5, display: "flex", justifyContent: "center" }}>
           <img
               src={mainEtherInfo}
+              className={classes.imgBox}
           ></img> 
         </Box>
       </Box>  

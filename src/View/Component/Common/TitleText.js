@@ -33,7 +33,7 @@ const TitleText = (props) => {
         <TexitItem text={title} variant={size} align={align}/>
         <TexitItem text={subtitle} variant={size} align={align}/>
       </Box>
-      <Box mt={5}>
+      <Box sx={{ mt: [ 2, 5, 5] }}>
         <TexitItem text={description} variant={decssize} align={align}/>
         <TexitItem text={description2} variant={decssize} align={align}/>
         <TexitItem text={description3} variant={decssize} align={align}/>

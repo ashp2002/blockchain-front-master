@@ -33,9 +33,9 @@ const MainServerSolution = () => {
       >
         <TitleText
           title="서버 렉, 클라우드 인드턴스, 소프트웨어 설치 방식의 솔루션 제공"
-          size="h3"
+          size={isMobile || isTablet ? "h4" : "h3"}
         />
-        <Box sx={{ mt: 9, display: "flex", justifyContent: "center" }}>
+        <Box sx={{ mt: 9, display: "flex", justifyContent: "space-evenly", flexWrap: "wrap" }}>
           <Box>
             <MainServerSolutionCard 
               image={MainServerSolution_Img1} 
@@ -44,7 +44,7 @@ const MainServerSolution = () => {
                     간단한 설명만으로 솔루션 구축"
             />
           </Box>
-          <Box mx={8}>
+          <Box>
             <MainServerSolutionCard 
               image={MainServerSolution_Img2} 
               title="렉 설치 방식"

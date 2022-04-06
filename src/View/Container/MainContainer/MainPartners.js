@@ -28,12 +28,7 @@ const MainPartners = () => {
 
   return (
     <Container>
-      <Box   
-        sx={{
-          pt: 15,
-          pb: 15
-        }}   
-      >
+      <Box sx={{ pt: [5, 5, 15], pb: [5, 5, 15] }}>
         <TitleText
           title="협 력 업 체"
           size="h3"
