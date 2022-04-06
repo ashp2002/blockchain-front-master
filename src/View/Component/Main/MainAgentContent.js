@@ -15,7 +15,15 @@ const useStyles = makeStyles((theme) => ({
     width: "616px",
     height: "420px",
     objectFit: "cover",
-  }
+  },
+
+  "@media (max-width: 700px)": {
+    container: {
+      width: "400px",
+      height: "300px",
+      objectFit: "cover",
+    },
+  },
 }));
 
 const MainAgentContent = (props) => {

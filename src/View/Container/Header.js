@@ -1,11 +1,20 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Box, AppBar, Toolbar, Container, Link, Button } from "@mui/material/";
+import { 
+  Box, 
+  AppBar, 
+  Toolbar, 
+  Container, 
+  Link, 
+  Button, 
+  IconButton,
+} from "@mui/material/";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useTheme, makeStyles } from "@mui/styles";
 import { useSelector, useDispatch } from "react-redux";
 import Logo from "../../Images/common/logo.png"
 import { FuncLogin, FuncLogout, Test } from "../Common/AccoutFunc";
+import MobileDropMenu from "../Component/Common/MobileDropMenu"
 
 const useStyles = makeStyles((theme) => ({
   hoverButton: {
@@ -108,6 +117,13 @@ const Header = (props) => {
                 </Button>
               )}
             </Box>
+            <IconButton
+              edge="end"
+              className={classes.menuButton}
+              aria-label="menu"
+            >
+              <MobileDropMenu />
+            </IconButton>
           </Toolbar>
         </Container>
       </AppBar>
