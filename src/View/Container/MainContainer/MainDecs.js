@@ -60,7 +60,7 @@ const MainDecs = () => {
                 color="border"
                 onClick={() => { Test() }}
               >
-                문의하기
+                문의하기기
               </ ColorButton>
             </Box>
             <Box sx={{ width: isMobile || isTablet ? "150px" : "20%", mr: isMobile || isTablet ? 5 : 10, }}>
