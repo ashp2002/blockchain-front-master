@@ -89,7 +89,7 @@ export default function Footer(props) {
           <Box sx={{
             pt: 8,
             pb: 5,
-            px: 8,
+            px: isMobile || isTablet ? 1 : 8,
             display: "flex",
             justifyContent: "space-between",
             }}

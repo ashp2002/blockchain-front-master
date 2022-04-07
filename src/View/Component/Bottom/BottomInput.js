@@ -30,8 +30,8 @@ const BottomInput = (props) => {
 
   return (
     <Box> 
-      <Box sx={{ display: "flex" }}>
-        <Box sx={{ flexBasis: "50%", justifyContent: "center", mr: 4, }}>
+      <Box sx={{ display: "flex", flexDirection: isMobile || isTablet ? "column" : ""}}>
+        <Box sx={{ flexBasis: "50%", justifyContent: "center", mr: 4, mb: isMobile || isTablet ? 2 : "" }}>
           <Box>
             <SimpleTextField
               name="txtEmail"

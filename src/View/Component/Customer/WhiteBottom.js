@@ -36,7 +36,7 @@ export default function WhiteBottom(props) {
                 size="h3"
             />
           </Box>
-          <Box sx={{ px: 10 }}>
+          <Box sx={{ px: isMobile || isTablet ? 0 : 10, }}>
             <BottomInput setPersonInfo={setPersonInfo} personInfo={personInfo}/>
           </Box>
           <Box sx={{ width: "40%", margin: "auto", mt: 2 }}

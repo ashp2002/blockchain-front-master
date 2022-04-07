@@ -33,14 +33,14 @@ const MainPartners = () => {
           title="협 력 업 체"
           size="h3"
         />
-        <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <Box sx={{ display: "flex", justifyContent: "space-evenly", flexWrap: "wrap"}}>
           <MainPartnersCard image={MainPartners_Img1} title="대한체육회TV" />
-          <MainPartnersCard image={MainPartners_Img2} title="한국스마트선거" margin="true" />
+          <MainPartnersCard image={MainPartners_Img2} title="한국스마트선거"/>
           <MainPartnersCard image={MainPartners_Img3} title="제니스" />
         </Box>
-        <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <Box sx={{ display: "flex", justifyContent: "space-evenly", flexWrap: "wrap"}}>
           <MainPartnersCard image={MainPartners_Img4} title="진단보증협회" />
-          <MainPartnersCard image={MainPartners_Img5} title="플랜에이" margin="true" />
+          <MainPartnersCard image={MainPartners_Img5} title="플랜에이" />
           <MainPartnersCard image={MainPartners_Img6} title="월급날" />
         </Box>
       </Box>  

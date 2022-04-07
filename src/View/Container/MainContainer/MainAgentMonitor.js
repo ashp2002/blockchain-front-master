@@ -12,6 +12,13 @@ import mainMonitor_img from "../../../Images/mainMonitor_img.png"
 
 const useStyles = makeStyles((theme) => ({
 
+  "@media (max-width: 950px)": {
+    imgBox: {
+      width: "550px",
+      height: "430px",
+      objectFit: "cover",
+    },
+  },
 }));
 
 const MainAgentMonitor = () => {
@@ -28,6 +35,7 @@ const MainAgentMonitor = () => {
           <Box sx={{ mt: 6, display: "flex", justifyContent: "center" }}>
             <img
                 src={mainMonitor_img}
+                className={classes.imgBox}
             ></img> 
           </Box>
         </Box>  

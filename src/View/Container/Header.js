@@ -57,10 +57,6 @@ const Header = (props) => {
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
   const location = useLocation();
   const dispatch = useDispatch();
-  console.log("Header", userName);
-  console.log("Header", location.pathname);
-  console.log("session_id", sStorage.getItem("session_id"));
- 
 
   return (
     <React.Fragment>

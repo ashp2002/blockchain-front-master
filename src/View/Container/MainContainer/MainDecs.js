@@ -28,7 +28,7 @@ const MainDecs = () => {
     <Box
       className={classes.container}
       sx={{
-        pt: ["40px", "40px", "80px"],
+        pt: ["10px", "40px", "80px"],
         width: "100%",
         height: ["370px", "400px", "500px"],
         bgcolor: "RGB(246,248,247)"

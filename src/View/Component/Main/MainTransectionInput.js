@@ -14,7 +14,13 @@ import TransectionTemp1 from "../../../Images/TransectionTemp1.png"
 import TransectionTemp2 from "../../../Images/TransectionTemp2.png"
 
 const useStyles = makeStyles((theme) => ({
- 
+  "@media (max-width: 700px)": {
+    imgBox: {
+      width: "350px",
+      height: "200px",
+      objectFit: "cover",
+    },
+  },
 }));
 
 const MainTransectionInput = (props) => {
@@ -27,30 +33,31 @@ const MainTransectionInput = (props) => {
   return (
     <Box
       sx={{
-        //flexDirection: isMobile || isTablet ? "column" : "row"
-        //mt: [5, 6, 8]
-        //mb: [5, 6, 8]
         display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "center",
         border: 2,
         borderColor: "#707070",
         borderRadius: 15,
         px: 4,
         py: 14,
+        width: "100%",
       }}
     >
       <Box
         sx={{
-          flexBasis: "50%",
           justifyContent: "center",
-          borderRight: 1,
           px: 8,
           py: 3,
+          width: "100%",
+          flexBasis: "50%",
         }}
       >
         <TitleText title="파일 해시 값 생성하기" size="h4"/>
         <Box sx={{ display: "flex", justifyContent: "center" }}>
           <img
             src={TransectionTemp1}
+            className={classes.imgBox}
           ></img>
         </Box>
         <Box sx={{ mt: 6, mb: 4 }}>
@@ -62,10 +69,11 @@ const MainTransectionInput = (props) => {
       </Box>
       <Box
         sx={{
-          flexBasis: "50%",
           justifyContent: "center",
           px: 8,
-          py: 3
+          py: 3,
+          width: "100%",
+          flexBasis: "50%",
         }}
       >
         <TitleText title="이더리움 해시값 조회하기" size="h4"/>
@@ -78,6 +86,7 @@ const MainTransectionInput = (props) => {
         <Box sx={{ display: "flex", justifyContent: "center" }}>
           <img
             src={TransectionTemp2}
+            className={classes.imgBox}
           ></img>
         </Box>
       </Box>

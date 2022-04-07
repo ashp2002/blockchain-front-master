@@ -73,7 +73,7 @@ const CustomerInquiry = () => {
 
   return (
     <Container sx={{ maxWidth: "lg" }}>
-      <Box sx={{ width: "80%", mb: 10, m: "auto" }}>
+      <Box sx={{  mb: 10, m: "auto" }}>
         {userLevel == 1 ?
         <Box sx={{ m: "auto" }}>
           <Box sx={{ mt: 10, }}>
