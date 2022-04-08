@@ -86,7 +86,7 @@ const CustomerFaq = (props) => {
           size="h2"
         />
       </Box>
-      <Box sx={{ my: 10, width: "80%", m: "auto" }}>
+      <Box sx={{ my: 10, width: isMobile || isTablet ? "100%" : "80%", m: "auto" }}>
         {flagPage == 0 ?
         <Box>
           <BoardList_Faq  

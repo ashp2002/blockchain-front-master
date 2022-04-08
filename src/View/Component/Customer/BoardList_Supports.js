@@ -28,21 +28,34 @@ export const useStyles = makeStyles((theme) => ({
     borderBottom: "1px solid #707070",
   },
   tablebody: {
-    fontSize: "1.17vw",
     color: "black",
-    [theme.breakpoints.down("900")]: {
+    [theme.breakpoints.down("1280")]: {
       fontSize: "12px",
     },
     [theme.breakpoints.up("lg")]: {
       fontSize: "15px",
     },
   },
-  /* 반응형시 컴포넌트 disabled
-  private_cell: {
+  TableHeadRow: { 
     [theme.breakpoints.down("900")]: {
       display: "none",
     },
-  },*/
+  },
+  no_cell: { 
+    [theme.breakpoints.down("900")]: {
+      display: "none",
+    },
+  },
+  date_cell: { 
+    [theme.breakpoints.down("900")]: {
+      display: "none",
+    },
+  },
+  views_cell: { 
+    [theme.breakpoints.down("900")]: {
+      display: "none",
+    },
+  },
 }));
 
 const BoardList_Supports = (props) => {
@@ -64,7 +77,7 @@ const BoardList_Supports = (props) => {
       <TableContainer className={classes.tableBorder}>
         <Table size="small">
           <TableHead>
-            <TableRow height="60">
+            <TableRow height="60" className={classes.TableHeadRow}>
             {tableHead.map((section) => (
               <TableCell key={section.title} width={section.width} align={section.align} >
                 <Typography
@@ -81,27 +94,14 @@ const BoardList_Supports = (props) => {
             {Items &&
               Items
                 .slice(page * rowsPerPage, (page + 1) * rowsPerPage) //전체데이터에서 slice를통해 10개만 추출
-                .map(
-                  (
-                    {
-                      id,
-                      name,
-                      title,
-                      regdate,
-                      idx,
-                      status,
-                      views,
-                      isprivate,
-                    },
-                    i
-                  ) => (
+                .map(({ id, name, title, regdate, idx, status, views, isprivate }, i ) => (
                     <TableRow
                       hover
                       onClick={() => {
                         props.handleItemPageOpen(1, idx);
                       }}
                       key={idx}
-                      height="60"
+                      height={isMobile || isTablet ? "40" : "60"}
                     >
                       <TableCell
                         component="th"
@@ -125,7 +125,7 @@ const BoardList_Supports = (props) => {
                           {title}
                         </Typography>
                       </TableCell>
-                      <TableCell align="left">
+                      <TableCell align="left" width="100">
                         <Typography
                           variant="body2"
                           className={classes.tablebody}
@@ -146,7 +146,7 @@ const BoardList_Supports = (props) => {
                       </TableCell>
                       <TableCell
                         align="center"
-                        className={classes.comment_cell}
+                        className={classes.views_cell}
                       >
                         <Typography
                           variant="body2"

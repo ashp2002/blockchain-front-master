@@ -83,7 +83,7 @@ const BoardList_Faq = (props) => {
                       display: "flex",
                       alignItems: "center",
                       width: "100%",
-                      height: 50
+                      height: isMobile || isTablet ? "30" : "40"
                     }}
                   >
                     {/* 
@@ -105,7 +105,7 @@ const BoardList_Faq = (props) => {
                 </AccordionSummary>
                 <AccordionDetails className={classes.bodycontainer}>
                   <Box sx={{ display: "flex", width: "100%", py: 2 }}>
-                    <Box sx={{ flexBasis: "10%", pt: 2, pl: 3 }}>
+                    <Box sx={{ flexBasis: "10%", pt: 2, pl: 3, display: isMobile || isTablet ? "none" : "" }}>
                       A
                     </Box>
                     <TextField

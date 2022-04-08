@@ -26,13 +26,17 @@ export const useStyles = makeStyles((theme) => ({
     borderBottom: "1px solid #707070",
   },
   tablebody: {
-    fontSize: "1.17vw",
     color: "black",
-    [theme.breakpoints.down("900")]: {
+    [theme.breakpoints.down("1280")]: {
       fontSize: "12px",
     },
     [theme.breakpoints.up("lg")]: {
       fontSize: "15px",
+    },
+  },
+  no_cell: { 
+    [theme.breakpoints.down("900")]: {
+      display: "none",
     },
   },
 }));
@@ -60,23 +64,14 @@ const BoardList_Notice = (props) => {
             {Items &&
               Items
                 .slice(page * rowsPerPage, (page + 1) * rowsPerPage) //전체데이터에서 slice를통해 10개만 추출
-                .map(
-                  (
-                    {
-                      id,
-                      title,
-                      regdate,
-                      idx,
-                    },
-                    i
-                  ) => (
+                .map(({ id, title, regdate, idx, }, i ) => (
                     <TableRow
                       hover
                       onClick={() => {
                         props.handleItemPageOpen(1, idx);
                       }}
                       key={idx}
-                      height="60"
+                      height={isMobile || isTablet ? "40" : "60"}
                     >
                       <TableCell
                         scope="row"
@@ -101,7 +96,7 @@ const BoardList_Notice = (props) => {
                       </TableCell>
                       <TableCell
                         align="center"
-                        width="300"
+                        width={isMobile || isTablet ? "150" : "300"}
                         className={classes.date_cell}
                       >
                         <Typography

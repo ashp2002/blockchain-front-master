@@ -16,10 +16,10 @@ export const useStyles = makeStyles((theme) => ({
 }));
 
 const tabContainText = [
-  { id: 1, title: "1:1 문의" },
-  { id: 2, title: "공지사항" },
-  { id: 3, title: "자주하는질문" },
-  { id: 4, title: "기술지원" },
+  //{ id: 1, title: "1:1 문의" },
+  { id: 1, title: "공지사항" },
+  { id: 2, title: "자주하는질문" },
+  { id: 3, title: "기술지원" },
 ];
 
 const CustomerRoute = (props) => {
@@ -28,13 +28,13 @@ const CustomerRoute = (props) => {
 
   const handleChange = (value) => {
     switch (value) {
+      /*case 0:
+        return history.push("/Customer/CustomerInquiry");*/
       case 0:
-        return history.push("/Customer/CustomerInquiry");
-      case 1:
         return history.push("/Customer/CustomerNotice");
-      case 2:
+      case 1:
         return history.push("/Customer/CustomerFaq");
-      case 3:
+      case 2:
         return history.push("/Customer/CustomerSupports");
     }
   };
@@ -44,8 +44,8 @@ const CustomerRoute = (props) => {
       <CustomerDecs />
       <TabBar handleChange={handleChange} items={tabContainText} />
       <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-        <Route path={["/Customer", "/Customer/CustomerInquiry"]} component={PageInquiry} exact={true} />
-        <Route path={["/Customer/CustomerSupports"]} component={PageSupports} />
+        {/*<Route path={["/Customer/CustomerInquiry"]} component={PageInquiry} />*/}
+        <Route path={["/Customer", "/Customer/CustomerSupports"]} component={PageSupports} exact={true} />
         <Route path={["/Customer/CustomerFaq"]} component={PageFaq} />
         <Route path={["/Customer/CustomerNotice"]} component={PageNotice} />
       </Box>
