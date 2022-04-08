@@ -21,22 +21,22 @@ const tabContainText = [
 
 const Service = (props) => {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [tabIndex, setTabIndex] = useState(0);
 
   const handleChange = (newValue) => {
-    setValue(newValue);
+    setTabIndex(newValue);
     //console.log(newValue);
   };
 
   return (
     <Box sx={{ mt: 14 }}>
       <ServiceDecs />
-      <TabBar handleChange={handleChange} items={tabContainText} value={value}/>
+      <TabBar handleChange={handleChange} items={tabContainText}  index={tabIndex} setIndex={setTabIndex}/>
       <Box display="flex" flexDirection="column" alignItems="center" width="100%">
-        {value === 0 && <ServiceVote />}
-        {value === 1 && <ServiceDocument />}
-        {value === 2 && <ServicePayment />}
-        {value === 3 && <ServiceAccess />}
+        {tabIndex === 0 && <ServiceVote />}
+        {tabIndex === 1 && <ServiceDocument />}
+        {tabIndex === 2 && <ServicePayment />}
+        {tabIndex === 3 && <ServiceAccess />}
       </Box>
     </Box>
   );

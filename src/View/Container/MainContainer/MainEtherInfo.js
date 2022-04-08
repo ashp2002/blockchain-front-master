@@ -12,7 +12,6 @@ import MainEtherInfoBody from "../../Component/Main/MainEtherInfoBody"
 import mainEtherInfo from "../../../Images/mainEtherInfo_Img.png"
 
 const useStyles = makeStyles((theme) => ({
-
   "@media (max-width: 700px)": {
     imgBox: {
       width: "380px",

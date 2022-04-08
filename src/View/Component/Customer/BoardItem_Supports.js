@@ -67,7 +67,7 @@ const BoardItem_Supports = (props) => {
               />
             </Box>
           <Divider />
-          <Box sx={{ display: "flex", justifyContent: "end", mt: 2 }}>
+          <Box sx={{ display: "flex", justifyContent: "end", mt: 2, mb: 5 }}>
             <Box >
               <BoardButton sx={{ color: "white" }}>
                 댓글쓰기

@@ -26,21 +26,19 @@ const ServiceDecs = () => {
       sx={{
         width: "100%",
         height: ["200px", "250px", "400px"],
-        bgcolor: "RGB(246,248,247)"
+        bgcolor: "RGB(246,248,247)",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
       }}
     >
       <ThemeProvider theme={DarkTheme}>
       <Container>
-        <Box 
-          sx={{
-            position: "relative",
-            left: "-500px",
-            bottom: "-270px",
-          }}
-        >
+        <Box sx={{ px: 4 }}>
           <TitleText
             title="서 비 스 소 개"
             size="h1"
+            align="left"
           />
         </Box>
       </Container>

@@ -66,9 +66,8 @@ const BoardList_Faq = (props) => {
   }, []);
 
   return (
-    <Box>
       <Container sx={{ maxWidth: "lg" }}>
-        <Box>
+        <Box sx={{ mb: 5 }}>
           {Items ? (
             Items.map((data) => (
               <Accordion key={data.idx}>
@@ -131,7 +130,6 @@ const BoardList_Faq = (props) => {
           ) : ""}
         </Box>
       </Container>
-    </Box>
   );
 };
 

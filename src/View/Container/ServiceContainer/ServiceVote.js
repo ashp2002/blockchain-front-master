@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container } from "@mui/material";
+import { Box, Container, useMediaQuery } from "@mui/material";
 import { useTheme, makeStyles } from "@mui/styles";
 import ServiceVoteTitle from "../../Component/Service/ServiceVoteTitle";
 import ServiceVoteInfo from "../../Component/Service/ServiceVoteInfo";
@@ -8,10 +8,25 @@ import ServiceVoteTrust from "../../Component/Service/ServiceVoteTrust";
 import ServiceEther_Img from"../../../Images/ServiceEther_Img.png"
 import ServiceVote_Img from"../../../Images/ServiceVote_Img.png"
 const useStyles = makeStyles((theme) => ({
+  "@media (max-width: 900px)": {
+    imgBox_agent: {
+      width: "600px",
+      height: "130px",
+      objectFit: "cover",
+    },
+    imgBox_trust: {
+      width: "600px",
+      height: "300px",
+      objectFit: "cover",
+    },
+  },
 }));
 
 const ServiceVote = () => {
   const classes = useStyles();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const isTablet = useMediaQuery(theme.breakpoints.down("lg"));
 
   return (
       <Container>
@@ -22,13 +37,13 @@ const ServiceVote = () => {
           <ServiceVoteInfo />
         </Box>
         <Box sx={{ display: "flex", justifyContent: "center" }}>
-          <img src={ServiceEther_Img} />
+          <img src={ServiceEther_Img} className={classes.imgBox_agent} />
         </Box>
         <Box sx={{ my: 10 }}>
           <ServiceVoteAgent />
         </Box>
         <Box sx={{ display: "flex", justifyContent: "center" }}>
-          <img src={ServiceVote_Img} />
+          <img src={ServiceVote_Img} className={classes.imgBox_trust}/>
         </Box>
         <Box sx={{ my: 10 }}>
           <ServiceVoteTrust />

@@ -26,21 +26,19 @@ const MainDecs = () => {
       sx={{
         width: "100%",
         height: ["200px", "250px", "400px"],
-        bgcolor: "RGB(246,248,247)"
+        bgcolor: "RGB(246,248,247)",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
       }}
     >
       <ThemeProvider theme={DarkTheme}>
       <Container>
-        <Box 
-          sx={{
-            position: "relative",
-            left: "-500px",
-            bottom: "-270px",
-          }}
-        >
-          <TitleText
+        <Box sx={{ px: 4 }}>
+          <TitleText 
             title="적 용 사 례"
             size="h1"
+            align="left"
           />
         </Box>
       </Container>

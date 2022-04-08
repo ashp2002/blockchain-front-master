@@ -106,7 +106,7 @@ const CustomerNotice = () => {
                 </BoardButton>
               </Box> : ""
             }
-            <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+            <Box sx={{ display: "flex", justifyContent: "center", mt: 2, mb: 5 }}>
               <Pagination
                 count={Items === null ? 0 : parseInt(Items.length / 10) + 1}
                 page={page + 1}
@@ -123,9 +123,6 @@ const CustomerNotice = () => {
               handleClickItemDel={handleClickItemDel}
             />
           }   
-        </Box>
-        <Box sx={{ my: 5 }}>
-          <CompanyInfo />
         </Box>
         <BoardDialog
           title="공지사항등록"

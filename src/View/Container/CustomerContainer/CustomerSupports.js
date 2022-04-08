@@ -136,7 +136,7 @@ const CustomerSupports = () => {
                 글 쓰 기
               </BoardButton>
             </Box>
-            <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+            <Box sx={{ display: "flex", justifyContent: "center", mt: 2, mb: 5 }}>
               <Pagination
                 count={Items === null ? 0 : parseInt(Items.length / 10) + 1}
                 page={page + 1}
@@ -154,9 +154,6 @@ const CustomerSupports = () => {
             />
           }
         </Box> 
-        <Box sx={{ my: 5 }}>
-          <CompanyInfo />
-        </Box>
         <BoardDialog
           title="게시글등록"
           showDialog={showDialogAdd}

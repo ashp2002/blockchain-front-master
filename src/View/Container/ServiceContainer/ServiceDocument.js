@@ -7,6 +7,13 @@ import ServiceVoteTrust from "../../Component/Service/ServiceVoteTrust";
 import ServiceDoc_Img from"../../../Images/ServiceDoc_Img.png"
 
 const useStyles = makeStyles((theme) => ({
+  "@media (max-width: 800px)": {
+    imgBox_agent: {
+      width: "350px",
+      height: "200px",
+      objectFit: "cover",
+    },
+  },
 }));
 
 const ServiceDocument = () => {
@@ -17,17 +24,8 @@ const ServiceDocument = () => {
       <Box sx={{ my: 10 }}>
         <ServiceDocInfo />
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
-        <img src={ServiceDoc_Img} />
-      </Box>
-      <Box sx={{ my: 10 }}>
-        <ServiceVoteAgent />
-      </Box>
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
-        <img src={ServiceDoc_Img} />
-      </Box>
-      <Box sx={{ my: 10 }}>
-        <ServiceVoteTrust />
+      <Box sx={{ display: "flex", justifyContent: "center", mb: 5 }}>
+        <img src={ServiceDoc_Img}className={classes.imgBox_agent}/>
       </Box>
     </Container>
   );

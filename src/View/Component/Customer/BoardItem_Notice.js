@@ -71,7 +71,7 @@ const BoardItem_Notice = (props) => {
               />
             </Box>
           <Divider />
-          <Box sx={{ display: "flex", justifyContent: "end", mt: 2 }}>
+          <Box sx={{ display: "flex", justifyContent: "end", mt: 2, pb: 5 }}>
             {userLevel == 1 ? 
               <Box sx={{ ml: 2 }}>
                 <BoardButton 
