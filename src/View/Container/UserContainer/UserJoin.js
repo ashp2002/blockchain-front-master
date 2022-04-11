@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useTheme, makeStyles } from "@mui/styles";
 import { useSelector, useDispatch } from "react-redux";
 import { Link as RouterLink, useLocation, useHistory } from "react-router-dom";
 import {
@@ -6,27 +7,26 @@ import {
   TextField, 
   Typography, 
   Button,
-  Container
+  Container,
+  useMediaQuery
   } from "@mui/material";
 import { FuncJoin, FuncIdCheck, FuncJoinResultCheck } from "../../Common/AccoutFunc";
 import SimpleTextField from "../../Component/Common/SimpleTextField";
 import TitleText from "../../Component/Common/TitleText";
 import ColorButton from "../../Component/Common/ColorButton";
 
+export const useStyles = makeStyles((theme) => ({
+}));
 
 const UserJoin = (props) => {
-
+  const theme = useTheme();
+  const classes = useStyles();
   const dispatch = useDispatch();
   const loginState = useSelector((state) => state.AccountRedux.loginState);
   const fetchingState = useSelector((state) => state.AccountRedux._Fetching);
   const history = useHistory();
-  const [txtName, setTxtName] = React.useState("");
-  const [txtTel, setTxtTel] = React.useState("");
-  const [txtEmail, setTxtEmail] = React.useState("");
-  const [txtCompany, setTxtCompany] = React.useState("");
-  const [txtJoinID, setTxtJoinID] = React.useState("");
-  const [txtJoinPW, setTxtJoinPW] = React.useState("");
-  const [txtJoinPW2, setTxtJoinPW2] = React.useState("");
+  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
   const [PWCheckResult, setPWCheckResult] = React.useState(false);
   const [personInfo, setPersonInfo] = useState({
     id: "",
@@ -65,7 +65,7 @@ const UserJoin = (props) => {
     <Container>
       <Box
         sx={{
-          width: "50%",
+          width: isTablet || isMobile ? "100%" : "50%",
           mx: "auto",
           my: 20,
           px: 5,

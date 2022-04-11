@@ -75,7 +75,7 @@ const BoardItem_Notice = (props) => {
             {userLevel == 1 ? 
               <Box sx={{ ml: 2 }}>
                 <BoardButton 
-                  sx={{ color: "white" }} 
+                  mobile={isMobile || isTablet ? "true" : "false"} 
                   onClick={handleClickItemDel}
                 >
                   글삭제
@@ -84,7 +84,7 @@ const BoardItem_Notice = (props) => {
             }
             <Box sx={{ ml: 2 }}>
               <BoardButton 
-                sx={{ color: "white" }} 
+                mobile={isMobile || isTablet ? "true" : "false"} 
                 onClick={() => 
                   {props.handleItemPageClose(0);}
                 }>

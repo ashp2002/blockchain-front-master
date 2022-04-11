@@ -9,15 +9,15 @@ const TableButton = styled(({ link, color, ...other }) => (
   background: props.theme.palette.secondary.main,
   boxShadow: "none",
   borderRadius: 5,
-  width: "100px",
+  width: props.mobile === "true" ? "70px" : "100px",
   border: props.color === "outer" ? "solid" : props.color === "border" ? "solid"  : null,
   borderWidth: props.color === "outer" ? "1px" : props.color === "border" ? "2px" : 0,
   borderColor: props.color === "outer" ? props.theme.palette.border.dark
     : props.color === "border" ? props.theme.palette.secondary.main : null,
   color: props.color === "outer" ? props.theme.palette.text.primary : "white",
-  height: "40px",
+  height: props.mobile === "true" ? "30px" : "40px",
   fontFamily: "Spoqa Han Sans Neo Medium",
-  fontSize: "18px",
+  fontSize: props.mobile === "true" ? "14px" : "18px",
   "&:hover": {
     backgroundColor: props.theme.palette.primary.main
   },

@@ -1,24 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useTheme, makeStyles } from "@mui/styles";
 import { Link as RouterLink, useLocation, useHistory } from "react-router-dom";
 import {
   Box, 
   TextField, 
   Typography, 
   Button,
-  Container
+  Container,
+  useMediaQuery
   } from "@mui/material";
 import { FuncLogin, FuncLogout } from "../../Common/AccoutFunc";
 import SimpleTextField from "../../Component/Common/SimpleTextField";
 import TitleText from "../../Component/Common/TitleText";
 import ColorButton from "../../Component/Common/ColorButton";
 
-const UserLogin = (props) => {
 
+export const useStyles = makeStyles((theme) => ({
+}));
+
+const UserLogin = (props) => {
+  const theme = useTheme();
+  const classes = useStyles();
   const dispatch = useDispatch();
   const loginState = useSelector((state) => state.AccountRedux.loginState);
   const fetchingState = useSelector((state) => state.AccountRedux._Fetching);
   const history = useHistory();
+  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
   const [txtID, setTxtID] = useState("");
   const [txtPW, setTxtPW] = useState("");
 
@@ -35,7 +44,7 @@ const UserLogin = (props) => {
     <Container>
       <Box
         sx={{
-          width: "50%",
+          width: isTablet || isMobile ? "100%" : "50%",
           mx: "auto",
           my: 20,
           px: 5,

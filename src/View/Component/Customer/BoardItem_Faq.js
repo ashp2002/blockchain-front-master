@@ -75,6 +75,7 @@ const BoardItem_Faq = (props) => {
             {userLevel == 1 ? 
               <Box sx={{ ml: 2 }}>
                 <BoardButton 
+                  mobile={isMobile || isTablet ? "true" : "false"}
                   sx={{ color: "inherit" }} 
                   onClick={handleClickItemDel}
                 >
@@ -84,6 +85,7 @@ const BoardItem_Faq = (props) => {
             }
             <Box sx={{ ml: 2 }}>
               <BoardButton 
+                mobile={isMobile || isTablet ? "true" : "false"}
                 sx={{ color: "inherit" }} 
                 onClick={() => 
                   {props.handleItemPageClose(0);}

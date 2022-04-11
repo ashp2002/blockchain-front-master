@@ -69,18 +69,21 @@ const BoardItem_Supports = (props) => {
           <Divider />
           <Box sx={{ display: "flex", justifyContent: "end", mt: 2, mb: 5 }}>
             <Box >
-              <BoardButton sx={{ color: "white" }}>
+              <BoardButton 
+                mobile={isMobile || isTablet ? "true" : "false"} >
                 댓글쓰기
               </BoardButton>
             </Box>
             <Box sx={{ ml: 2 }}>
-              <BoardButton sx={{ color: "white" }} onClick={handleClickItemDel}>
+              <BoardButton 
+                mobile={isMobile || isTablet ? "true" : "false"}
+                onClick={handleClickItemDel}>
                 글삭제
               </BoardButton>
             </Box>
             <Box sx={{ ml: 2 }}>
               <BoardButton 
-                sx={{ color: "white" }} 
+                mobile={isMobile || isTablet ? "true" : "false"} 
                 onClick={() => 
                   {props.handleItemPageClose(0);}
                 }>

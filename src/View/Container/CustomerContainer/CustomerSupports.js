@@ -130,7 +130,8 @@ const CustomerSupports = () => {
               Items={Items}
             />
             <Box sx={{ display: "flex", justifyContent: "end", mt: 1 }}>
-              <BoardButton 
+              <BoardButton
+                mobile={isMobile || isTablet ? "true" : "false"} 
                 onClick={()=>{ setShowModalAdd(true); }}
               >
                 글 쓰 기
