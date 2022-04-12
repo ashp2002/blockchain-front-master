@@ -29,6 +29,7 @@ const MainDBImmutabilityCard = (props) => {
         py: [2, 5, 7],
         border: 2,
         display: "flex", 
+        boxShadow: 3,
         flexDirection: "column", 
         justifyContent: "space-between",
         borderRadius: 1,

@@ -11,11 +11,15 @@ import MainAgentMonitorTitle from "../../Component/Main/MainAgentMonitorTitle"
 import mainMonitor_img from "../../../Images/mainMonitor_img.png"
 
 const useStyles = makeStyles((theme) => ({
-
-  "@media (max-width: 950px)": {
-    imgBox: {
+  imgBox: {
+    [theme.breakpoints.between('sm','md')]: {
       width: "550px",
       height: "430px",
+      objectFit: "cover",
+    },
+    [theme.breakpoints.between('xs','sm')]: {
+      width: "400px",
+      height: "300px",
       objectFit: "cover",
     },
   },
@@ -26,6 +30,7 @@ const MainAgentMonitor = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isTablet = useMediaQuery(theme.breakpoints.down("sm"));
+  const isSmall = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <Box sx={{ width: "100%", bgcolor: "#F4F4F4" }}>

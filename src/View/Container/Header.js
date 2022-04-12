@@ -22,9 +22,11 @@ const useStyles = makeStyles((theme) => ({
   hoverButton: {
     marginLeft: "20px",
     fontWeight: 800,
+    color: "black"
   },
   Button: {
     marginLeft: "20px",
+    color: "black"
   },
   menuButton: {
     display: "none",
@@ -90,6 +92,7 @@ const Header = (props) => {
               </Button>
             ))}
             {loginState ? 
+            <Box>
               <Button
                 component={RouterLink}
                 to={"/"}
@@ -98,6 +101,7 @@ const Header = (props) => {
                 >
                   로그아웃
               </Button>
+            </Box>
               :
               <Button
                 component={RouterLink}

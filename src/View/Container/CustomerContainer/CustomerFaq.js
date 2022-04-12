@@ -94,7 +94,7 @@ const CustomerFaq = (props) => {
             page={page} 
           />
           {userLevel == 1 ? 
-            <Box sx={{ display: "flex", justifyContent: "end", mt: 1 }}>
+            <Box sx={{ display: "flex", justifyContent: "end", mr: 3, mb: 5 }}>
               <BoardButton 
                 mobile={isMobile || isTablet ? "true" : "false"}
                 onClick={()=>{ setShowModalAdd(true); }}

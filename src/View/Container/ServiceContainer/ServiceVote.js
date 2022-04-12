@@ -8,12 +8,19 @@ import ServiceVoteTrust from "../../Component/Service/ServiceVoteTrust";
 import ServiceEther_Img from"../../../Images/ServiceEther_Img.png"
 import ServiceVote_Img from"../../../Images/ServiceVote_Img.png"
 const useStyles = makeStyles((theme) => ({
-  "@media (max-width: 900px)": {
-    imgBox_agent: {
+  imgBox_agent: {
+    [theme.breakpoints.between('sm','md')]: {
       width: "600px",
       height: "130px",
       objectFit: "cover",
     },
+    [theme.breakpoints.between('xs','sm')]: {
+      width: "370px",
+      height: "70px",
+      objectFit: "cover",
+    },
+  },
+  "@media (max-width: 900px)": {
     imgBox_trust: {
       width: "600px",
       height: "300px",
